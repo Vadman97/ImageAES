@@ -1,0 +1,41 @@
+//! **************************************************************************
+// Written by: Map P.20131013 on Thu Apr 13 13:23:01 2017
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "HS" LOCATE = SITE "N6" LEVEL 1;
+COMP "An3" LOCATE = SITE "P17" LEVEL 1;
+COMP "Ca" LOCATE = SITE "T17" LEVEL 1;
+COMP "Cb" LOCATE = SITE "T18" LEVEL 1;
+COMP "Cc" LOCATE = SITE "U17" LEVEL 1;
+COMP "Cd" LOCATE = SITE "U18" LEVEL 1;
+COMP "Ce" LOCATE = SITE "M14" LEVEL 1;
+COMP "Cf" LOCATE = SITE "N14" LEVEL 1;
+COMP "Cg" LOCATE = SITE "L14" LEVEL 1;
+COMP "btnU" LOCATE = SITE "A8" LEVEL 1;
+COMP "St_ce_bar" LOCATE = SITE "L17" LEVEL 1;
+COMP "R<0>" LOCATE = SITE "U7" LEVEL 1;
+COMP "Dp" LOCATE = SITE "M13" LEVEL 1;
+COMP "R<1>" LOCATE = SITE "V7" LEVEL 1;
+COMP "R<2>" LOCATE = SITE "N7" LEVEL 1;
+COMP "VS" LOCATE = SITE "P7" LEVEL 1;
+COMP "G<0>" LOCATE = SITE "P8" LEVEL 1;
+COMP "G<1>" LOCATE = SITE "T6" LEVEL 1;
+COMP "G<2>" LOCATE = SITE "V6" LEVEL 1;
+COMP "Mt_St_we_bar" LOCATE = SITE "M16" LEVEL 1;
+COMP "ClkPort" LOCATE = SITE "V10" LEVEL 1;
+COMP "St_rp_bar" LOCATE = SITE "V3" LEVEL 1;
+COMP "rst" LOCATE = SITE "B8" LEVEL 1;
+COMP "B<0>" LOCATE = SITE "R7" LEVEL 1;
+COMP "B<1>" LOCATE = SITE "T7" LEVEL 1;
+COMP "Mt_ce_bar" LOCATE = SITE "L15" LEVEL 1;
+COMP "btnD" LOCATE = SITE "C9" LEVEL 1;
+COMP "Mt_St_oe_bar" LOCATE = SITE "L18" LEVEL 1;
+COMP "An0" LOCATE = SITE "N16" LEVEL 1;
+COMP "An1" LOCATE = SITE "N15" LEVEL 1;
+COMP "An2" LOCATE = SITE "P18" LEVEL 1;
+TIMEGRP sys_clk_pin = BEL "clk_25Mhz" BEL "count_0" BEL "count_1" BEL
+        "ClkPort_BUFGP/BUFG";
+TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH 50%;
+SCHEMATIC END;
+

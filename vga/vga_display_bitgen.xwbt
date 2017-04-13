@@ -1,0 +1,8 @@
+INTSTYLE=ise
+INFILE=D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\vga\vga_display.ncd
+OUTFILE=D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\vga\vga_display.bit
+FAMILY=Spartan6
+PART=xc6slx16-3csg324
+WORKINGDIR=D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\vga
+LICENSE=ISE
+USER_INFO=174127445_174127446_210604357_969
