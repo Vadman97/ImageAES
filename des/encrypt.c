@@ -5,12 +5,13 @@ using namespace std;
 int keySize = 16;
 char* message = "waterbot";
 char* key = "hellodar";
-char c[17][28];
-char d[17][28];
-char tempShift[56];
+unsigned char k[56];
+char c[17][28], d[17][28];
+char initShiftC[28], initShiftD[28];
 char* encrypted;
 void encrypt();
-void loadShiftArray();
+void createFirstPermutedKey();
+void loadShiftArrays();
 void shift(int);
 int pc1[56] = {57,    49,    41,   33,    25,    17,    9,   1,
                58,    50,    42,   34,    26,    18,   10,   2,
@@ -29,32 +30,46 @@ int main(void) {
 
 void encrypt() {
 
-  unsigned char k[56];
-  //first permuted key
+
+  createFirstPermutedKey();
+
+  //load permuted key into tempShift to turn into c/d arrays
+  loadShiftArrays();
+
+  //begin Cn and Dn array construction
+  for(int i = 0; i < 16; i++) { shift(i); }
+
+
+
+}
+
+void createFirstPermutedKey() {
   for(int i = 0; i < 56; i++) {
     int index = pc1[i];
-    { // pull out the bit needed & load into k array
+    {
+      // pull out the bit needed & load into k array
       char x = key[index / 8] & (1 << (8 - (index % 8)));
       k[i] = (x & (1 << (8 - (index % 8)))) >> (8 - (index % 8));
     }
     cout << (int)k[i];
   }
   cout << endl;
-  //end first permuted key
-  //load permuted key into tempShift to turn into c/d arrays
-  loadShiftArray();
-  //begin Cn and Dn array construction
-  for(int i = 0; i < 17; i++) {
-    copy(k, k + 28, c[i]);
-    copy(k + 28, k + 56, d[i]);
+}
+
+void loadShiftArrays() {
+  copy(k, k + 28, c[0]);
+  copy(k + 28, k + 56, d[0]);
+}
+
+void shift(int k) {
+  int shiftBy = cdShift[k];
+  for(int i = 0; i < 28; i++) {
+    c[k + 1][i] = c[k][shiftBy];
+    d[k + 1][i] = d[k][shiftBy];
+    shiftBy++;
+    if(shiftBy == 28) shiftBy = 0;
+    cout << (int)c[k + 1][i];
   }
-
-}
-
-void loadShiftArray() {
-  copy(k, k + 56, tempShift);
-}
-
-void shift(int i) {
+  cout << endl;
 
 }
