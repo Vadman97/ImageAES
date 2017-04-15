@@ -6,13 +6,14 @@ int keySize = 16;
 char* message = "waterbot";
 char* key = "hellodar";
 unsigned char k[56];
-char c[17][28], d[17][28];
+char c[17][28], d[17][28], pk[16][48];
 char initShiftC[28], initShiftD[28];
 char* encrypted;
 void encrypt();
 void createFirstPermutedKey();
 void loadShiftArrays();
 void shift(int);
+void createAllKeys();
 int pc1[56] = {57,    49,    41,   33,    25,    17,    9,   1,
                58,    50,    42,   34,    26,    18,   10,   2,
                59,    51,    43,   35,    27,    19,   11,   3,
@@ -20,6 +21,14 @@ int pc1[56] = {57,    49,    41,   33,    25,    17,    9,   1,
                31,    23,    15,    7,    62,    54,   46,  38,
                30,    22,    14,    6,    61,    53,   45,  37,
                29,    21,    13,    5,    28,    20,   12,   4};
+int pc2[48] = {14,    17,   11,    24,     1,    5,
+                3,    28,   15,     6,    21,   10,
+               23,    19,   12,     4,    26,    8,
+               16,     7,   27,    20,    13,    2,
+               41,    52,   31,    37,    47,   55,
+               30,    40,   51,    45,    33,   48,
+               44,    49,   39,    56,    34,   53,
+               46,    42,   50,    36,    29,   32};
 int cdShift[16] = {1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1};
 
 int main(void) {
@@ -30,7 +39,6 @@ int main(void) {
 
 void encrypt() {
 
-
   createFirstPermutedKey();
 
   //load permuted key into tempShift to turn into c/d arrays
@@ -39,7 +47,7 @@ void encrypt() {
   //begin Cn and Dn array construction
   for(int i = 0; i < 16; i++) { shift(i); }
 
-
+  createAllKeys();
 
 }
 
@@ -68,8 +76,21 @@ void shift(int k) {
     d[k + 1][i] = d[k][shiftBy];
     shiftBy++;
     if(shiftBy == 28) shiftBy = 0;
-    cout << (int)c[k + 1][i];
   }
-  cout << endl;
+
+}
+
+void createAllKeys() {
+  for(int i = 0; i < 16; i++) {
+    for(int j = 0; j < 48; j++) {
+      int index = pc2[j];
+      if(index > 27) {//size of c/d arrays
+        pk[i][j] = d[i][pc2[j] - 28];
+      }
+      else pk[i][j] = c[i][pc2[j]];
+      cout << (int)pk[i][j];
+    }
+    cout << endl;
+  }
 
 }
