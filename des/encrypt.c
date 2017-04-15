@@ -7,13 +7,15 @@ char* message = "waterbot";
 char* key = "hellodar";
 unsigned char k[56];
 char c[17][28], d[17][28], pk[16][48];
-char initShiftC[28], initShiftD[28];
+char ip[64];
 char* encrypted;
 void encrypt();
 void createFirstPermutedKey();
 void loadShiftArrays();
 void shift(int);
 void createAllKeys();
+void initMessagePermute();
+//initial subkey permutation table
 int pc1[56] = {57,    49,    41,   33,    25,    17,    9,   1,
                58,    50,    42,   34,    26,    18,   10,   2,
                59,    51,    43,   35,    27,    19,   11,   3,
@@ -21,6 +23,7 @@ int pc1[56] = {57,    49,    41,   33,    25,    17,    9,   1,
                31,    23,    15,    7,    62,    54,   46,  38,
                30,    22,    14,    6,    61,    53,   45,  37,
                29,    21,    13,    5,    28,    20,   12,   4};
+//subkey permutation table
 int pc2[48] = {14,    17,   11,    24,     1,    5,
                 3,    28,   15,     6,    21,   10,
                23,    19,   12,     4,    26,    8,
@@ -29,7 +32,17 @@ int pc2[48] = {14,    17,   11,    24,     1,    5,
                30,    40,   51,    45,    33,   48,
                44,    49,   39,    56,    34,   53,
                46,    42,   50,    36,    29,   32};
+//how much to shift c/d arrays by
 int cdShift[16] = {1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1};
+//message permutation table
+int mp[64] = {58,    50,   42,    34,    26,   18,    10,    2,
+              60,    52,   44,    36,    28,   20,    12,    4,
+              62,    54,   46,    38,    30,   22,    14,    6,
+              64,    56,   48,    40,    32,   24,    16,    8,
+              57,    49,   41,    33,    25,   17,     9,    1,
+              59,    51,   43,    35,    27,   19,    11,    3,
+              61,    53,   45,    37,    29,   21,    13,    5,
+              63,    55,   47,    39,    31,   23,    15,    7};
 
 int main(void) {
 
@@ -40,14 +53,12 @@ int main(void) {
 void encrypt() {
 
   createFirstPermutedKey();
-
   //load permuted key into tempShift to turn into c/d arrays
   loadShiftArrays();
-
   //begin Cn and Dn array construction
   for(int i = 0; i < 16; i++) { shift(i); }
-
   createAllKeys();
+  initMessagePermute();
 
 }
 
@@ -93,4 +104,17 @@ void createAllKeys() {
     cout << endl;
   }
 
+}
+
+void initMessagePermute() {
+    for(int i = 0; i < 64; i++) {
+      int index = mp[i];
+      {
+        //pull out bit needed and load into k array
+        char x = message[index / 8] & (1 << (8 - (index % 8)));
+        ip[i] = (x & (1 << (8 - (index % 8)))) >> (8 - (index % 8));
+      }
+      cout << (int)ip[i];
+    }
+    cout << endl;
 }
