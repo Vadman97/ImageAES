@@ -65,6 +65,20 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 	// End clock division
 	/////////////////////////////////////////////////////
 	
+	parameter [10:0] VGA_WIDTH = 640;
+	parameter [10:0] VGA_HEIGHT = 480;
+	
+	parameter [7:0] IMG_WIDTH = 172;
+	parameter [7:0] IMG_HEIGHT = 181;
+	
+	parameter [3:0] SCALE = 1;
+	
+	parameter [10:0] START_X = (VGA_WIDTH - (IMG_WIDTH * SCALE)) / 2;
+	parameter [10:0] START_Y = (VGA_HEIGHT - (IMG_HEIGHT * SCALE)) / 2;
+	
+	// parameter [10:0] START_X = 50;
+	// parameter [10:0] START_Y = 50;
+	
 	// Call driver
 	vga_controller_640_60 vc(
 		.rst(rst), 
@@ -77,12 +91,14 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 	);
 	
 	vga_bsprite sprites_mem(
-		.x0(0+100), 
-		.y0(0+100),
-		.x1(160+100),
-		.y1(120+100),
+		.x0(START_X), 
+		.y0(START_Y),
+		.x1(IMG_WIDTH+START_X),
+		.y1(IMG_HEIGHT+START_Y),
 		.hc(hcount), 
 		.vc(vcount), 
+		.image_width(IMG_WIDTH),
+		.scaler(SCALE),
 		.mem_value(douta), 
 		.rom_addr(addra), 
 		.R(R), 

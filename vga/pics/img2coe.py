@@ -2,8 +2,8 @@ from scipy import misc
 import numpy as np
 
 
-def img2coe(input: str, output: str):
-    pic = misc.imread(input)
+def img2coe(in_file: str, output: str):
+    pic = misc.imread(in_file)
     height = pic.shape[0]
     width = pic.shape[1]
 
@@ -18,10 +18,22 @@ def img2coe(input: str, output: str):
         for r in range(0, height):
             for c in range(0, width):
                 cnt += 1
-                R, G, B = pic[r][c][0], pic[r][c][1], pic[r][c][2]
-                Rb, Gb, Bb = np.binary_repr(R, width=4), np.binary_repr(G, width=4), np.binary_repr(B, width=4)
-                out_byte = np.append(Rb[1:3], [Gb[1: 3], Bb[1: 2]])
-                print(out_byte)
+                r_val, g_val, b_val = pic[r][c][0], pic[r][c][1], pic[r][c][2]
+                r_bin, g_bin, b_bin = np.binary_repr(r_val, width=8), np.binary_repr(g_val, width=8), np.binary_repr(b_val, width=8)
+                out_byte = r_bin[0:3] + g_bin[0: 3] + b_bin[0: 2]
+
+                if '0000' in out_byte[0:5]:
+                    f.write('0%X' % int(out_byte, 2))
+                else:
+                    f.write('%X' % int(out_byte, 2))
+
+                if c == width and r == height:
+                    f.write(';')
+                else:
+                    if cnt % 32 == 0:
+                        f.write(',\n')
+                    else:
+                        f.write(',')
 
         """
         cnt = 0;

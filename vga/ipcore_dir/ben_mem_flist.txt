@@ -4,6 +4,7 @@ ben_mem.asy
 ben_mem.gise
 ben_mem.mif
 ben_mem.ngc
+ben_mem.sym
 ben_mem.v
 ben_mem.veo
 ben_mem.xco

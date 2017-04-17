@@ -1,7 +1,7 @@
 ##############################################################
 #
 # Xilinx Core Generator version 14.7
-# Date: Thu Apr 13 02:46:47 2017
+# Date: Mon Apr 17 07:05:17 2017
 #
 ##############################################################
 #
@@ -46,7 +46,7 @@ CSET axi_id_width=4
 CSET axi_slave_type=Memory_Slave
 CSET axi_type=AXI4_Full
 CSET byte_size=9
-CSET coe_file="D:\Dropbox\2nd Year USC\EE 354\Final_Project\verilog_projects\VGA\vga_sprites\ben.coe"
+CSET coe_file=C:\Users\vkoro\Final_Project\project\vga\pics\benc.coe
 CSET collision_warnings=ALL
 CSET component_name=ben_mem
 CSET disable_collision_warnings=false
@@ -57,7 +57,7 @@ CSET enable_32bit_address=false
 CSET enable_a=Always_Enabled
 CSET enable_b=Always_Enabled
 CSET error_injection_type=Single_Bit_Error_Injection
-CSET fill_remaining_memory_locations=true
+CSET fill_remaining_memory_locations=false
 CSET interface_type=Native
 CSET load_init_file=true
 CSET mem_file=no_Mem_file_loaded
@@ -105,4 +105,4 @@ CSET write_width_b=8
 MISC pkg_timestamp=2012-11-19T16:22:25Z
 # END Extra information
 GENERATE
-# CRC: 1b853aa5
+# CRC: 1ee3bb32

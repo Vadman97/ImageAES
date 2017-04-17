@@ -1,8 +1,15 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Thu Apr 13 13:23:01 2017
+// Written by: Map P.20131013 on Mon Apr 17 16:03:22 2017
 //! **************************************************************************
 
 SCHEMATIC START;
+COMP "B<1>" LOCATE = SITE "T7" LEVEL 1;
+COMP "Mt_ce_bar" LOCATE = SITE "L15" LEVEL 1;
+COMP "btnD" LOCATE = SITE "C9" LEVEL 1;
+COMP "Mt_St_oe_bar" LOCATE = SITE "L18" LEVEL 1;
+COMP "An0" LOCATE = SITE "N16" LEVEL 1;
+COMP "An1" LOCATE = SITE "N15" LEVEL 1;
+COMP "An2" LOCATE = SITE "P18" LEVEL 1;
 COMP "HS" LOCATE = SITE "N6" LEVEL 1;
 COMP "An3" LOCATE = SITE "P17" LEVEL 1;
 COMP "Ca" LOCATE = SITE "T17" LEVEL 1;
@@ -27,13 +34,6 @@ COMP "ClkPort" LOCATE = SITE "V10" LEVEL 1;
 COMP "St_rp_bar" LOCATE = SITE "V3" LEVEL 1;
 COMP "rst" LOCATE = SITE "B8" LEVEL 1;
 COMP "B<0>" LOCATE = SITE "R7" LEVEL 1;
-COMP "B<1>" LOCATE = SITE "T7" LEVEL 1;
-COMP "Mt_ce_bar" LOCATE = SITE "L15" LEVEL 1;
-COMP "btnD" LOCATE = SITE "C9" LEVEL 1;
-COMP "Mt_St_oe_bar" LOCATE = SITE "L18" LEVEL 1;
-COMP "An0" LOCATE = SITE "N16" LEVEL 1;
-COMP "An1" LOCATE = SITE "N15" LEVEL 1;
-COMP "An2" LOCATE = SITE "P18" LEVEL 1;
 TIMEGRP sys_clk_pin = BEL "clk_25Mhz" BEL "count_0" BEL "count_1" BEL
         "ClkPort_BUFGP/BUFG";
 TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH 50%;
