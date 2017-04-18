@@ -1,48 +1,4 @@
-#include <string>
-#include <iostream>
-using namespace std;
-
-int keySize = 16;
-char* message = "waterbot";
-char* key = "hellodar";
-unsigned char k[56];
-char c[17][28], d[17][28], pk[16][48];
-char ip[64];
-char* encrypted;
-void encrypt();
-void createFirstPermutedKey();
-void loadShiftArrays();
-void shift(int);
-void createAllKeys();
-void initMessagePermute();
-//initial subkey permutation table
-int pc1[56] = {57,    49,    41,   33,    25,    17,    9,   1,
-               58,    50,    42,   34,    26,    18,   10,   2,
-               59,    51,    43,   35,    27,    19,   11,   3,
-               60,    52,    44,   36,    63,    55,   47,  39,
-               31,    23,    15,    7,    62,    54,   46,  38,
-               30,    22,    14,    6,    61,    53,   45,  37,
-               29,    21,    13,    5,    28,    20,   12,   4};
-//subkey permutation table
-int pc2[48] = {14,    17,   11,    24,     1,    5,
-                3,    28,   15,     6,    21,   10,
-               23,    19,   12,     4,    26,    8,
-               16,     7,   27,    20,    13,    2,
-               41,    52,   31,    37,    47,   55,
-               30,    40,   51,    45,    33,   48,
-               44,    49,   39,    56,    34,   53,
-               46,    42,   50,    36,    29,   32};
-//how much to shift c/d arrays by
-int cdShift[16] = {1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2, 2, 1};
-//message permutation table
-int mp[64] = {58,    50,   42,    34,    26,   18,    10,    2,
-              60,    52,   44,    36,    28,   20,    12,    4,
-              62,    54,   46,    38,    30,   22,    14,    6,
-              64,    56,   48,    40,    32,   24,    16,    8,
-              57,    49,   41,    33,    25,   17,     9,    1,
-              59,    51,   43,    35,    27,   19,    11,    3,
-              61,    53,   45,    37,    29,   21,    13,    5,
-              63,    55,   47,    39,    31,   23,    15,    7};
+#include "encrypt.h"
 
 int main(void) {
 
@@ -59,7 +15,8 @@ void encrypt() {
   for(int i = 0; i < 16; i++) { shift(i); }
   createAllKeys();
   initMessagePermute();
-
+  createAllMessagePermutations();
+  getEncryption();
 }
 
 void createFirstPermutedKey() {
@@ -70,9 +27,7 @@ void createFirstPermutedKey() {
       char x = key[index / 8] & (1 << (8 - (index % 8)));
       k[i] = (x & (1 << (8 - (index % 8)))) >> (8 - (index % 8));
     }
-    cout << (int)k[i];
   }
-  cout << endl;
 }
 
 void loadShiftArrays() {
@@ -96,16 +51,14 @@ void createAllKeys() {
     for(int j = 0; j < 48; j++) {
       int index = pc2[j];
       if(index > 27) {//size of c/d arrays
-        pk[i][j] = d[i][pc2[j] - 28];
+        pk[i][j] = d[i][index - 28];
       }
-      else pk[i][j] = c[i][pc2[j]];
-      cout << (int)pk[i][j];
+      else pk[i][j] = c[i][index];
     }
-    cout << endl;
   }
 
 }
-
+//works
 void initMessagePermute() {
     for(int i = 0; i < 64; i++) {
       int index = mp[i];
@@ -114,7 +67,73 @@ void initMessagePermute() {
         char x = message[index / 8] & (1 << (8 - (index % 8)));
         ip[i] = (x & (1 << (8 - (index % 8)))) >> (8 - (index % 8));
       }
-      cout << (int)ip[i];
+    }
+}
+
+void createAllMessagePermutations() {
+  copy(ip, ip + 32, l[0]);
+  copy(ip + 32, ip + 64, r[0]);
+
+  for(int i = 1; i < 17; i++) {
+    calculateLn(i);
+    calculateRn(i);
+  }
+}
+
+void calculateLn(int i) {
+  cout << "hello" << endl;
+  copy(r[i - 1], r[i - 1] + 32, l[i]);
+  if(i == 3) {
+    for(int j = 0; j < 32; j++) {
+      cout << (int)l[i][j];
     }
     cout << endl;
+  }
+}
+
+void calculateRn(int i) {
+  char e[48];
+  char kXORe[48];
+  char f[32];
+  // cout << "enter for" << endl;s
+  for(int j = 0; j < 48; j++) {
+    e[j] = r[i - 1][ebit[j]];
+    kXORe[i] = pk[i][j] ^ e[j];
+    // if(i == 15) cout << (int)e[j];
+  }
+  // if(i == 15) cout << endl;
+  // for(int j = 0; j < 48; j++) {
+  //   if(i == 15) cout << (int)pk[i][j];
+  // }
+  // if(i == 15) cout << endl;
+  // for(int j = 0; j < 48; j++) {
+  //   cout << (int)kXORe[j];
+  // }
+  // cout << endl;
+
+  for(int j = 0; j < 8; j++) {
+    char temp[6];
+    copy(kXORe + (j * 6), kXORe + (j * 6) + 6, temp);
+    int index = (int)(temp[0] << 1) + (int)temp[5];
+    int col = (int)((temp[1] << 3) + (temp[2] << 2) + (temp[3] << 1) + temp[4]);
+    char load = s[j][index][col];
+
+    for(int k = 0; k < 4; k++) {
+      char x = load & (1 << (3 - k));
+      x = x >> (3 - k);
+      f[j * 4 + k] = x;
+      r[i][j * 4 + k] = l[i - 1][j * 4 + k] ^ f[j * 4 + k];
+    }
+  }
+
+}
+
+void getEncryption() {
+  for(int i = 0; i < 64; i++) {
+    int index = ip1[i];
+    if(index > 31) {
+      result[i] = l[16][index - 32];
+    }
+    else result[i] = r[16][index];
+  }
 }
