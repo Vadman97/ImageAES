@@ -97,8 +97,8 @@ void calculateRn(int i) {
   char f[32];
   // cout << "enter for" << endl;s
   for(int j = 0; j < 48; j++) {
-    e[j] = r[i - 1][ebit[j]];
-    kXORe[i] = pk[i][j] ^ e[j];
+    e[j] = r[i - 1][ebit[j] - 1];
+    kXORe[j] = pk[i][j] ^ e[j];
     // if(i == 15) cout << (int)e[j];
   }
   // if(i == 15) cout << endl;
