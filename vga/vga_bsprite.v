@@ -51,7 +51,6 @@ module vga_bsprite(x0, y0, x1, y1, hc, vc, mem_value, image_width, scaler, rom_a
 		else
 			y = 0;
 			
-		//rom_addr = y * 172 + x; // calculate the address
 		rom_addr = y*image_width + x;
 		
 		if (x==0 | y==0)		// set the color output

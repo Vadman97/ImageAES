@@ -1,7 +1,7 @@
 Release 14.7 Drc P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Mon Apr 17 16:03:42 2017
+Mon Apr 17 16:59:06 2017
 
 drc -z vga_display.ncd vga_display.pcf
 

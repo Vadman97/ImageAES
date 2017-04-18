@@ -1,4 +1,5 @@
 verilog work "vga_controller_640_60.v"
 verilog work "vga_bsprite.v"
+verilog work "ipcore_dir/pezhman_mem.v"
 verilog work "ipcore_dir/ben_mem.v"
 verilog work "vga_display.v"

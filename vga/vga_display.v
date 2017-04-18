@@ -49,7 +49,9 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 	
 	// memory interface:
 	wire [14:0] addra;
-	wire [7:0] douta;
+	reg [7:0] dout;
+	wire [7:0] ben_dout;
+	wire [7:0] pezh_dout;
 	
 	/////////////////////////////////////////////////////
 	// Begin clock division
@@ -61,6 +63,27 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 		count <= count + 1'b1;
 		clk_25Mhz <= count[N-1];
 	end
+	
+	reg [29:0] icount;
+	reg [7:0] inc;
+	initial icount = 0;
+	initial inc = 1;
+	always @ (posedge ClkPort) begin
+		icount <= icount + inc;
+		if (icount[29])
+			dout <= ben_dout; 
+		else
+			dout <= pezh_dout;
+	end
+	
+	always @ (posedge icount[28]) begin
+		inc <= inc + 1'b1;
+		
+		// skip over 0 to prevent problemos
+		if (inc == 8'hFF)
+			inc <= 1;
+	end
+	
 
 	// End clock division
 	/////////////////////////////////////////////////////
@@ -68,7 +91,7 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 	parameter [10:0] VGA_WIDTH = 640;
 	parameter [10:0] VGA_HEIGHT = 480;
 	
-	parameter [7:0] IMG_WIDTH = 172;
+	parameter [7:0] IMG_WIDTH = 181;
 	parameter [7:0] IMG_HEIGHT = 181;
 	
 	parameter [3:0] SCALE = 1;
@@ -99,7 +122,7 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 		.vc(vcount), 
 		.image_width(IMG_WIDTH),
 		.scaler(SCALE),
-		.mem_value(douta), 
+		.mem_value(dout), 
 		.rom_addr(addra), 
 		.R(R), 
 		.G(G), 
@@ -110,7 +133,13 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 	ben_mem memory_1 (
 		.clka(clk_25Mhz), // input clka
 		.addra(addra), // input [14 : 0] addra
-		.douta(douta) // output [7 : 0] douta
+		.douta(ben_dout) // output [7 : 0] douta
+	);
+	
+	pezhman_mem memory_2 (
+		.clka(clk_25Mhz), // input clka
+		.addra(addra), // input [14 : 0] addra
+		.douta(pezh_dout) // output [7 : 0] douta
 	);
 	
 

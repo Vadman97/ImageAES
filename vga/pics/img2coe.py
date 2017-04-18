@@ -71,4 +71,5 @@ def img2coe(in_file: str, output: str):
 
 if __name__ == "__main__":
     img2coe("benc.png", "benc.coe")
+    img2coe("pezhman.png", "pezhman.coe")
 
