@@ -33,7 +33,7 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 	wire [2:0] R, G;
 	wire [1:0] B;
 	
-	assign 	{St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar} = {5'b11111};
+	assign 	{St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar} = {5'b00000};//{5'b11111};
 	
 	assign {An0, An1, An2, An3} = {4'b0000};
 	assign {Ca, Cb, Cc, Cd, Ce, Cf, Cg, Dp} = {8'hFF};
@@ -48,59 +48,64 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 	wire figure;	// the figure you want to display
 	
 	// memory interface:
-	wire [14:0] addra;
 	reg [7:0] dout;
 	wire [7:0] ben_dout;
-	wire [7:0] pezh_dout;
+	wire [7:0] dec_dout;
+	
+	reg [14:0] ben_read_addr;
+	wire [14:0] decr_read_addr;
+	wire [14:0] sprite_read_addr;
+	
+	wire inside_image;
+	
+	// wire [7:0] pezh_dout;
 	
 	/////////////////////////////////////////////////////
 	// Begin clock division
-	parameter N = 2;	// parameter for clock division
+	parameter N = 2;	// VGA clock divider
+	parameter dec_N = 16;	// decryptor clock divider
+	
 	reg clk_25Mhz;
-	reg [N-1:0] count;
+	reg clk_decrypter;
+	reg [dec_N-1:0] count;
 	initial count = 0;
 	always @ (posedge ClkPort) begin
 		count <= count + 1'b1;
 		clk_25Mhz <= count[N-1];
+		clk_decrypter <= count[dec_N-1];
 	end
 	
-	reg [29:0] icount;
+	reg [30:0] icount;
 	reg [7:0] inc;
 	initial icount = 0;
 	initial inc = 1;
+	reg decrypter_active;
+	initial decrypter_active = 0;
+	
 	always @ (posedge ClkPort) begin
 		icount <= icount + inc;
-		if (icount[29])
+		if (icount[27]) begin
+			dout <= dec_dout;
+			ben_read_addr <= decr_read_addr;
+			decrypter_active <= 1'b1;
+		end else begin
 			dout <= ben_dout; 
-		else
-			dout <= pezh_dout;
+			ben_read_addr <= sprite_read_addr;
+			decrypter_active <= 1'b0;
+		end
 	end
 	
-	always @ (posedge icount[28]) begin
+	/*always @ (posedge icount[28]) begin
 		inc <= inc + 1'b1;
 		
 		// skip over 0 to prevent problemos
 		if (inc == 8'hFF)
 			inc <= 1;
-	end
+	end*/
 	
 
 	// End clock division
 	/////////////////////////////////////////////////////
-	
-	parameter [10:0] VGA_WIDTH = 640;
-	parameter [10:0] VGA_HEIGHT = 480;
-	
-	parameter [7:0] IMG_WIDTH = 181;
-	parameter [7:0] IMG_HEIGHT = 181;
-	
-	parameter [3:0] SCALE = 1;
-	
-	parameter [10:0] START_X = (VGA_WIDTH - (IMG_WIDTH * SCALE)) / 2;
-	parameter [10:0] START_Y = (VGA_HEIGHT - (IMG_HEIGHT * SCALE)) / 2;
-	
-	// parameter [10:0] START_X = 50;
-	// parameter [10:0] START_Y = 50;
 	
 	// Call driver
 	vga_controller_640_60 vc(
@@ -114,32 +119,58 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 	);
 	
 	vga_bsprite sprites_mem(
-		.x0(START_X), 
-		.y0(START_Y),
-		.x1(IMG_WIDTH+START_X),
-		.y1(IMG_HEIGHT+START_Y),
 		.hc(hcount), 
 		.vc(vcount), 
-		.image_width(IMG_WIDTH),
-		.scaler(SCALE),
 		.mem_value(dout), 
-		.rom_addr(addra), 
+		.rom_addr(sprite_read_addr), 
 		.R(R), 
 		.G(G), 
 		.B(B), 
-		.blank(blank)
+		.blank(blank),
+		.inside_image(inside_image)
 	);
 	
-	ben_mem memory_1 (
+	ben_mem ben (
 		.clka(clk_25Mhz), // input clka
-		.addra(addra), // input [14 : 0] addra
+		.addra(ben_read_addr), // input [14 : 0] read_addr
 		.douta(ben_dout) // output [7 : 0] douta
 	);
 	
-	pezhman_mem memory_2 (
+	/*pezhman_mem pezh (
 		.clka(clk_25Mhz), // input clka
-		.addra(addra), // input [14 : 0] addra
+		.read_addr(read_addr), // input [14 : 0] read_addr
 		.douta(pezh_dout) // output [7 : 0] douta
+	);*/
+	
+	wire write_en;
+	wire [14:0] write_addr;
+	wire [7:0] dec_din;
+	
+	assign write_en = 1'b1; //(~blank) & inside_image;
+	
+	// this will take some thought
+	// we want to read some part of the image (some address) and show that
+	// switch between ^ and reading some other part of the image that the decryptor is now decrypting and write correspondingly
+	
+	decrypter dec(
+		.clk(clk_decrypter),
+		.encrypted_data(ben_dout),
+		.read_addr(decr_read_addr),
+		.write_addr(write_addr),
+		.decrypted_data(dec_din),
+		.decrypter_active(decrypter_active)
+	);
+	
+	decryption_mem dec_mem (
+		.clka(clk_decrypter),
+		.addra(write_addr),
+		.dina(dec_din), 
+		.wea(write_en),
+		
+		.clkb(clk_25Mhz),
+		.addrb(sprite_read_addr), 
+		.doutb(dec_dout), 
+		.rstb(1'b0)
 	);
 	
 

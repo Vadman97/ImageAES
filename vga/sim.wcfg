@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/Users/vkoro/Final_Project/project/vga/vga_tb_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="vga_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="18" />
+   <wvobject fp_name="/vga_tb/HS" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">HS</obj_property>
+      <obj_property name="ObjectShortName">HS</obj_property>
+   </wvobject>
+   <wvobject fp_name="/vga_tb/VS" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">VS</obj_property>
+      <obj_property name="ObjectShortName">VS</obj_property>
+   </wvobject>
+   <wvobject fp_name="/vga_tb/R" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">R[2:0]</obj_property>
+      <obj_property name="ObjectShortName">R[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/vga_tb/G" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">G[2:0]</obj_property>
+      <obj_property name="ObjectShortName">G[2:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/vga_tb/B" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">B[1:0]</obj_property>
+      <obj_property name="ObjectShortName">B[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/vga_tb/rst" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">rst</obj_property>
+      <obj_property name="ObjectShortName">rst</obj_property>
+   </wvobject>
+   <wvobject fp_name="/vga_tb/ClkPort" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ClkPort</obj_property>
+      <obj_property name="ObjectShortName">ClkPort</obj_property>
+   </wvobject>
+   <wvobject fp_name="/vga_tb/uut/dec_mem/addra" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">addra[14:0]</obj_property>
+      <obj_property name="ObjectShortName">addra[14:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/vga_tb/uut/dec_mem/dina" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">dina[7:0]</obj_property>
+      <obj_property name="ObjectShortName">dina[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/vga_tb/uut/dec_mem/addrb" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">addrb[14:0]</obj_property>
+      <obj_property name="ObjectShortName">addrb[14:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/vga_tb/uut/dec_mem/doutb" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">doutb[7:0]</obj_property>
+      <obj_property name="ObjectShortName">doutb[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/vga_tb/uut/dec/counter" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">counter[14:0]</obj_property>
+      <obj_property name="ObjectShortName">counter[14:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/vga_tb/uut/write_addr" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">write_addr[14:0]</obj_property>
+      <obj_property name="ObjectShortName">write_addr[14:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/vga_tb/uut/blank" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">blank</obj_property>
+      <obj_property name="ObjectShortName">blank</obj_property>
+   </wvobject>
+   <wvobject fp_name="/vga_tb/uut/inside_image" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">inside_image</obj_property>
+      <obj_property name="ObjectShortName">inside_image</obj_property>
+   </wvobject>
+   <wvobject fp_name="/vga_tb/uut/write_en" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">write_en</obj_property>
+      <obj_property name="ObjectShortName">write_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/vga_tb/uut/dec/encrypted_data" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">encrypted_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">encrypted_data[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/vga_tb/uut/dec/decrypted_data" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">decrypted_data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">decrypted_data[7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+   </wvobject>
+</wave_config>
