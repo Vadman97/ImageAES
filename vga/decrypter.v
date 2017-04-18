@@ -21,6 +21,7 @@
 module decrypter(
     input clk,
     input [7:0] encrypted_data,
+	 input decrypter_active,
 	 output reg [14:0] read_addr,
     output reg [7:0] decrypted_data,
 	 output reg [14:0] write_addr
@@ -32,10 +33,12 @@ module decrypter(
 	 initial counter = 0;
 	 always @(posedge clk) begin
 		//decryption algo here
-		decrypted_data <= encrypted_data ^ KEY;
-		counter <= counter + 1;
-		read_addr <= counter;
-		write_addr <= counter + 1;
+		if (decrypter_active) begin
+			decrypted_data <= encrypted_data ^ KEY;
+			counter <= counter + 1;
+			read_addr <= counter;
+			write_addr <= counter - 1;
+		end
 	 end
 	
 endmodule

@@ -10,7 +10,7 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="22" />
+   <WVObjectSize size="18" />
    <wvobject fp_name="/vga_tb/HS" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">HS</obj_property>
       <obj_property name="ObjectShortName">HS</obj_property>
@@ -39,18 +39,10 @@
       <obj_property name="ElementShortName">ClkPort</obj_property>
       <obj_property name="ObjectShortName">ClkPort</obj_property>
    </wvobject>
-   <wvobject fp_name="/vga_tb/btnU" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">btnU</obj_property>
-      <obj_property name="ObjectShortName">btnU</obj_property>
-   </wvobject>
-   <wvobject fp_name="/vga_tb/btnD" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">btnD</obj_property>
-      <obj_property name="ObjectShortName">btnD</obj_property>
-   </wvobject>
    <wvobject fp_name="/vga_tb/uut/dec_mem/addra" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">addra[14:0]</obj_property>
       <obj_property name="ObjectShortName">addra[14:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/vga_tb/uut/dec_mem/dina" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">dina[7:0]</obj_property>
@@ -60,7 +52,7 @@
    <wvobject fp_name="/vga_tb/uut/dec_mem/addrb" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">addrb[14:0]</obj_property>
       <obj_property name="ObjectShortName">addrb[14:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/vga_tb/uut/dec_mem/doutb" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">doutb[7:0]</obj_property>
@@ -76,15 +68,6 @@
       <obj_property name="ElementShortName">write_addr[14:0]</obj_property>
       <obj_property name="ObjectShortName">write_addr[14:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/vga_tb/uut/read_addr" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">read_addr[14:0]</obj_property>
-      <obj_property name="ObjectShortName">read_addr[14:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/vga_tb/uut/decrypter_turn" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">decrypter_turn</obj_property>
-      <obj_property name="ObjectShortName">decrypter_turn</obj_property>
    </wvobject>
    <wvobject fp_name="/vga_tb/uut/blank" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">blank</obj_property>

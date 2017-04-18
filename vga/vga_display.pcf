@@ -1,18 +1,9 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Tue Apr 18 00:54:32 2017
+// Written by: Map P.20131013 on Tue Apr 18 01:23:49 2017
 //! **************************************************************************
 
 SCHEMATIC START;
-COMP "B<0>" LOCATE = SITE "R7" LEVEL 1;
-COMP "B<1>" LOCATE = SITE "T7" LEVEL 1;
-COMP "Mt_ce_bar" LOCATE = SITE "L15" LEVEL 1;
-COMP "btnD" LOCATE = SITE "C9" LEVEL 1;
-COMP "Mt_St_oe_bar" LOCATE = SITE "L18" LEVEL 1;
-COMP "An0" LOCATE = SITE "N16" LEVEL 1;
-COMP "An1" LOCATE = SITE "N15" LEVEL 1;
-COMP "An2" LOCATE = SITE "P18" LEVEL 1;
 COMP "HS" LOCATE = SITE "N6" LEVEL 1;
-COMP "An3" LOCATE = SITE "P17" LEVEL 1;
 COMP "Ca" LOCATE = SITE "T17" LEVEL 1;
 COMP "Cb" LOCATE = SITE "T18" LEVEL 1;
 COMP "Cc" LOCATE = SITE "U17" LEVEL 1;
@@ -20,31 +11,41 @@ COMP "Cd" LOCATE = SITE "U18" LEVEL 1;
 COMP "Ce" LOCATE = SITE "M14" LEVEL 1;
 COMP "Cf" LOCATE = SITE "N14" LEVEL 1;
 COMP "Cg" LOCATE = SITE "L14" LEVEL 1;
-COMP "btnU" LOCATE = SITE "A8" LEVEL 1;
-COMP "St_ce_bar" LOCATE = SITE "L17" LEVEL 1;
-COMP "R<0>" LOCATE = SITE "U7" LEVEL 1;
 COMP "Dp" LOCATE = SITE "M13" LEVEL 1;
-COMP "R<1>" LOCATE = SITE "V7" LEVEL 1;
-COMP "R<2>" LOCATE = SITE "N7" LEVEL 1;
 COMP "VS" LOCATE = SITE "P7" LEVEL 1;
+COMP "An0" LOCATE = SITE "N16" LEVEL 1;
+COMP "An1" LOCATE = SITE "N15" LEVEL 1;
+COMP "An2" LOCATE = SITE "P18" LEVEL 1;
+COMP "An3" LOCATE = SITE "P17" LEVEL 1;
+COMP "rst" LOCATE = SITE "B8" LEVEL 1;
+COMP "ClkPort" LOCATE = SITE "V10" LEVEL 1;
+COMP "B<0>" LOCATE = SITE "R7" LEVEL 1;
+COMP "B<1>" LOCATE = SITE "T7" LEVEL 1;
 COMP "G<0>" LOCATE = SITE "P8" LEVEL 1;
 COMP "G<1>" LOCATE = SITE "T6" LEVEL 1;
 COMP "G<2>" LOCATE = SITE "V6" LEVEL 1;
+COMP "R<0>" LOCATE = SITE "U7" LEVEL 1;
+COMP "R<1>" LOCATE = SITE "V7" LEVEL 1;
+COMP "R<2>" LOCATE = SITE "N7" LEVEL 1;
+COMP "btnD" LOCATE = SITE "C9" LEVEL 1;
+COMP "btnU" LOCATE = SITE "A8" LEVEL 1;
+COMP "Mt_St_oe_bar" LOCATE = SITE "L18" LEVEL 1;
 COMP "Mt_St_we_bar" LOCATE = SITE "M16" LEVEL 1;
-COMP "ClkPort" LOCATE = SITE "V10" LEVEL 1;
+COMP "Mt_ce_bar" LOCATE = SITE "L15" LEVEL 1;
+COMP "St_ce_bar" LOCATE = SITE "L17" LEVEL 1;
 COMP "St_rp_bar" LOCATE = SITE "V3" LEVEL 1;
-COMP "rst" LOCATE = SITE "B8" LEVEL 1;
-TIMEGRP sys_clk_pin = BEL "clk_25Mhz" BEL "dout_0" BEL "dout_1" BEL "dout_2"
-        BEL "dout_3" BEL "dout_4" BEL "dout_5" BEL "dout_6" BEL "dout_7" BEL
-        "read_addr_0" BEL "read_addr_1" BEL "read_addr_2" BEL "read_addr_3"
-        BEL "read_addr_4" BEL "read_addr_5" BEL "read_addr_6" BEL
-        "read_addr_7" BEL "read_addr_8" BEL "read_addr_9" BEL "read_addr_10"
-        BEL "read_addr_11" BEL "read_addr_12" BEL "read_addr_13" BEL
-        "read_addr_14" BEL "count_0" BEL "count_1" BEL "icount_2" BEL
-        "icount_3" BEL "icount_4" BEL "icount_5" BEL "icount_6" BEL "icount_7"
-        BEL "icount_8" BEL "icount_9" BEL "icount_10" BEL "icount_11" BEL
-        "icount_12" BEL "icount_13" BEL "icount_14" BEL "icount_15" BEL
-        "icount_16" BEL "icount_17" BEL "icount_18" BEL "icount_19" BEL
+TIMEGRP sys_clk_pin = BEL "clk_25Mhz" BEL "clk_decrypter" BEL
+        "decrypter_active" BEL "ben_read_addr_0" BEL "ben_read_addr_1" BEL
+        "ben_read_addr_2" BEL "ben_read_addr_3" BEL "ben_read_addr_4" BEL
+        "ben_read_addr_5" BEL "ben_read_addr_6" BEL "ben_read_addr_7" BEL
+        "ben_read_addr_8" BEL "ben_read_addr_9" BEL "ben_read_addr_10" BEL
+        "ben_read_addr_11" BEL "ben_read_addr_12" BEL "ben_read_addr_13" BEL
+        "ben_read_addr_14" BEL "dout_0" BEL "dout_1" BEL "dout_2" BEL "dout_3"
+        BEL "dout_4" BEL "dout_5" BEL "dout_6" BEL "dout_7" BEL "count_0" BEL
+        "count_1" BEL "count_2" BEL "count_3" BEL "count_4" BEL "count_5" BEL
+        "count_6" BEL "count_7" BEL "count_8" BEL "count_9" BEL "count_10" BEL
+        "count_11" BEL "count_12" BEL "count_13" BEL "count_14" BEL "count_15"
+        BEL "icount_16" BEL "icount_17" BEL "icount_18" BEL "icount_19" BEL
         "icount_20" BEL "icount_21" BEL "icount_22" BEL "icount_23" BEL
         "icount_24" BEL "icount_25" BEL "icount_26" BEL "icount_27" BEL
         "ClkPort_BUFGP/BUFG";
