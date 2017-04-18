@@ -12,7 +12,7 @@ void encrypt() {
   //load permuted key into tempShift to turn into c/d arrays
   loadShiftArrays();
   //begin Cn and Dn array construction
-  for(int i = 0; i < 16; i++) { shift(i); }
+  for(int i = 1; i < 17; i++) { shift(i); }
   createAllKeys();
   initMessagePermute();
   createAllMessagePermutations();
@@ -31,15 +31,15 @@ void createFirstPermutedKey() {
 }
 
 void loadShiftArrays() {
-  copy(k, k + 28, c[0]);
-  copy(k + 28, k + 56, d[0]);
+  memcpy(c[0], k, 28);
+  memcpy(d[0], k + 28, 28);
 }
 
 void shift(int k) {
-  int shiftBy = cdShift[k];
+  int shiftBy = cdShift[k - 1];
   for(int i = 0; i < 28; i++) {
-    c[k + 1][i] = c[k][shiftBy];
-    d[k + 1][i] = d[k][shiftBy];
+    c[k][i] = c[k - 1][shiftBy];
+    d[k][i] = d[k - 1][shiftBy];
     shiftBy++;
     if(shiftBy == 28) shiftBy = 0;
   }
@@ -51,9 +51,9 @@ void createAllKeys() {
     for(int j = 0; j < 48; j++) {
       int index = pc2[j];
       if(index > 27) {//size of c/d arrays
-        pk[i][j] = d[i][index - 28];
+        pk[i][j] = d[i + 1][index - 28];
       }
-      else pk[i][j] = c[i][index];
+      else pk[i][j] = c[i + 1][index];
     }
   }
 
@@ -72,8 +72,8 @@ void initMessagePermute() {
 }
 
 void createAllMessagePermutations() {
-  copy(ip, ip + 32, l[0]);
-  copy(ip + 32, ip + 64, r[0]);
+  memcpy(l[0], ip, 32);
+  memcpy(r[0], ip + 32, 32);
 
   for(int i = 1; i < 17; i++) {
     calculateLn(i);
@@ -82,38 +82,38 @@ void createAllMessagePermutations() {
 }
 
 void calculateLn(int i) {
-  copy(r[i - 1], r[i - 1] + 32, l[i]);
-  if(i == 3) {
-    for(int j = 0; j < 32; j++) {
-      cout << (int)l[i][j];
-    }
-    cout << endl;
-  }
+  memcpy(l[i], r[i - 1], 32);
+  // if(i == 3) {
+  //   for(int j = 0; j < 32; j++) {
+  //     printf << (int)l[i][j];
+  //   }
+  //   printf << endl;
+  // }
 }
 
 void calculateRn(int i) {
   char e[48];
   char kXORe[48];
   char f[32];
-  // cout << "enter for" << endl;s
+  // printf << "enter for" << endl;s
   for(int j = 0; j < 48; j++) {
     e[j] = r[i - 1][ebit[j] - 1];
-    kXORe[j] = pk[i][j] ^ e[j];
-    // if(i == 15) cout << (int)e[j];
+    kXORe[j] = pk[i - 1][j] ^ e[j];
+    // if(i == 15) printf << (int)e[j];
   }
-  // if(i == 15) cout << endl;
+  // if(i == 15) printf << endl;
   // for(int j = 0; j < 48; j++) {
-  //   if(i == 15) cout << (int)pk[i][j];
+  //   if(i == 15) printf << (int)pk[i][j];
   // }
-  // if(i == 15) cout << endl;
+  // if(i == 15) printf << endl;
   // for(int j = 0; j < 48; j++) {
-  //   cout << (int)kXORe[j];
+  //   printf << (int)kXORe[j];
   // }
-  // cout << endl;
+  // printf << endl;
 
   for(int j = 0; j < 8; j++) {
     char temp[6];
-    copy(kXORe + (j * 6), kXORe + (j * 6) + 6, temp);
+    memcpy(temp, kXORe + (j * 6), 6);
     int index = (int)(temp[0] << 1) + (int)temp[5];
     int col = (int)((temp[1] << 3) + (temp[2] << 2) + (temp[3] << 1) + temp[4]);
     char load = s[j][index][col];
@@ -129,13 +129,14 @@ void calculateRn(int i) {
 }
 
 void getEncryption() {
+  printf("result: ");
   for(int i = 0; i < 64; i++) {
     int index = ip1[i];
     if(index > 31) {
       result[i] = l[16][index - 32];
     }
     else result[i] = r[16][index];
-    cout << (int) result[i];
+    printf("%d", (int)result[i]);
   }
-  cout << endl;
+  printf("\n");
 }
