@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Mon Apr 17 16:58:47 2017
+// Written by: Map P.20131013 on Tue Apr 18 00:54:32 2017
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -36,14 +36,18 @@ COMP "St_rp_bar" LOCATE = SITE "V3" LEVEL 1;
 COMP "rst" LOCATE = SITE "B8" LEVEL 1;
 TIMEGRP sys_clk_pin = BEL "clk_25Mhz" BEL "dout_0" BEL "dout_1" BEL "dout_2"
         BEL "dout_3" BEL "dout_4" BEL "dout_5" BEL "dout_6" BEL "dout_7" BEL
-        "count_0" BEL "count_1" BEL "icount_0" BEL "icount_1" BEL "icount_2"
-        BEL "icount_3" BEL "icount_4" BEL "icount_5" BEL "icount_6" BEL
-        "icount_7" BEL "icount_8" BEL "icount_9" BEL "icount_10" BEL
-        "icount_11" BEL "icount_12" BEL "icount_13" BEL "icount_14" BEL
-        "icount_15" BEL "icount_16" BEL "icount_17" BEL "icount_18" BEL
-        "icount_19" BEL "icount_20" BEL "icount_21" BEL "icount_22" BEL
-        "icount_23" BEL "icount_24" BEL "icount_25" BEL "icount_26" BEL
-        "icount_27" BEL "icount_28" BEL "icount_29" BEL "ClkPort_BUFGP/BUFG";
+        "read_addr_0" BEL "read_addr_1" BEL "read_addr_2" BEL "read_addr_3"
+        BEL "read_addr_4" BEL "read_addr_5" BEL "read_addr_6" BEL
+        "read_addr_7" BEL "read_addr_8" BEL "read_addr_9" BEL "read_addr_10"
+        BEL "read_addr_11" BEL "read_addr_12" BEL "read_addr_13" BEL
+        "read_addr_14" BEL "count_0" BEL "count_1" BEL "icount_2" BEL
+        "icount_3" BEL "icount_4" BEL "icount_5" BEL "icount_6" BEL "icount_7"
+        BEL "icount_8" BEL "icount_9" BEL "icount_10" BEL "icount_11" BEL
+        "icount_12" BEL "icount_13" BEL "icount_14" BEL "icount_15" BEL
+        "icount_16" BEL "icount_17" BEL "icount_18" BEL "icount_19" BEL
+        "icount_20" BEL "icount_21" BEL "icount_22" BEL "icount_23" BEL
+        "icount_24" BEL "icount_25" BEL "icount_26" BEL "icount_27" BEL
+        "ClkPort_BUFGP/BUFG";
 TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH 50%;
 SCHEMATIC END;
 
