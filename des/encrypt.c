@@ -82,7 +82,6 @@ void createAllMessagePermutations() {
 }
 
 void calculateLn(int i) {
-  cout << "hello" << endl;
   copy(r[i - 1], r[i - 1] + 32, l[i]);
   if(i == 3) {
     for(int j = 0; j < 32; j++) {
@@ -136,5 +135,7 @@ void getEncryption() {
       result[i] = l[16][index - 32];
     }
     else result[i] = r[16][index];
+    cout << (int) result[i];
   }
+  cout << endl;
 }
