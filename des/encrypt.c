@@ -66,6 +66,7 @@ void initMessagePermute() {
         //pull out bit needed and load into k array
         char x = message[index / 8] & (1 << (8 - (index % 8)));
         ip[i] = (x & (1 << (8 - (index % 8)))) >> (8 - (index % 8));
+
       }
     }
 }
