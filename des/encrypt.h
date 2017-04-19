@@ -1,14 +1,16 @@
 #include <stdio.h>
 #include <string.h>
 
-char* message = "waterbot";
-char* key = "hellodar";
+unsigned char* message = "waterbot";
+//unsigned char message[8] = {0x01, 0x23, 0x45, 0x67, 0x89, 0xAB, 0xCD, 0xEF};
+unsigned char* key = "hellodar";
+//unsigned char key[8] = {0x13, 0x34, 0x57, 0x79, 0x9B, 0xBC, 0xDF, 0xF1};
 unsigned char k[56];
-char c[17][28], d[17][28], pk[16][48];
-char ip[64];
-char l[17][32], r[17][32];
-char result[64];
-char* encrypted;
+unsigned char c[17][28], d[17][28], pk[16][48];
+unsigned char ip[64];
+unsigned char l[17][32], r[17][32];
+unsigned char result[64];
+unsigned char* encrypted;
 void encrypt();
 void createFirstPermutedKey();
 void loadShiftArrays();
@@ -19,7 +21,7 @@ void createAllMessagePermutations();
 void calculateLn(int);
 void calculateRn(int);
 void getEncryption();
-//initial subkey permutation table
+//initial subkey permutation table: createFirstPermutedKey()
 int pc1[56] = {57,    49,    41,   33,    25,    17,    9,   1,
                58,    50,    42,   34,    26,    18,   10,   2,
                59,    51,    43,   35,    27,    19,   11,   3,
@@ -99,6 +101,15 @@ int s[8][4][16] = {
                   {2,  1,  14,  7,   4, 10,   8, 13,  15, 12,   9,  0,   3,  5,   6, 11}}
 
                   };
+
+int p[32] = {            16,   7,  20,  21,
+                         29,  12,  28,  17,
+                          1,  15,  23,  26,
+                          5,  18,  31,  10,
+                          2,   8,  24,  14,
+                         32,  27,   3,   9,
+                         19,  13,  30,   6,
+                         22,  11,   4,  25};
 
 int ip1[64] =  {40,     8,   48,    16,    56,   24,    64,   32,
                  39,     7,   47,    15,    55,   23,    63,   31,

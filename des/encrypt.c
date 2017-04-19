@@ -20,41 +20,59 @@ void encrypt() {
 }
 
 void createFirstPermutedKey() {
+   printf("k = ");
   for(int i = 0; i < 56; i++) {
     int index = pc1[i];
     {
       // pull out the bit needed & load into k array
-      char x = key[index / 8] & (1 << (8 - (index % 8)));
-      k[i] = (x & (1 << (8 - (index % 8)))) >> (8 - (index % 8));
+      unsigned char x = key[(index - 1) / 8] & (1 << (8 - (index % 8)));
+      k[i] = (x >> (8 - (index % 8)));
+      printf("%d", k[i]);
     }
   }
+  printf("\n");
 }
 
 void loadShiftArrays() {
   memcpy(c[0], k, 28);
+  printf("c0 = ");
+  for(int i = 0; i < 28; i++) {
+    printf("%d", c[0][i]);
+  }
+  printf("\n");
   memcpy(d[0], k + 28, 28);
+  printf("d0 = ");
+  for(int i = 0; i < 28; i++) {
+    printf("%d", d[0][i]);
+  }
+  printf("\n");
 }
 
-void shift(int k) {
-  int shiftBy = cdShift[k - 1];
+void shift(int j) {
+  int shiftBy = cdShift[j - 1];
   for(int i = 0; i < 28; i++) {
-    c[k][i] = c[k - 1][shiftBy];
-    d[k][i] = d[k - 1][shiftBy];
+    c[j][i] = c[j - 1][shiftBy];
+    d[j][i] = d[j - 1][shiftBy];
     shiftBy++;
     if(shiftBy == 28) shiftBy = 0;
+    printf("%d", d[j][i]);
   }
+  printf("\n");
 
 }
 
 void createAllKeys() {
   for(int i = 0; i < 16; i++) {
+    printf("pk ");
     for(int j = 0; j < 48; j++) {
-      int index = pc2[j];
+      int index = pc2[j] - 1;
       if(index > 27) {//size of c/d arrays
         pk[i][j] = d[i + 1][index - 28];
       }
       else pk[i][j] = c[i + 1][index];
+      printf("%d", pk[i][j]);
     }
+    printf("\n");
   }
 
 }
@@ -62,18 +80,36 @@ void createAllKeys() {
 void initMessagePermute() {
     for(int i = 0; i < 64; i++) {
       int index = mp[i];
+      
+      if(index % 8 != 0)
       {
         //pull out bit needed and load into k array
-        char x = message[index / 8] & (1 << (8 - (index % 8)));
-        ip[i] = (x & (1 << (8 - (index % 8)))) >> (8 - (index % 8));
-
+        unsigned char x = message[index / 8] & (1 << (8 - (index % 8)));
+        ip[i] = (x >> (8 - (index % 8)));
+         printf("%d", ip[i]);
+      }
+      else {
+         unsigned char x = message[(index - 1) / 8] & 0x01;
+         ip[i] = x;
+         printf("%d", ip[i]);
       }
     }
+    printf("\n");
 }
 
 void createAllMessagePermutations() {
   memcpy(l[0], ip, 32);
+  printf("l0 = ");
+  for(int i = 0; i < 32; i++) {
+    printf("%d", l[0][i]);
+  }
+  printf("\n");
   memcpy(r[0], ip + 32, 32);
+  printf("r0 = ");
+  for(int i = 0; i < 32; i++) {
+    printf("%d", r[0][i]);
+  }
+  printf("\n");
 
   for(int i = 1; i < 17; i++) {
     calculateLn(i);
@@ -83,55 +119,51 @@ void createAllMessagePermutations() {
 
 void calculateLn(int i) {
   memcpy(l[i], r[i - 1], 32);
-  // if(i == 3) {
-  //   for(int j = 0; j < 32; j++) {
-  //     printf << (int)l[i][j];
-  //   }
-  //   printf << endl;
-  // }
+  printf("l%d = ", i);
+  for(int j = 0; j < 32; j++) {
+    printf("%d", l[i][j]);
+  }
+  printf("\n");
 }
 
 void calculateRn(int i) {
   char e[48];
   char kXORe[48];
-  char f[32];
-  // printf << "enter for" << endl;s
+  char f[32], finalf[32];
   for(int j = 0; j < 48; j++) {
-    e[j] = r[i - 1][ebit[j] - 1];
+    e[j] = r[i - 1][(ebit[j] - 1)];
     kXORe[j] = pk[i - 1][j] ^ e[j];
-    // if(i == 15) printf << (int)e[j];
   }
-  // if(i == 15) printf << endl;
-  // for(int j = 0; j < 48; j++) {
-  //   if(i == 15) printf << (int)pk[i][j];
-  // }
-  // if(i == 15) printf << endl;
-  // for(int j = 0; j < 48; j++) {
-  //   printf << (int)kXORe[j];
-  // }
-  // printf << endl;
 
-  for(int j = 0; j < 8; j++) {
+  for(int m = 0; m < 8; m++) {
     char temp[6];
-    memcpy(temp, kXORe + (j * 6), 6);
+    memcpy(temp, kXORe + (m * 6), 6);
     int index = (int)(temp[0] << 1) + (int)temp[5];
     int col = (int)((temp[1] << 3) + (temp[2] << 2) + (temp[3] << 1) + temp[4]);
-    char load = s[j][index][col];
+    char load = s[m][index][col];
 
     for(int k = 0; k < 4; k++) {
       char x = load & (1 << (3 - k));
       x = x >> (3 - k);
-      f[j * 4 + k] = x;
-      r[i][j * 4 + k] = l[i - 1][j * 4 + k] ^ f[j * 4 + k];
+      f[m * 4 + k] = x;
+      r[i][m * 4 + k] = l[i - 1][m * 4 + k] ^ f[m * 4 + k];
     }
   }
+  printf("r%d = ", i);
+  for(int j = 0; j < 32; j++) {
+    int index = p[j] - 1; 
+    finalf[i] = f[index]; 
+    r[i][j] = l[i - 1][j] ^ finalf[i];
+    printf("%d", r[i][j]);
+  }
+  printf("\n");
 
 }
 
 void getEncryption() {
   printf("result: ");
   for(int i = 0; i < 64; i++) {
-    int index = ip1[i];
+    int index = ip1[i] - 1;
     if(index > 31) {
       result[i] = l[16][index - 32];
     }
