@@ -1,22 +1,25 @@
 #include <stdio.h>
 #include <string.h>
+#include <iostream>
+#include <fstream>
+#include <sstream>
+#include <cstring>
+#include <cstddef>
+#include <vector>
 
-unsigned char* message = "waterbot";
-//unsigned char message[8] = {0x01, 0x23, 0x45, 0x67, 0x89, 0xAB, 0xCD, 0xEF};
-unsigned char* key = "hellodar";
-//unsigned char key[8] = {0x13, 0x34, 0x57, 0x79, 0x9B, 0xBC, 0xDF, 0xF1};
+
 unsigned char k[56];
 unsigned char c[17][28], d[17][28], pk[16][48];
 unsigned char ip[64];
 unsigned char l[17][32], r[17][32];
 unsigned char result[64];
 unsigned char* encrypted;
-void encrypt();
-void createFirstPermutedKey();
+void encrypt(unsigned char* message, unsigned char* key);
+void createFirstPermutedKey(unsigned char* key);
 void loadShiftArrays();
 void shift(int);
 void createAllKeys();
-void initMessagePermute();
+void initMessagePermute(unsigned char* message);
 void createAllMessagePermutations();
 void calculateLn(int);
 void calculateRn(int);

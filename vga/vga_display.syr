@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.26 secs
+Total CPU time to Xst completion: 0.14 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.27 secs
+Total CPU time to Xst completion: 0.15 secs
  
 --> Reading design: vga_display.prj
 
@@ -137,8 +137,7 @@ Elaborating module <ben_mem>.
 WARNING:HDLCompiler:1499 - "C:\Users\vkoro\Final_Project\project\vga\ipcore_dir\ben_mem.v" Line 39: Empty module <ben_mem> remains a black box.
 
 Elaborating module <decrypter>.
-WARNING:HDLCompiler:413 - "C:\Users\vkoro\Final_Project\project\vga\decrypter.v" Line 38: Result of 16-bit expression is truncated to fit in 15-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\vkoro\Final_Project\project\vga\decrypter.v" Line 40: Result of 32-bit expression is truncated to fit in 15-bit target.
+WARNING:HDLCompiler:413 - "C:\Users\vkoro\Final_Project\project\vga\decrypter.v" Line 40: Result of 16-bit expression is truncated to fit in 15-bit target.
 
 Elaborating module <decryption_mem>.
 WARNING:HDLCompiler:1499 - "C:\Users\vkoro\Final_Project\project\vga\ipcore_dir\decryption_mem.v" Line 39: Empty module <decryption_mem> remains a black box.
@@ -234,10 +233,9 @@ Synthesizing Unit <decrypter>.
     Found 15-bit register for signal <read_addr>.
     Found 15-bit register for signal <write_addr>.
     Found 8-bit register for signal <decrypted_data>.
-    Found 15-bit adder for signal <counter[14]_GND_6_o_add_2_OUT> created at line 38.
-    Found 15-bit subtractor for signal <GND_6_o_GND_6_o_sub_4_OUT<14:0>> created at line 40.
+    Found 15-bit adder for signal <counter[14]_GND_6_o_add_3_OUT> created at line 40.
     Summary:
-	inferred   2 Adder/Subtractor(s).
+	inferred   1 Adder/Subtractor(s).
 	inferred  53 D-type flip-flop(s).
 Unit <decrypter> synthesized.
 
@@ -247,11 +245,10 @@ HDL Synthesis Report
 Macro Statistics
 # Multipliers                                          : 1
  11x8-bit multiplier                                   : 1
-# Adders/Subtractors                                   : 9
+# Adders/Subtractors                                   : 8
  11-bit adder                                          : 2
  11-bit subtractor                                     : 2
  15-bit adder                                          : 2
- 15-bit subtractor                                     : 1
  16-bit adder                                          : 1
  31-bit adder                                          : 1
 # Registers                                            : 16
@@ -271,8 +268,8 @@ Macro Statistics
  2-bit 2-to-1 multiplexer                              : 1
  3-bit 2-to-1 multiplexer                              : 2
  8-bit 2-to-1 multiplexer                              : 1
-# Xors                                                 : 1
- 8-bit xor2                                            : 1
+# Xors                                                 : 2
+ 8-bit xor2                                            : 2
 
 =========================================================================
 
@@ -284,6 +281,21 @@ Reading core <ipcore_dir/ben_mem.ngc>.
 Reading core <ipcore_dir/decryption_mem.ngc>.
 Loading core <ben_mem> for timing and area information for instance <ben>.
 Loading core <decryption_mem> for timing and area information for instance <dec_mem>.
+INFO:Xst:2261 - The FF/Latch <read_addr_0> in Unit <dec> is equivalent to the following FF/Latch, which will be removed : <write_addr_0> 
+INFO:Xst:2261 - The FF/Latch <read_addr_1> in Unit <dec> is equivalent to the following FF/Latch, which will be removed : <write_addr_1> 
+INFO:Xst:2261 - The FF/Latch <read_addr_2> in Unit <dec> is equivalent to the following FF/Latch, which will be removed : <write_addr_2> 
+INFO:Xst:2261 - The FF/Latch <read_addr_3> in Unit <dec> is equivalent to the following FF/Latch, which will be removed : <write_addr_3> 
+INFO:Xst:2261 - The FF/Latch <read_addr_4> in Unit <dec> is equivalent to the following FF/Latch, which will be removed : <write_addr_4> 
+INFO:Xst:2261 - The FF/Latch <read_addr_5> in Unit <dec> is equivalent to the following FF/Latch, which will be removed : <write_addr_5> 
+INFO:Xst:2261 - The FF/Latch <read_addr_6> in Unit <dec> is equivalent to the following FF/Latch, which will be removed : <write_addr_6> 
+INFO:Xst:2261 - The FF/Latch <read_addr_7> in Unit <dec> is equivalent to the following FF/Latch, which will be removed : <write_addr_7> 
+INFO:Xst:2261 - The FF/Latch <read_addr_8> in Unit <dec> is equivalent to the following FF/Latch, which will be removed : <write_addr_8> 
+INFO:Xst:2261 - The FF/Latch <read_addr_9> in Unit <dec> is equivalent to the following FF/Latch, which will be removed : <write_addr_9> 
+INFO:Xst:2261 - The FF/Latch <read_addr_10> in Unit <dec> is equivalent to the following FF/Latch, which will be removed : <write_addr_10> 
+INFO:Xst:2261 - The FF/Latch <read_addr_11> in Unit <dec> is equivalent to the following FF/Latch, which will be removed : <write_addr_11> 
+INFO:Xst:2261 - The FF/Latch <read_addr_12> in Unit <dec> is equivalent to the following FF/Latch, which will be removed : <write_addr_12> 
+INFO:Xst:2261 - The FF/Latch <read_addr_13> in Unit <dec> is equivalent to the following FF/Latch, which will be removed : <write_addr_13> 
+INFO:Xst:2261 - The FF/Latch <read_addr_14> in Unit <dec> is equivalent to the following FF/Latch, which will be removed : <write_addr_14> 
 
 Synthesizing (advanced) Unit <decrypter>.
 The following registers are absorbed into counter <counter>: 1 register on signal <counter>.
@@ -309,9 +321,8 @@ Advanced HDL Synthesis Report
 Macro Statistics
 # MACs                                                 : 1
  11x8-to-15-bit MAC                                    : 1
-# Adders/Subtractors                                   : 3
+# Adders/Subtractors                                   : 2
  11-bit subtractor                                     : 2
- 15-bit subtractor                                     : 1
 # Counters                                             : 5
  11-bit up counter                                     : 2
  15-bit up counter                                     : 1
@@ -329,14 +340,29 @@ Macro Statistics
  2-bit 2-to-1 multiplexer                              : 1
  3-bit 2-to-1 multiplexer                              : 2
  8-bit 2-to-1 multiplexer                              : 1
-# Xors                                                 : 1
- 8-bit xor2                                            : 1
+# Xors                                                 : 2
+ 8-bit xor2                                            : 2
 
 =========================================================================
 
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
+INFO:Xst:2261 - The FF/Latch <read_addr_0> in Unit <decrypter> is equivalent to the following FF/Latch, which will be removed : <write_addr_0> 
+INFO:Xst:2261 - The FF/Latch <read_addr_1> in Unit <decrypter> is equivalent to the following FF/Latch, which will be removed : <write_addr_1> 
+INFO:Xst:2261 - The FF/Latch <read_addr_2> in Unit <decrypter> is equivalent to the following FF/Latch, which will be removed : <write_addr_2> 
+INFO:Xst:2261 - The FF/Latch <read_addr_3> in Unit <decrypter> is equivalent to the following FF/Latch, which will be removed : <write_addr_3> 
+INFO:Xst:2261 - The FF/Latch <read_addr_4> in Unit <decrypter> is equivalent to the following FF/Latch, which will be removed : <write_addr_4> 
+INFO:Xst:2261 - The FF/Latch <read_addr_5> in Unit <decrypter> is equivalent to the following FF/Latch, which will be removed : <write_addr_5> 
+INFO:Xst:2261 - The FF/Latch <read_addr_6> in Unit <decrypter> is equivalent to the following FF/Latch, which will be removed : <write_addr_6> 
+INFO:Xst:2261 - The FF/Latch <read_addr_7> in Unit <decrypter> is equivalent to the following FF/Latch, which will be removed : <write_addr_7> 
+INFO:Xst:2261 - The FF/Latch <read_addr_8> in Unit <decrypter> is equivalent to the following FF/Latch, which will be removed : <write_addr_8> 
+INFO:Xst:2261 - The FF/Latch <read_addr_9> in Unit <decrypter> is equivalent to the following FF/Latch, which will be removed : <write_addr_9> 
+INFO:Xst:2261 - The FF/Latch <read_addr_10> in Unit <decrypter> is equivalent to the following FF/Latch, which will be removed : <write_addr_10> 
+INFO:Xst:2261 - The FF/Latch <read_addr_11> in Unit <decrypter> is equivalent to the following FF/Latch, which will be removed : <write_addr_11> 
+INFO:Xst:2261 - The FF/Latch <read_addr_12> in Unit <decrypter> is equivalent to the following FF/Latch, which will be removed : <write_addr_12> 
+INFO:Xst:2261 - The FF/Latch <read_addr_13> in Unit <decrypter> is equivalent to the following FF/Latch, which will be removed : <write_addr_13> 
+INFO:Xst:2261 - The FF/Latch <read_addr_14> in Unit <decrypter> is equivalent to the following FF/Latch, which will be removed : <write_addr_14> 
 WARNING:Xst:2677 - Node <icount_28> of sequential type is unconnected in block <vga_display>.
 WARNING:Xst:2677 - Node <icount_29> of sequential type is unconnected in block <vga_display>.
 WARNING:Xst:2677 - Node <icount_30> of sequential type is unconnected in block <vga_display>.
@@ -360,7 +386,6 @@ INFO:Xst:2261 - The FF/Latch <count_6> in Unit <vga_display> is equivalent to th
 INFO:Xst:2261 - The FF/Latch <count_7> in Unit <vga_display> is equivalent to the following FF/Latch, which will be removed : <icount_7> 
 INFO:Xst:2261 - The FF/Latch <count_8> in Unit <vga_display> is equivalent to the following FF/Latch, which will be removed : <icount_8> 
 INFO:Xst:2261 - The FF/Latch <count_9> in Unit <vga_display> is equivalent to the following FF/Latch, which will be removed : <icount_9> 
-INFO:Xst:2261 - The FF/Latch <dec/counter_0> in Unit <vga_display> is equivalent to the following FF/Latch, which will be removed : <dec/write_addr_0> 
 INFO:Xst:2261 - The FF/Latch <count_10> in Unit <vga_display> is equivalent to the following FF/Latch, which will be removed : <icount_10> 
 INFO:Xst:2261 - The FF/Latch <count_11> in Unit <vga_display> is equivalent to the following FF/Latch, which will be removed : <icount_11> 
 INFO:Xst:2261 - The FF/Latch <count_12> in Unit <vga_display> is equivalent to the following FF/Latch, which will be removed : <icount_12> 
@@ -378,8 +403,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 129
- Flip-Flops                                            : 129
+# Registers                                            : 115
+ Flip-Flops                                            : 115
 
 =========================================================================
 
@@ -402,24 +427,24 @@ Top Level Output File Name         : vga_display.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 370
+# BELS                             : 325
 #      GND                         : 3
-#      INV                         : 25
-#      LUT1                        : 57
+#      INV                         : 9
+#      LUT1                        : 56
 #      LUT2                        : 10
 #      LUT3                        : 65
 #      LUT4                        : 8
 #      LUT5                        : 8
 #      LUT6                        : 23
-#      MUXCY                       : 89
+#      MUXCY                       : 75
 #      MUXF7                       : 1
 #      VCC                         : 3
-#      XORCY                       : 78
-# FlipFlops/Latches                : 147
+#      XORCY                       : 64
+# FlipFlops/Latches                : 133
 #      FD                          : 56
 #      FDC                         : 11
 #      FDCE                        : 10
-#      FDE                         : 54
+#      FDE                         : 40
 #      FDRE                        : 16
 # RAMS                             : 32
 #      RAMB16BWER                  : 32
@@ -441,17 +466,17 @@ Selected Device : 6slx16csg324-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:             147  out of  18224     0%  
- Number of Slice LUTs:                  198  out of   9112     2%  
-    Number used as Logic:               196  out of   9112     2%  
+ Number of Slice Registers:             133  out of  18224     0%  
+ Number of Slice LUTs:                  181  out of   9112     1%  
+    Number used as Logic:               179  out of   9112     1%  
     Number used as Memory:                2  out of   2176     0%  
        Number used as SRL:                2
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    232
-   Number with an unused Flip Flop:      85  out of    232    36%  
-   Number with an unused LUT:            34  out of    232    14%  
-   Number of fully used LUT-FF pairs:   113  out of    232    48%  
+ Number of LUT Flip Flop pairs used:    217
+   Number with an unused Flip Flop:      84  out of    217    38%  
+   Number with an unused LUT:            36  out of    217    16%  
+   Number of fully used LUT-FF pairs:    97  out of    217    44%  
    Number of unique control sets:         9
 
 IO Utilization: 
@@ -487,7 +512,7 @@ Clock Signal                       | Clock buffer(FF name)                      
 -----------------------------------+-------------------------------------------------------------------------------------------------------------------------------+-------+
 ClkPort                            | BUFGP                                                                                                                         | 54    |
 clk_25Mhz                          | BUFG                                                                                                                          | 75    |
-clk_decrypter                      | BUFG                                                                                                                          | 68    |
+clk_decrypter                      | BUFG                                                                                                                          | 54    |
 ben/N1                             | NONE(ben/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram)| 16    |
 -----------------------------------+-------------------------------------------------------------------------------------------------------------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
@@ -587,26 +612,26 @@ Delay:               10.852ns (Levels of Logic = 6)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_decrypter'
-  Clock period: 2.503ns (frequency: 399.473MHz)
-  Total number of paths / destination ports: 510 / 300
+  Clock period: 2.531ns (frequency: 395.179MHz)
+  Total number of paths / destination ports: 391 / 286
 -------------------------------------------------------------------------
-Delay:               2.503ns (Levels of Logic = 2)
-  Source:            dec/write_addr_14 (FF)
+Delay:               2.531ns (Levels of Logic = 2)
+  Source:            dec/read_addr_14 (FF)
   Destination:       dec_mem/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SDP.SIMPLE_PRIM18.ram (RAM)
   Source Clock:      clk_decrypter rising
   Destination Clock: clk_decrypter rising
 
-  Data Path: dec/write_addr_14 to dec_mem/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SDP.SIMPLE_PRIM18.ram
+  Data Path: dec/read_addr_14 to dec_mem/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SDP.SIMPLE_PRIM18.ram
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q              9   0.447   0.829  dec/write_addr_14 (dec/write_addr_14)
+     FDE:C->Q             10   0.447   0.856  dec/read_addr_14 (dec/read_addr_14)
      begin scope: 'dec_mem:addra<14>'
      INV:I->O              8   0.206   0.802  U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/out1_INV_0 (U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.ram_ena)
      RAMB16BWER:ENA            0.220          U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SDP.SIMPLE_PRIM18.ram
     ----------------------------------------
-    Total                      2.503ns (0.873ns logic, 1.630ns route)
-                                       (34.9% logic, 65.1% route)
+    Total                      2.531ns (0.873ns logic, 1.657ns route)
+                                       (34.5% logic, 65.5% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_25Mhz'
@@ -686,7 +711,7 @@ Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
 ClkPort        |    2.232|         |         |         |
 clk_25Mhz      |   10.179|         |         |         |
-clk_decrypter  |    1.334|         |         |         |
+clk_decrypter  |    1.782|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock clk_25Mhz
@@ -703,22 +728,22 @@ Clock to Setup on destination clock clk_decrypter
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-ClkPort        |    2.329|         |         |         |
+ClkPort        |    2.145|         |         |         |
 clk_25Mhz      |    1.950|         |         |         |
-clk_decrypter  |    2.503|         |         |         |
+clk_decrypter  |    2.531|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 11.00 secs
-Total CPU time to Xst completion: 10.52 secs
+Total REAL time to Xst completion: 10.00 secs
+Total CPU time to Xst completion: 10.18 secs
  
 --> 
 
-Total memory usage is 317556 kilobytes
+Total memory usage is 317524 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   14 (   0 filtered)
-Number of infos    :   19 (   0 filtered)
+Number of warnings :   13 (   0 filtered)
+Number of infos    :   48 (   0 filtered)
 
