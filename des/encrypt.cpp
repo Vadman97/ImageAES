@@ -10,16 +10,21 @@ int main(void) {
 
 	ifstream file;
 	file.open("benc.coe");
+	
 	string line = "";
 	
 	vector<unsigned char> bytes;
+	
+	string header = "";
 	
 	while (getline(file, line)) {
 		if (!line.length())
 			continue;
 		
-		if (line[0] == ';' || line[0] == 'm')
+		if (line[0] == ';' || line[0] == 'm') {
+			header += line + "\n";
 			continue;
+		}
 		
 		stringstream ss(line);
 		string chunk = "";
@@ -34,16 +39,67 @@ int main(void) {
 		//cout << endl;
 	}
 	
-	unsigned char* message = new unsigned char[bytes.size()];
+	unsigned char* message = new unsigned char[8];
+	unsigned char* result_bin = new unsigned char[64];
+	
+	vector<unsigned char> output_buf;
 	
 	for (size_t i = 0; i < bytes.size(); i++) {
-		message[i] = bytes[i];
+		message[i % 8] = bytes[i];
+		if (i != 0 && i % 8 == 0) {
+			encrypt(message, key, result_bin);
+	
+			/* unsigned char test = 0x3F; 
+			
+			for (int i = 0; i < 64; i++) {
+				result_bin[i] = (test & (1 << (i % 8))) ? 1 : 0;
+				--test;
+				printf("%X ", result_bin[i]);
+			}
+			printf("\n"); */
+			
+			// convert binary to dec
+			unsigned long long result = 0;
+			for (int j = 0; j < 64; j++) {
+				if (result_bin[j])
+					result += (1L << (63 - j));
+			}
+			//printf("%llX\n", result);	
+			
+			//split up binary into bytes
+			for (int j = 7; j >= 0; j--) {
+				unsigned char row = (result & (0xFFL << (8 * j))) >> (8 * j);
+				//printf("%X\n", row);
+				output_buf.push_back(row);
+			}
+		}
 	}
-
-	encrypt(message, key);
+	
+	ofstream out;
+	out.open("benc_enc.coe");
+	out << header;
+	
+	char* piece = new char[2];
+	for (size_t i = 0; i < output_buf.size(); i++) {
+		// to break up the line into more readable chunks, might also be req of coe format
+		if (i != 0 && i % 32 == 0)
+			out << endl;
+		
+		unsigned char row = output_buf[i];
+		
+		//first four bits 0
+		if (!(row & 0xF0))
+			sprintf(piece, "0%X,", row);
+		else
+			sprintf(piece, "%X,", row);
+		
+		out << piece;
+	}
+	
+	out.close();
 }
 
-void encrypt(unsigned char* message, unsigned char* key) {
+void encrypt(unsigned char* message, unsigned char* key, unsigned char* result) {
 
   createFirstPermutedKey(key);
   //load permuted key into tempShift to turn into c/d arrays
@@ -53,36 +109,36 @@ void encrypt(unsigned char* message, unsigned char* key) {
   createAllKeys();
   initMessagePermute(message);
   createAllMessagePermutations();
-  getEncryption();
+  getEncryption(result);
 }
 
 void createFirstPermutedKey(unsigned char* key) {
-   printf("k = ");
+   //printf("k = ");
   for(int i = 0; i < 56; i++) {
     int index = pc1[i];
     {
       // pull out the bit needed & load into k array
       unsigned char x = key[(index - 1) / 8] & (1 << (8 - (index % 8)));
       k[i] = (x >> (8 - (index % 8)));
-      printf("%d", k[i]);
+      //printf("%d", k[i]);
     }
   }
-  printf("\n");
+  //printf("\n");
 }
 
 void loadShiftArrays() {
   memcpy(c[0], k, 28);
-  printf("c0 = ");
+  //printf("c0 = ");
   for(int i = 0; i < 28; i++) {
-    printf("%d", c[0][i]);
+    //printf("%d", c[0][i]);
   }
-  printf("\n");
+  //printf("\n");
   memcpy(d[0], k + 28, 28);
-  printf("d0 = ");
+  //printf("d0 = ");
   for(int i = 0; i < 28; i++) {
-    printf("%d", d[0][i]);
+    //printf("%d", d[0][i]);
   }
-  printf("\n");
+  //printf("\n");
 }
 
 void shift(int j) {
@@ -92,24 +148,24 @@ void shift(int j) {
     d[j][i] = d[j - 1][shiftBy];
     shiftBy++;
     if(shiftBy == 28) shiftBy = 0;
-    printf("%d", d[j][i]);
+    //printf("%d", d[j][i]);
   }
-  printf("\n");
+  //printf("\n");
 
 }
 
 void createAllKeys() {
   for(int i = 0; i < 16; i++) {
-    printf("pk ");
+    //printf("pk ");
     for(int j = 0; j < 48; j++) {
       int index = pc2[j] - 1;
       if(index > 27) {//size of c/d arrays
         pk[i][j] = d[i + 1][index - 28];
       }
       else pk[i][j] = c[i + 1][index];
-      printf("%d", pk[i][j]);
+      //printf("%d", pk[i][j]);
     }
-    printf("\n");
+    //printf("\n");
   }
 
 }
@@ -123,30 +179,30 @@ void initMessagePermute(unsigned char* message) {
         //pull out bit needed and load into k array
         unsigned char x = message[index / 8] & (1 << (8 - (index % 8)));
         ip[i] = (x >> (8 - (index % 8)));
-         printf("%d", ip[i]);
+         //printf("%d", ip[i]);
       }
       else {
          unsigned char x = message[(index - 1) / 8] & 0x01;
          ip[i] = x;
-         printf("%d", ip[i]);
+         //printf("%d", ip[i]);
       }
     }
-    printf("\n");
+    //printf("\n");
 }
 
 void createAllMessagePermutations() {
   memcpy(l[0], ip, 32);
-  printf("l0 = ");
+  //printf("l0 = ");
   for(int i = 0; i < 32; i++) {
-    printf("%d", l[0][i]);
+    //printf("%d", l[0][i]);
   }
-  printf("\n");
+  //printf("\n");
   memcpy(r[0], ip + 32, 32);
-  printf("r0 = ");
+  //printf("r0 = ");
   for(int i = 0; i < 32; i++) {
-    printf("%d", r[0][i]);
+    //printf("%d", r[0][i]);
   }
-  printf("\n");
+  //printf("\n");
 
   for(int i = 1; i < 17; i++) {
     calculateLn(i);
@@ -156,11 +212,11 @@ void createAllMessagePermutations() {
 
 void calculateLn(int i) {
   memcpy(l[i], r[i - 1], 32);
-  printf("l%d = ", i);
+  //printf("l%d = ", i);
   for(int j = 0; j < 32; j++) {
-    printf("%d", l[i][j]);
+    //printf("%d", l[i][j]);
   }
-  printf("\n");
+  //printf("\n");
 }
 
 void calculateRn(int i) {
@@ -186,26 +242,26 @@ void calculateRn(int i) {
       r[i][m * 4 + k] = l[i - 1][m * 4 + k] ^ f[m * 4 + k];
     }
   }
-  printf("r%d = ", i);
+  //printf("r%d = ", i);
   for(int j = 0; j < 32; j++) {
     int index = p[j] - 1; 
     finalf[i] = f[index]; 
     r[i][j] = l[i - 1][j] ^ finalf[i];
-    printf("%d", r[i][j]);
+    //printf("%d", r[i][j]);
   }
-  printf("\n");
+  //printf("\n");
 
 }
 
-void getEncryption() {
-  printf("result: ");
+void getEncryption(unsigned char * result) {
+  //printf("result: ");
   for(int i = 0; i < 64; i++) {
     int index = ip1[i] - 1;
     if(index > 31) {
       result[i] = l[16][index - 32];
     }
     else result[i] = r[16][index];
-    printf("%d", (int)result[i]);
+    //printf("%d", (int)result[i]);
   }
-  printf("\n");
+  //printf("\n");
 }

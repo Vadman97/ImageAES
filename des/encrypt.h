@@ -12,9 +12,9 @@ unsigned char k[56];
 unsigned char c[17][28], d[17][28], pk[16][48];
 unsigned char ip[64];
 unsigned char l[17][32], r[17][32];
-unsigned char result[64];
+//unsigned char result[64];
 unsigned char* encrypted;
-void encrypt(unsigned char* message, unsigned char* key);
+void encrypt(unsigned char* message, unsigned char* key, unsigned char* result);
 void createFirstPermutedKey(unsigned char* key);
 void loadShiftArrays();
 void shift(int);
@@ -23,7 +23,7 @@ void initMessagePermute(unsigned char* message);
 void createAllMessagePermutations();
 void calculateLn(int);
 void calculateRn(int);
-void getEncryption();
+void getEncryption(unsigned char* result);
 //initial subkey permutation table: createFirstPermutedKey()
 int pc1[56] = {57,    49,    41,   33,    25,    17,    9,   1,
                58,    50,    42,   34,    26,    18,   10,   2,
