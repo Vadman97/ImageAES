@@ -45,6 +45,7 @@
 :: PART OF THIS FILE AT ALL TIMES.
 ::--------------------------------------------------------------------------------
 
+cp ..\..\..\decryption_mem.mif .
 
 
 echo "Compiling Core Verilog UNISIM/Behavioral model"

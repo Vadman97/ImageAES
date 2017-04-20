@@ -2,6 +2,7 @@
 _xmsgs\pn_parser.xmsgs
 decryption_mem.asy
 decryption_mem.gise
+decryption_mem.mif
 decryption_mem.ngc
 decryption_mem.v
 decryption_mem.veo

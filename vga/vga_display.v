@@ -84,7 +84,7 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 	
 	always @ (posedge ClkPort) begin
 		icount <= icount + inc;
-		if (icount[27]) begin
+		if (1'b1 | icount[27]) begin
 			dout <= dec_dout;
 			ben_read_addr <= decr_read_addr;
 			decrypter_active <= 1'b1;
@@ -162,7 +162,7 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 	);
 	
 	decryption_mem dec_mem (
-		.clka(clk_decrypter),
+		.clka(clk_25Mhz),
 		.addra(write_addr),
 		.dina(dec_din), 
 		.wea(write_en),

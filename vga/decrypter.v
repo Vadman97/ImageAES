@@ -34,12 +34,12 @@ module decrypter(
 	 always @(posedge clk) begin
 		if (decrypter_active) begin
 			//decryption algo here
-			decrypted_data <= encrypted_data ^ KEY ^ (KEY << 4);
+			decrypted_data <= encrypted_data;// ^ KEY ^ (KEY << 4);
 			//end deryption algo
 			
 			counter <= counter + 1;
 			read_addr <= counter;
-			write_addr <= counter;
+			write_addr <= counter - 1;
 		end
 	 end
 	

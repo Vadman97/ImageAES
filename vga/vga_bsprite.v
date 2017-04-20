@@ -30,8 +30,8 @@ module vga_bsprite(hc, vc, mem_value, rom_addr, R, G, B, blank, inside_image);
 	parameter [10:0] VGA_WIDTH = 640;
 	parameter [10:0] VGA_HEIGHT = 480;
 	
-	parameter [7:0] IMG_WIDTH = 181;
-	parameter [7:0] IMG_HEIGHT = 181;
+	parameter [7:0] IMG_WIDTH = 175;
+	parameter [7:0] IMG_HEIGHT = 175;
 	
 	parameter [3:0] SCALE = 1;
 	
