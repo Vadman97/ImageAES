@@ -1,7 +1,7 @@
 Release 14.7 par P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-VADIM-LAPTOP::  Thu Apr 20 19:39:56 2017
+VADIM-LAPTOP::  Thu Apr 20 20:08:25 2017
 
 par -w -intstyle ise -ol high -mt off vga_display_map.ncd vga_display.ncd
 vga_display.pcf 
@@ -27,9 +27,9 @@ Slice Logic Utilization:
     Number used as Latches:                      0
     Number used as Latch-thrus:                  0
     Number used as AND/OR logics:                0
-  Number of Slice LUTs:                        177 out of   9,112    1%
-    Number used as logic:                      171 out of   9,112    1%
-      Number using O6 output only:              60
+  Number of Slice LUTs:                        182 out of   9,112    1%
+    Number used as logic:                      176 out of   9,112    1%
+      Number using O6 output only:              65
       Number using O5 output only:              38
       Number using O5 and O6:                   73
       Number used as ROM:                        0
@@ -46,12 +46,12 @@ Slice Logic Utilization:
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                    61 out of   2,278    2%
+  Number of occupied Slices:                    62 out of   2,278    2%
   Number of MUXCYs used:                       100 out of   4,556    2%
-  Number of LUT Flip Flop pairs used:          198
-    Number with an unused Flip Flop:            44 out of     198   22%
-    Number with an unused LUT:                  21 out of     198   10%
-    Number of fully used LUT-FF pairs:         133 out of     198   67%
+  Number of LUT Flip Flop pairs used:          197
+    Number with an unused Flip Flop:            43 out of     197   21%
+    Number with an unused LUT:                  15 out of     197    7%
+    Number of fully used LUT-FF pairs:         139 out of     197   70%
     Number of slice register sites lost
       to control set restrictions:               0 out of  18,224    0%
 
@@ -106,25 +106,25 @@ Phase  1  : 4606 unrouted;      REAL time: 4 secs
 
 Phase  2  : 1366 unrouted;      REAL time: 5 secs 
 
-Phase  3  : 454 unrouted;      REAL time: 9 secs 
+Phase  3  : 418 unrouted;      REAL time: 8 secs 
 
-Phase  4  : 454 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 9 secs 
+Phase  4  : 418 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 9 secs 
 
 Updating file: vga_display.ncd with current fully routed design.
 
-Phase  5  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 10 secs 
+Phase  5  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 9 secs 
 
-Phase  6  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 10 secs 
+Phase  6  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 9 secs 
 
-Phase  7  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 10 secs 
+Phase  7  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 9 secs 
 
-Phase  8  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 10 secs 
+Phase  8  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 9 secs 
 
-Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 10 secs 
+Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 9 secs 
 
-Phase 10  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 10 secs 
-Total REAL time to Router completion: 10 secs 
-Total CPU time to Router completion: 10 secs 
+Phase 10  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 9 secs 
+Total REAL time to Router completion: 9 secs 
+Total CPU time to Router completion: 9 secs 
 
 Partition Implementation Status
 -------------------------------
@@ -142,9 +142,9 @@ Generating Clock Report
 +---------------------+--------------+------+------+------------+-------------+
 |        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
 +---------------------+--------------+------+------+------------+-------------+
-|      clk_25Mhz_BUFG |  BUFGMUX_X2Y2| No   |   77 |  0.053     |  0.903      |
+|      clk_25Mhz_BUFG |  BUFGMUX_X2Y2| No   |   77 |  0.046     |  0.903      |
 +---------------------+--------------+------+------+------------+-------------+
-|  clk_decrypter_BUFG |  BUFGMUX_X2Y3| No   |   15 |  0.016     |  0.866      |
+|  clk_decrypter_BUFG |  BUFGMUX_X2Y3| No   |   15 |  0.011     |  0.864      |
 +---------------------+--------------+------+------+------------+-------------+
 |       ClkPort_BUFGP | BUFGMUX_X3Y13| No   |    4 |  0.002     |  0.859      |
 +---------------------+--------------+------+------+------------+-------------+
@@ -181,8 +181,8 @@ All signals are completely routed.
 
 WARNING:Par:283 - There are 2 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
 
-Total REAL time to PAR completion: 11 secs 
-Total CPU time to PAR completion: 11 secs 
+Total REAL time to PAR completion: 10 secs 
+Total CPU time to PAR completion: 10 secs 
 
 Peak Memory Usage:  365 MB
 

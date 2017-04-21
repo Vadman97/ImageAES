@@ -35,7 +35,7 @@ module decrypter(
 	 always @(posedge clk) begin
 		if (decrypter_active) begin
 			//decryption algo here
-			decrypted_data <= encrypted_data;// ^ KEY;
+			decrypted_data <= encrypted_data ^ KEY;
 			//end deryption algo
 			
 			counter <= counter + 1;

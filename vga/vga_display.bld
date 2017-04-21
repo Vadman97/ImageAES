@@ -32,7 +32,7 @@ NGDBUILD Design Results Summary:
 Total memory usage is 206168 kilobytes
 
 Writing NGD file "vga_display.ngd" ...
-Total REAL time to NGDBUILD completion:  6 sec
-Total CPU time to NGDBUILD completion:   6 sec
+Total REAL time to NGDBUILD completion:  5 sec
+Total CPU time to NGDBUILD completion:   5 sec
 
 Writing NGDBUILD log file "vga_display.bld"...
