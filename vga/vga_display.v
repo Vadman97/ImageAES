@@ -30,8 +30,11 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 	output St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar;
 	output An0, An1, An2, An3, Ca, Cb, Cc, Cd, Ce, Cf, Cg, Dp;
 	
-	wire [2:0] R, G;
-	wire [1:0] B;
+	reg [2:0] R, G;
+	reg [1:0] B;
+
+	wire [2:0] sprite_R, sprite_G;
+	wire [1:0] sprite_B;
 	
 	assign 	{St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar} = {5'b00000};//{5'b11111};
 	
@@ -63,7 +66,7 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 	/////////////////////////////////////////////////////
 	// Begin clock division
 	parameter N = 2;	// VGA clock divider
-	parameter dec_N = 16;	// decryptor clock divider
+	parameter dec_N = 12; //16;	// decryptor clock divider
 	
 	reg clk_25Mhz;
 	reg clk_decrypter;
@@ -105,12 +108,20 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 				ben_read_addr <= sprite_read_addr;
 				decrypter_active <= 1'b0;
 			end
+			R <= sprite_R;
+			G <= sprite_G;
+			B <= sprite_B;
 		end else begin
-			write_addr <= reset_addr - 1;
+			// why the f is this - 4 who knows :'(
+			write_addr <= reset_addr - 4;
 			ben_read_addr <= reset_addr;
 			dec_mem_din <= ben_dout;
 			
 			reset_addr <= reset_addr + 1;
+			
+			R <= 3'd0;
+			G <= 3'd0;
+			B <= 2'd0;
 		end
 	end
 
@@ -134,9 +145,9 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 		.vc(vcount), 
 		.mem_value(dout), 
 		.rom_addr(sprite_read_addr), 
-		.R(R), 
-		.G(G), 
-		.B(B), 
+		.R(sprite_R), 
+		.G(sprite_G), 
+		.B(sprite_B), 
 		.blank(blank),
 		.inside_image(inside_image)
 	);
