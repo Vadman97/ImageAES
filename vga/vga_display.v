@@ -130,7 +130,7 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 		.inside_image(inside_image)
 	);
 	
-	ben_mem ben (
+	/*pezhman_mem*/ben_mem ben (
 		.clka(clk_25Mhz), // input clka
 		.addra(ben_read_addr), // input [14 : 0] read_addr
 		.douta(ben_dout) // output [7 : 0] douta
