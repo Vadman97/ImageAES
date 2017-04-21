@@ -75,34 +75,45 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 		clk_decrypter <= count[dec_N-1];
 	end
 	
+	assign MEM_READ_CLOCK = clk_25Mhz;
+	assign MEM_WRITE_CLOCK = clk_25Mhz;
+	
 	reg [30:0] icount;
-	reg [7:0] inc;
 	initial icount = 0;
-	initial inc = 1;
 	reg decrypter_active;
 	initial decrypter_active = 0;
 	
-	always @ (posedge ClkPort) begin
-		icount <= icount + inc;
-		if (1'b1 | icount[27]) begin
-			dout <= dec_dout;
-			ben_read_addr <= decr_read_addr;
-			decrypter_active <= 1'b1;
+	reg [14:0] write_addr;
+	wire [14:0] write_addr_dec;
+	reg [14:0] reset_addr;
+	
+	wire dec_done;
+	
+	always @ (posedge MEM_WRITE_CLOCK) begin
+		icount <= icount + 1;
+		
+		if (!dec_done) begin
+			write_addr <= write_addr_dec;
+			dec_mem_din <= dec_din;
+			reset_addr <= 0;
+			if (1'b1 | icount[26]) begin
+				dout <= dec_dout;
+				ben_read_addr <= decr_read_addr;
+				decrypter_active <= 1'b1;
+			end else begin
+				dout <= ben_dout; 
+				ben_read_addr <= sprite_read_addr;
+				decrypter_active <= 1'b0;
+			end
 		end else begin
-			dout <= ben_dout; 
-			ben_read_addr <= sprite_read_addr;
-			decrypter_active <= 1'b0;
+			write_addr <= reset_addr - 1;
+			ben_read_addr <= reset_addr;
+			dec_mem_din <= ben_dout;
+			
+			reset_addr <= reset_addr + 1;
 		end
 	end
-	
-	/*always @ (posedge icount[28]) begin
-		inc <= inc + 1'b1;
-		
-		// skip over 0 to prevent problemos
-		if (inc == 8'hFF)
-			inc <= 1;
-	end*/
-	
+
 
 	// End clock division
 	/////////////////////////////////////////////////////
@@ -130,21 +141,15 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 		.inside_image(inside_image)
 	);
 	
-	/*pezhman_mem*/ben_mem ben (
+	pezhman_mem /*ben_mem*/ ben (
 		.clka(clk_25Mhz), // input clka
 		.addra(ben_read_addr), // input [14 : 0] read_addr
 		.douta(ben_dout) // output [7 : 0] douta
 	);
 	
-	/*pezhman_mem pezh (
-		.clka(clk_25Mhz), // input clka
-		.read_addr(read_addr), // input [14 : 0] read_addr
-		.douta(pezh_dout) // output [7 : 0] douta
-	);*/
-	
 	wire write_en;
-	wire [14:0] write_addr;
 	wire [7:0] dec_din;
+	reg [7:0] dec_mem_din;
 	
 	assign write_en = 1'b1; //(~blank) & inside_image;
 	
@@ -156,18 +161,19 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 		.clk(clk_decrypter),
 		.encrypted_data(ben_dout),
 		.read_addr(decr_read_addr),
-		.write_addr(write_addr),
+		.write_addr(write_addr_dec),
 		.decrypted_data(dec_din),
-		.decrypter_active(decrypter_active)
+		.decrypter_active(decrypter_active),
+		.done(dec_done)
 	);
 	
 	decryption_mem dec_mem (
-		.clka(clk_25Mhz),
+		.clka(MEM_WRITE_CLOCK),
 		.addra(write_addr),
-		.dina(dec_din), 
+		.dina(dec_mem_din), 
 		.wea(write_en),
 		
-		.clkb(clk_25Mhz),
+		.clkb(MEM_READ_CLOCK),
 		.addrb(sprite_read_addr), 
 		.doutb(dec_dout), 
 		.rstb(1'b0)

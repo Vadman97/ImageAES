@@ -24,7 +24,8 @@ module decrypter(
 	 input decrypter_active,
 	 output reg [14:0] read_addr,
     output reg [7:0] decrypted_data,
-	 output reg [14:0] write_addr
+	 output reg [14:0] write_addr,
+	 output reg done
     );
 	  
 	 parameter [7:0] KEY = 8'b10110011;
@@ -34,12 +35,17 @@ module decrypter(
 	 always @(posedge clk) begin
 		if (decrypter_active) begin
 			//decryption algo here
-			decrypted_data <= encrypted_data;// ^ KEY ^ (KEY << 4);
+			decrypted_data <= encrypted_data ^ KEY;
 			//end deryption algo
 			
 			counter <= counter + 1;
 			read_addr <= counter;
 			write_addr <= counter - 1;
+			
+			if (counter > (175 * 175))
+				done = 1'b1;
+			else
+				done = 1'b0;
 		end
 	 end
 	
