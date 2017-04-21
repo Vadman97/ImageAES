@@ -151,7 +151,7 @@
     </transform>
     <transform xil_pn:end_ts="1492502871" xil_pn:in_ck="-6803047490676166334" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="7573247428646236169" xil_pn:start_ts="1492502871">
       <status xil_pn:value="SuccessfullyRun"/>
-      <status xil_pn:value="NotReadyToRun"/>
+      <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
@@ -220,6 +220,7 @@
     <transform xil_pn:end_ts="1492742368" xil_pn:in_ck="5347341523071449242" xil_pn:name="TRANEXT_ngdbuild_FPGA" xil_pn:prop_ck="-7112085587545372328" xil_pn:start_ts="1492742359">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
       <outfile xil_pn:name="_ngo"/>
       <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
