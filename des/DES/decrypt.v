@@ -40,6 +40,8 @@ reg [55:0] k; //initial key permutation
 reg [16:0][27:0] c, d; //shift arrays -- made with key
 reg [15:0][47:0] permutedKey; //list of all permuted keys, used to decrypt
 reg [31:0] r, l; //left right message permutations
+reg [47:0] l_e_xor_k;
+reg [31:0] f;
 reg [5:0] decrypt;
 
 integer pc1[55:0] = {57,    49,    41,   33,    25,    17,    9,   1,
@@ -123,13 +125,15 @@ int s[8][4][16] = {
 							63,    55,   47,    39,    31,   23,    15,    7};*/
 
 localparam
-INITIAL = 7'b0000001,
-FIRSTPERMUTATION_MESSAGE_KEY = 7'b0000010,
-LOADSHIFTARRAYS = 7'b0000100,
-CREATEALLKEYS = 7'b0001000,
-CREATE_F_R_K = 7'b0010000,
-DECRYPT = 7'b0100000,
-DONE = 7'b1000000;
+INITIAL = 9'b000000001,
+FIRSTPERMUTATION_MESSAGE_KEY = 9'b000000010,
+LOADSHIFTARRAYS = 9'b000001000,
+CREATEALLKEYS = 9'b000010000,
+CREATE_LE_XOR_K = 9'b000100000,
+CREATE_F = 9'b000100000,
+F_PERMUTE = 9'b001000000,
+DECRYPT = 9'b010000000,
+DONE = 9'b100000000;
 
 assign key = DESkey;
 assign msg = message; 
@@ -150,7 +154,7 @@ always @ (posedge clk, posedge reset)
 				decrypt <= 6'bX;
 				r <= 32'bX;
 				l <= 32'bX;
-				
+				l_e_xor_k <= 48'bX;
 			end
 		else 
 			begin
@@ -166,6 +170,7 @@ always @ (posedge clk, posedge reset)
 							decrypt <= 0;
 							r <= msg[0:31];
 							l <= msg[32:63];
+							l_e_xor_k <= 48'b0;
 						end
 					FIRSTPERMUTATION_MESSAGE_KEY:
 						begin
@@ -206,7 +211,7 @@ always @ (posedge clk, posedge reset)
 						begin
 							integer i, j, index;
 							//state
-							state <= CREATEALLMESSAGEPERMUTATIONS;
+							state <= CREATE_LE_XOR_K;
 							//rtl
 							for(i = 0; i < 16; i = i + 1) begin
 								for(j = 0; j < 48; j = j + 1) begin
@@ -218,20 +223,41 @@ always @ (posedge clk, posedge reset)
 								end
 							end
 						end
-					CREATE_F_R_K:
+					CREATE_LE_XOR_K:
 						begin
+							integer i; 
+							reg [47:0] L_e;
+							//state
+							state <= CREATE_F;
+							//rtl
+							r <= l;
+							for(i = 0; i < 48; i = i + 1) begin
+								L_e = l[ebit[i] - 1] ^ permutedKey[15 - decrypt][i];
+								
+							end
+							
+							
+							l_e_xor_k <= L_e;
+							// l(n) = r (n - 1) + f(l (n), k (n))
+						end
+					CREATE_F:
+						begin
+							reg[31:0] pOfS;
+							integer i;
 							//state
 							if(decrypt == 15)
-								state <= DONE;
-							else state <= DECRYPT;
-							//rtl
+								state <= DECRYPT;
+							else state <= CREATE_LE_XOR_K;
+							//rtl 
 							decrypt <= decrypt + 1; 
-							r <= l;
+							for(i = 0; i < 8; i = i + 1) begin
+								reg [1:0] index;
+								reg [3:0] val; 
+								index = l_e_xor_k[i * 6] << 1 + l_e_xor_k[i * 6 + 5];
+								val = {l_e_xor_k[1:4]};
+								pOfS[i * 4: i * 4 + 3] = s[i][index][val];
+							end
 							
-							
-							
-							
-							// l(n) = r (n - 1) + f(l (n), k (n))
 						end
 					DECRYPT: 
 						begin
