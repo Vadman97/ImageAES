@@ -10,22 +10,22 @@ int main(void) {
 
 	ifstream file;
 	file.open("benc.coe");
-	
+
 	string line = "";
-	
+
 	vector<unsigned char> bytes;
-	
+
 	string header = "";
-	
+
 	while (getline(file, line)) {
 		if (!line.length())
 			continue;
-		
+
 		if (line[0] == ';' || line[0] == 'm') {
 			header += line + "\n";
 			continue;
 		}
-		
+
 		stringstream ss(line);
 		string chunk = "";
 		while(getline(ss, chunk, ',')) {
@@ -38,34 +38,34 @@ int main(void) {
 		}
 		//cout << endl;
 	}
-	
+
 	unsigned char* message = new unsigned char[8];
 	unsigned char* result_bin = new unsigned char[64];
-	
+
 	vector<unsigned char> output_buf;
-	
+
 	for (size_t i = 0; i < bytes.size(); i++) {
 		message[i % 8] = bytes[i];
 		if (i != 0 && i % 8 == 0) {
 			encrypt(message, key, result_bin);
-	
-			/* unsigned char test = 0x3F; 
-			
+
+			/* unsigned char test = 0x3F;
+
 			for (int i = 0; i < 64; i++) {
 				result_bin[i] = (test & (1 << (i % 8))) ? 1 : 0;
 				--test;
 				printf("%X ", result_bin[i]);
 			}
 			printf("\n"); */
-			
+
 			// convert binary to dec
 			unsigned long long result = 0;
 			for (int j = 0; j < 64; j++) {
 				if (result_bin[j])
 					result += (1L << (63 - j));
 			}
-			//printf("%llX\n", result);	
-			
+			//printf("%llX\n", result);
+
 			//split up binary into bytes
 			for (int j = 7; j >= 0; j--) {
 				unsigned char row = (result & (0xFFL << (8 * j))) >> (8 * j);
@@ -74,28 +74,28 @@ int main(void) {
 			}
 		}
 	}
-	
+
 	ofstream out;
 	out.open("benc_enc.coe");
 	out << header;
-	
+
 	char* piece = new char[2];
 	for (size_t i = 0; i < output_buf.size(); i++) {
 		// to break up the line into more readable chunks, might also be req of coe format
 		if (i != 0 && i % 32 == 0)
 			out << endl;
-		
+
 		unsigned char row = output_buf[i];
-		
+
 		//first four bits 0
 		if (!(row & 0xF0))
 			sprintf(piece, "0%X,", row);
 		else
 			sprintf(piece, "%X,", row);
-		
+
 		out << piece;
 	}
-	
+
 	out.close();
 }
 
@@ -128,17 +128,7 @@ void createFirstPermutedKey(unsigned char* key) {
 
 void loadShiftArrays() {
   memcpy(c[0], k, 28);
-  //printf("c0 = ");
-  for(int i = 0; i < 28; i++) {
-    //printf("%d", c[0][i]);
-  }
-  //printf("\n");
   memcpy(d[0], k + 28, 28);
-  //printf("d0 = ");
-  for(int i = 0; i < 28; i++) {
-    //printf("%d", d[0][i]);
-  }
-  //printf("\n");
 }
 
 void shift(int j) {
@@ -150,7 +140,7 @@ void shift(int j) {
     if(shiftBy == 28) shiftBy = 0;
     //printf("%d", d[j][i]);
   }
-  //printf("\n");
+  //print f("\n");
 
 }
 
@@ -173,7 +163,7 @@ void createAllKeys() {
 void initMessagePermute(unsigned char* message) {
     for(int i = 0; i < 64; i++) {
       int index = mp[i];
-      
+
       if(index % 8 != 0)
       {
         //pull out bit needed and load into k array
@@ -192,17 +182,7 @@ void initMessagePermute(unsigned char* message) {
 
 void createAllMessagePermutations() {
   memcpy(l[0], ip, 32);
-  //printf("l0 = ");
-  for(int i = 0; i < 32; i++) {
-    //printf("%d", l[0][i]);
-  }
-  //printf("\n");
   memcpy(r[0], ip + 32, 32);
-  //printf("r0 = ");
-  for(int i = 0; i < 32; i++) {
-    //printf("%d", r[0][i]);
-  }
-  //printf("\n");
 
   for(int i = 1; i < 17; i++) {
     calculateLn(i);
@@ -212,11 +192,6 @@ void createAllMessagePermutations() {
 
 void calculateLn(int i) {
   memcpy(l[i], r[i - 1], 32);
-  //printf("l%d = ", i);
-  for(int j = 0; j < 32; j++) {
-    //printf("%d", l[i][j]);
-  }
-  //printf("\n");
 }
 
 void calculateRn(int i) {
@@ -242,14 +217,11 @@ void calculateRn(int i) {
       r[i][m * 4 + k] = l[i - 1][m * 4 + k] ^ f[m * 4 + k];
     }
   }
-  //printf("r%d = ", i);
   for(int j = 0; j < 32; j++) {
-    int index = p[j] - 1; 
-    finalf[i] = f[index]; 
+    int index = p[j] - 1;
+    finalf[i] = f[index];
     r[i][j] = l[i - 1][j] ^ finalf[i];
-    //printf("%d", r[i][j]);
   }
-  //printf("\n");
 
 }
 
