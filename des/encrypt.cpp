@@ -13,14 +13,11 @@ int main(int argc, char ** argv) {
 	unsigned char key[8] = {0x13, 0x34, 0x57, 0x79, 0x9B, 0xBC, 0xDF, 0xF1};
 
 	ifstream file;
-<<<<<<< HEAD
-	file.open("benc.coe");
+	// file.open("benc.coe");
 
-=======
 	string in_name = argv[1];
 	file.open(in_name + ".coe");
-	
->>>>>>> 3cc8463e7b3d00a725e6d3e305b952b1c39da7fb
+
 	string line = "";
 
 	vector<unsigned char> bytes;
