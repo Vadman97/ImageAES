@@ -275,6 +275,8 @@ always @ (posedge clk, posedge reset)
 								//sOfB[4 * i +: 3] <= s[i][l_e_xor_k[i * 6] << 1 + l_e_xor_k[i * 6 + 5]][l_e_xor_k[i * 6 + 1:i * 6 + 5]];
 								//sOfB[4 * i +: 4] <= s[i][l_e_xor_k[i * 6] << 1 + l_e_xor_k[i * 6 + 5]][l_e_xor_k[i * 6 + 5 +: 4]];
 								sOfB[4 * i +: 4] <= s[i * (l_e_xor_k[i * 6] << 1 + l_e_xor_k[i * 6 + 5]) * l_e_xor_k[i * 6 + 5 +: 4]];
+								// ^^^ 99% sure this is wrong reword the s array unwrapping
+								
 							end
 						end
 					F_PERMUTE:
