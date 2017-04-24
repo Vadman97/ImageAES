@@ -4,7 +4,15 @@ using namespace std;
 
 int main(int argc, char ** argv) {
 	if (argc < 2) {
-		cout << "Please specify input file name without the .coe";
+		cout << "Please specify input file name without the .coe" << endl;
+		cout << "Running dummy test mode" << endl;
+		unsigned char key[8] = {0x13, 0x34, 0x57, 0x79, 0x9B, 0xBC, 0xDF, 0xF1};
+		unsigned char message[8] = {0x12, 0x34, 0x56, 0x78, 0x9A, 0xBC, 0xDE, 0xFF};
+		unsigned char* result_bin = new unsigned char[64];
+		encrypt(message, key, result_bin);
+		for (int i = 0; i < 64; i++)
+			printf("%i", result_bin[i]);
+		printf("\n");
 		return 0;
 	}
 	//unsigned char* message = "waterbot";

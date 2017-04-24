@@ -19,22 +19,17 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 module decrypt(
-	message,
-	DESkey,
-	decrypted,
-	done,
-	clk,
-	reset,
-	enable, 
-	ack
+	input [63:0] message,
+	input [63:0] DESkey,
+	output reg [63:0] decrypted,
+	output done,
+	input clk,
+	input reset,
+	input enable, 
+	input ack
     );
-
-input message; 
-input DESkey;
-output decrypted; 
-input clk, reset, enable, ack;
-output done; 
-reg [0:7]msg[0:7], key[0:7], result[0:7]; 
+	 
+reg [7:0] result[7:0], msg[7:0], key[7:0];
 reg [5:0] state; 
 reg [55:0] k; //initial key permutation
 reg [16:0] c[27:0], d[27:0]; //shift arrays -- made with key
@@ -43,16 +38,15 @@ reg [31:0] r, l; //left right message permutations
 reg [31:0] sOfB;
 reg [47:0] l_e_xor_k;
 reg [31:0] f;
-integer temp;
 reg [5:0] decrypt;
 
 integer pc1[55:0] = {57,    49,    41,   33,    25,    17,    9,   1,
-               58,    50,    42,   34,    26,    18,   10,   2,
-               59,    51,    43,   35,    27,    19,   11,   3,
-               60,    52,    44,   36,    63,    55,   47,  39,
-               31,    23,    15,    7,    62,    54,   46,  38,
-               30,    22,    14,    6,    61,    53,   45,  37,
-               29,    21,    13,    5,    28,    20,   12,   4};
+							58,    50,    42,   34,    26,    18,   10,   2,
+							59,    51,    43,   35,    27,    19,   11,   3,
+							60,    52,    44,   36,    63,    55,   47,  39,
+							31,    23,    15,    7,    62,    54,   46,  38,
+							30,    22,    14,    6,    61,    53,   45,  37,
+							29,    21,    13,    5,    28,    20,   12,   4};
 
 integer pc2[47:0] = {14,    17,   11,    24,     1,    5,
                 3,    28,   15,     6,    21,   10,
@@ -74,18 +68,18 @@ integer ebit[47:0] = { 32,     1,    2,     3,     4,    5,
                  24,    25,   26,    27,    28,   29,
                  28,    29,   30,    31,    32,    1};
 		
-integer test [0:3][0:1][0:1] = {14,  4,  13,  1,   2, 15,  11,  8,   3, 10,   6, 12,   5,  9,   0,  7};
+//integer test [0:3][0:1][0:1] = {14,  4,  13,  1,   2, 15,  11,  8,   3, 10,   6, 12,   5,  9,   0,  7};
 
 		
-integer s [0:7][0:3][0:15] = {
+integer s [511:0] /*[0:7][0:3][0:15]*/ = {
                   14,  4,  13,  1,   2, 15,  11,  8,   3, 10,   6, 12,   5,  9,   0,  7,
                   0, 15,   7,  4,  14,  2,  13,  1,  10,  6,  12, 11,   9,  5,   3,  8,
                   4,  1,  14,  8,  13,  6,   2, 11,  15, 12,   9,  7,   3, 10,   5,  0,
-                 15, 12,   8,  2,   4,  9,   1,  7,   5, 11,   3, 14,  10,  0,   6, 13,
+                  15, 12,   8,  2,   4,  9,   1,  7,   5, 11,   3, 14,  10,  0,   6, 13,
 
-                 15,  1,   8, 14,   6, 11,   3,  4,   9,  7,   2, 13,  12,  0,   5, 10,
-                   3, 13,   4,  7,  15,  2,   8, 14,  12,  0,   1, 10,   6,  9,  11,  5,
-                   0, 14,   7, 11,  10,  4,  13,  1,   5,  8,  12,  6,   9,  3,   2, 15,
+                  15,  1,   8, 14,   6, 11,   3,  4,   9,  7,   2, 13,  12,  0,   5, 10,
+                  3, 13,   4,  7,  15,  2,   8, 14,  12,  0,   1, 10,   6,  9,  11,  5,
+                  0, 14,   7, 11,  10,  4,  13,  1,   5,  8,  12,  6,   9,  3,   2, 15,
                   13,  8,  10,  1,   3, 15,   4,  2,  11,  6,   7, 12,   0,  5,  14,  9,
 
                   10,  0,   9, 14,   6,  3,  15,  5,   1, 13,  12,  7,  11,  4,   2,  8,
@@ -159,39 +153,44 @@ F_PERMUTE = 10'd128,
 DECRYPT = 10'd256,
 DONE = 10'd512;
 
-//assign key = DESkey;
-//assign msg = message; 
-
 //shift array base condition:
 //assign c[0] = k[0:27];
 //assign d[0] = k[28:55];
-
+ 
+integer i;
+always @* begin
+	for (i = 0; i < 8; i = i+1) begin
+		msg[i] = message[8*i +: 8];
+		key[i] = DESkey[8*i +: 8];
+		decrypted[8*i +: 8] = result[i];
+	end
+end
 
 always @ (posedge clk, posedge reset)
 	begin
 		if(reset)
 			begin
 				state <= INITIAL;
-				msg <= 64'bX;
+				// who cares about this crap we can waste resources if we want to gandhi
+				/*msg <= 64'bX;
 				key <= 64'bX;
 				result <= 64'bX;
 				decrypt <= 6'bX;
 				r <= 32'bX;
 				l <= 32'bX;
-				l_e_xor_k <= 48'bX;
+				l_e_xor_k <= 48'bX;*/
 			end
 		else 
 			begin
 				case (state) 
 					INITIAL:
 						begin : STATE_INITIAL
-							integer i; 
+							integer i, t1, t2; 
 							//state
 							if(enable) state <= FIRSTPERMUTATION_MESSAGE_KEY;
 							//rtl
-							msg <= message; 
-							key <= DESkey;
-							result <= 0;
+							
+							//result <= 0;
 							decrypt <= 0;
 							for(i = 0; i < 64; i = i + 1) begin
 								if(i < 32) r[i] <= msg[mp[i] - 1];
@@ -273,10 +272,9 @@ always @ (posedge clk, posedge reset)
 							state <= F_PERMUTE;
 							//rtl 
 							for(i = 0; i < 8; i = i + 1) begin : FOR
-								
-								temp = i; 
-								sOfB[temp * 4: temp * 4 + 3] <= 
-									s[temp][l_e_xor_k[temp * 6] << 1 + l_e_xor_k[temp * 6 + 5]][l_e_xor_k[temp * 6 + 1:temp * 6 + 5]];
+								//sOfB[4 * i +: 3] <= s[i][l_e_xor_k[i * 6] << 1 + l_e_xor_k[i * 6 + 5]][l_e_xor_k[i * 6 + 1:i * 6 + 5]];
+								//sOfB[4 * i +: 4] <= s[i][l_e_xor_k[i * 6] << 1 + l_e_xor_k[i * 6 + 5]][l_e_xor_k[i * 6 + 5 +: 4]];
+								sOfB[4 * i +: 4] <= s[i * (l_e_xor_k[i * 6] << 1 + l_e_xor_k[i * 6 + 5]) * l_e_xor_k[i * 6 + 5 +: 4]];
 							end
 						end
 					F_PERMUTE:
@@ -312,8 +310,7 @@ always @ (posedge clk, posedge reset)
 				endcase
 			end
 	end
-
-assign encrypted = result;
+	
 assign done = (state == DONE);
 
 endmodule

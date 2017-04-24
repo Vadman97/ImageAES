@@ -55,11 +55,11 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1493001292" xil_pn:in_ck="7689420151469778643" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1493001292">
+    <transform xil_pn:end_ts="1493013710" xil_pn:in_ck="-6170144962743248541" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1493013710">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="decrypt.v"/>
-      <outfile xil_pn:name="decrypt_tb.v"/>
+      <outfile xil_pn:name="decrypt_tb_vadim.v"/>
     </transform>
     <transform xil_pn:end_ts="1492996247" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="2448936951425492231" xil_pn:start_ts="1492996247">
       <status xil_pn:value="SuccessfullyRun"/>
@@ -73,22 +73,15 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1492996247" xil_pn:in_ck="7689420151469778643" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1492996247">
+    <transform xil_pn:end_ts="1493013710" xil_pn:in_ck="-6170144962743248541" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1493013710">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForOutputs"/>
-      <status xil_pn:value="InputChanged"/>
-      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="decrypt.v"/>
-      <outfile xil_pn:name="decrypt_tb.v"/>
+      <outfile xil_pn:name="decrypt_tb_vadim.v"/>
     </transform>
-    <transform xil_pn:end_ts="1492996250" xil_pn:in_ck="7689420151469778643" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="7931613869183401357" xil_pn:start_ts="1492996247">
+    <transform xil_pn:end_ts="1493013713" xil_pn:in_ck="-6170144962743248541" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="7931613869183401357" xil_pn:start_ts="1493013710">
       <status xil_pn:value="FailedRun"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="OutOfDateForPredecessor"/>
-      <status xil_pn:value="InputChanged"/>
     </transform>
     <transform xil_pn:end_ts="1492626426" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1492626426">
       <status xil_pn:value="SuccessfullyRun"/>
@@ -124,18 +117,11 @@
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputAdded"/>
       <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="InputRemoved"/>
       <status xil_pn:value="OutputChanged"/>
-      <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
-      <outfile xil_pn:name="decrypt_tb.lso"/>
-      <outfile xil_pn:name="decrypt_tb.prj"/>
-      <outfile xil_pn:name="decrypt_tb.syr"/>
-      <outfile xil_pn:name="decrypt_tb.xst"/>
-      <outfile xil_pn:name="decrypt_tb_beh.prj"/>
-      <outfile xil_pn:name="decrypt_tb_stx_beh.prj"/>
-      <outfile xil_pn:name="decrypt_tb_xst.xrpt"/>
-      <outfile xil_pn:name="webtalk_pn.xml"/>
-      <outfile xil_pn:name="xst"/>
+      <status xil_pn:value="OutputRemoved"/>
     </transform>
     <transform xil_pn:end_ts="1492997420" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="8767233079797552434" xil_pn:start_ts="1492997420">
       <status xil_pn:value="SuccessfullyRun"/>
