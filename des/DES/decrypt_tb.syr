@@ -1,0 +1,169 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to xst/projnav.tmp
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.17 secs
+ 
+--> Parameter xsthdpdir set to xst
+
+
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.17 secs
+ 
+--> Reading design: decrypt_tb.prj
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "decrypt_tb.prj"
+Ignore Synthesis Constraint File   : NO
+
+---- Target Parameters
+Output File Name                   : "decrypt_tb"
+Output Format                      : NGC
+Target Device                      : xc6slx16-3-csg324
+
+---- Source Options
+Top Module Name                    : decrypt_tb
+Automatic FSM Extraction           : YES
+FSM Encoding Algorithm             : Auto
+Safe Implementation                : No
+FSM Style                          : LUT
+RAM Extraction                     : Yes
+RAM Style                          : Auto
+ROM Extraction                     : Yes
+Shift Register Extraction          : YES
+ROM Style                          : Auto
+Resource Sharing                   : YES
+Asynchronous To Synchronous        : NO
+Shift Register Minimum Size        : 2
+Use DSP Block                      : Auto
+Automatic Register Balancing       : No
+
+---- Target Options
+LUT Combining                      : Auto
+Reduce Control Sets                : Auto
+Add IO Buffers                     : YES
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : YES
+Optimize Instantiated Primitives   : NO
+Use Clock Enable                   : Auto
+Use Synchronous Set                : Auto
+Use Synchronous Reset              : Auto
+Pack IO Registers into IOBs        : Auto
+Equivalent register Removal        : YES
+
+---- General Options
+Optimization Goal                  : Speed
+Optimization Effort                : 1
+Power Reduction                    : NO
+Keep Hierarchy                     : No
+Netlist Hierarchy                  : As_Optimized
+RTL Output                         : Yes
+Global Optimization                : AllClockNets
+Read Cores                         : YES
+Write Timing Constraints           : NO
+Cross Clock Analysis               : NO
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : Maintain
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Auto BRAM Packing                  : NO
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Analyzing Verilog file "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" into library work
+Parsing module <decrypt>.
+ERROR:HDLCompiler:345 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 232: Declarations not allowed in unnamed block
+ERROR:HDLCompiler:345 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 248: Declarations not allowed in unnamed block
+ERROR:HDLCompiler:345 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 269: Declarations not allowed in unnamed block
+ERROR:HDLCompiler:345 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 264: Declarations not allowed in unnamed block
+ERROR:HDLCompiler:345 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 277: Declarations not allowed in unnamed block
+ERROR:HDLCompiler:345 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 292: Declarations not allowed in unnamed block
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 77: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 78: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 79: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 80: Concatenation with unsized literal; will interpret as 32 bits
+ERROR:HDLCompiler:1610 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 77: Wrong element type in unpacked array concatenation
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 82: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 83: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 84: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 85: Concatenation with unsized literal; will interpret as 32 bits
+ERROR:HDLCompiler:1610 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 82: Wrong element type in unpacked array concatenation
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 87: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 88: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 89: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 90: Concatenation with unsized literal; will interpret as 32 bits
+ERROR:HDLCompiler:1610 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 87: Wrong element type in unpacked array concatenation
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 92: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 93: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 94: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 95: Concatenation with unsized literal; will interpret as 32 bits
+ERROR:HDLCompiler:1610 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 92: Wrong element type in unpacked array concatenation
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 97: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 98: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 99: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 100: Concatenation with unsized literal; will interpret as 32 bits
+ERROR:HDLCompiler:1610 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 97: Wrong element type in unpacked array concatenation
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 102: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 103: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 104: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 105: Concatenation with unsized literal; will interpret as 32 bits
+ERROR:HDLCompiler:1610 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 102: Wrong element type in unpacked array concatenation
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 107: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 108: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 109: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 110: Concatenation with unsized literal; will interpret as 32 bits
+ERROR:HDLCompiler:1610 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 107: Wrong element type in unpacked array concatenation
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 112: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 113: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 114: Concatenation with unsized literal; will interpret as 32 bits
+WARNING:HDLCompiler:327 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 115: Concatenation with unsized literal; will interpret as 32 bits
+ERROR:HDLCompiler:1610 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 112: Wrong element type in unpacked array concatenation
+ERROR:HDLCompiler:939 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 76: Single value range is not allowed in this mode of verilog
+ERROR:HDLCompiler:329 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 158: Target <key> of concurrent assignment or output port connection should be a net type.
+ERROR:HDLCompiler:329 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 159: Target <msg> of concurrent assignment or output port connection should be a net type.
+ERROR:HDLCompiler:329 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 162: Target <c> of concurrent assignment or output port connection should be a net type.
+ERROR:HDLCompiler:329 - "\\vlabfs.vlab.usc.edu\home$\pnawathe\ImageAES\des\DES\decrypt.v" Line 163: Target <d> of concurrent assignment or output port connection should be a net type.
+Sorry, too many errors..
+--> 
+
+Total memory usage is 228060 kilobytes
+
+Number of errors   :   19 (   0 filtered)
+Number of warnings :   32 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
+
