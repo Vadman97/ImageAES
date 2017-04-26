@@ -3,14 +3,14 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="C:/Users/vkoro/Final_Project/project/des/DES/decrypt_tb_isim_beh.wdb" id="1" type="auto">
+      <db_ref path="C:/Users/vkoro/Final_Project/project/des/DES/decrypt_tb_isim_beh1.wdb" id="1" type="auto">
          <top_modules>
             <top_module name="decrypt_tb" />
             <top_module name="glbl" />
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="10" />
+   <WVObjectSize size="13" />
    <wvobject fp_name="/decrypt_tb/decrypted" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">decrypted[63:0]</obj_property>
       <obj_property name="ObjectShortName">decrypted[63:0]</obj_property>
@@ -52,7 +52,62 @@
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/decrypt_tb/uut/state" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">state[5:0]</obj_property>
-      <obj_property name="ObjectShortName">state[5:0]</obj_property>
+      <obj_property name="ElementShortName">state[10:0]</obj_property>
+      <obj_property name="ObjectShortName">state[10:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/decrypt_tb/uut/result" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">result[7:0,7:0]</obj_property>
+      <obj_property name="ObjectShortName">result[7:0,7:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <wvobject fp_name="/decrypt_tb/uut/result[7]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[7,7:0]</obj_property>
+         <obj_property name="ObjectShortName">result[7,7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/decrypt_tb/uut/result[6]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[6,7:0]</obj_property>
+         <obj_property name="ObjectShortName">result[6,7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/decrypt_tb/uut/result[5]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[5,7:0]</obj_property>
+         <obj_property name="ObjectShortName">result[5,7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/decrypt_tb/uut/result[4]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[4,7:0]</obj_property>
+         <obj_property name="ObjectShortName">result[4,7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/decrypt_tb/uut/result[3]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[3,7:0]</obj_property>
+         <obj_property name="ObjectShortName">result[3,7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/decrypt_tb/uut/result[2]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[2,7:0]</obj_property>
+         <obj_property name="ObjectShortName">result[2,7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/decrypt_tb/uut/result[1]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[1,7:0]</obj_property>
+         <obj_property name="ObjectShortName">result[1,7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+      <wvobject fp_name="/decrypt_tb/uut/result[0]" type="array" db_ref_id="1">
+         <obj_property name="ElementShortName">[0,7:0]</obj_property>
+         <obj_property name="ObjectShortName">result[0,7:0]</obj_property>
+         <obj_property name="Radix">HEXRADIX</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/decrypt_tb/uut/t_count" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">t_count[3:0]</obj_property>
+      <obj_property name="ObjectShortName">t_count[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/decrypt_tb/uut/decrypt" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">decrypt[5:0]</obj_property>
+      <obj_property name="ObjectShortName">decrypt[5:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
 </wave_config>

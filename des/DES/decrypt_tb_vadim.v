@@ -90,7 +90,8 @@ module decrypt_tb;
 		message = 64'b1110000010100110111110111111100010010010011001011010011101100101;
 		DESkey = 64'h133457799BBCDFF1;
 		enable = 1;
-		#1000;
+		
+		wait(done);
 		
 		ack = 1;
 		# 10;
