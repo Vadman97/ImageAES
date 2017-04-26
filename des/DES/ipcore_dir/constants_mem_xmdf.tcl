@@ -215,6 +215,10 @@ utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path constants_me
 utilities_xmdf::xmdfSetData $instance FileSet $fcount type ngc
 incr fcount
 
+utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path constants_mem.sym
+utilities_xmdf::xmdfSetData $instance FileSet $fcount type symbol
+incr fcount
+
 utilities_xmdf::xmdfSetData $instance FileSet $fcount relative_path constants_mem.v
 utilities_xmdf::xmdfSetData $instance FileSet $fcount type verilog
 incr fcount

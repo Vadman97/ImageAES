@@ -32,12 +32,13 @@ module decrypt(
 reg [7:0] result[7:0], msg[7:0], key[7:0];
 reg [10:0] state; 
 reg [55:0] k; //initial key permutation
-reg [16:0] c[27:0], d[27:0]; //shift arrays -- made with key
+reg [15:0] c[27:0], d[27:0]; //shift arrays -- made with key
 reg [15:0] permutedKey[47:0]; //list of all permuted keys, used to decrypt
-reg [31:0] r, l, temp; //left right message permutations
-reg [31:0] sOfB;
+reg [7:0] r[31:0], l[31:0], temp[31:0], sOfB[31:0], f[31:0]; 
+//left right message permutations
+// reg [31:0] sOfB;
 reg [47:0] l_e_xor_k;
-reg [31:0] f;
+// reg [31:0] f;
 reg [3:0] decrypt;
 
 /*
@@ -53,12 +54,12 @@ reg [3:0] decrypt;
 */
 
 reg [9:0] const_addr;
-reg [7:0] const_data;
+wire [7:0] const_data;
 reg [3:0] t_count;
 
 constants_mem constants_mem(
-	.addra(const_addr),
 	.clka(clk), 
+	.addra(const_addr),
 	.douta(const_data)
 );
 
@@ -80,12 +81,14 @@ DONE = 10'd512;
  
 integer i;
 always @* begin
-	for (i = 0; i < 8; i = i+1) begin
-		msg[i] = message[8*i +: 8];
-		key[i] = DESkey[8*i +: 8];
-		decrypted[8*i +: 8] = result[i];
+	if (!reset) begin
+		for (i = 0; i < 8; i = i+1) begin
+			msg[i] = message[8*i +: 8];
+			key[i] = DESkey[8*i +: 8];
+			decrypted[8*i +: 8] = result[i];
+		end
 	end
-end
+end 
 
 always @ (posedge clk, posedge reset)
 	begin
@@ -210,8 +213,11 @@ always @ (posedge clk, posedge reset)
 							//						[l_e_xor_k[i * 6 + 1:i * 6 + 5]];
 							//sOfB[4 * i +: 4] <= s[i][l_e_xor_k[i * 6] << 1 + l_e_xor_k[i * 6 + 5]][l_e_xor_k[i * 6 + 5 +: 4]];
 							//sOfB[4 * i +: 4] <= s[8 * i + 4 * (l_e_xor_k[i * 6] << 1 + l_e_xor_k[i * 6 + 5]) + 16 * l_e_xor_k[i * 6 + 5 +: 4]];
-							//[0:7][0:3][0:15]								
-							sOfB[4 * t_count +: 4] <= const_data;
+							//[0:7][0:3][0:15]	
+							
+							// sOfB[4 * t_count +: 4] <= const_data;
+							sOfB[4 * t_count] <= const_data;
+							
 							const_addr <= 8 * t_count + 
 										  4 * (l_e_xor_k[t_count * 6] << 1 + l_e_xor_k[t_count * 6 + 5]) + 
 										  l_e_xor_k[t_count * 6 + 1 +: 4] + 168;
@@ -225,15 +231,24 @@ always @ (posedge clk, posedge reset)
 						end
 					F_PERMUTE:
 						begin : STATE_FPERMUTE
-							if (const_addr == 10'd680)
-								temp <= l;
+							if (const_addr == 10'd680) begin: PRACHI_WAS_HERE
+								// temp <= l;
+								integer i;
+								for (i = 0; i < 32; i = i + 1) begin
+									temp[i] <= l[i];
+								end
+							end
 							
 							if (const_addr >= 10'd680) begin
 								f[const_addr - 680] <= sOfB[const_data - 1];
 								l[const_addr - 680] <= r[const_addr - 680] ^ sOfB[const_data - 1];
 								
-								if (const_addr == 10'd711) begin
-									r <= temp;
+								if (const_addr == 10'd711) begin: PLEASE_VERILOG_WHY
+									//r <= temp;
+									integer i;
+									for (i = 0; i < 32; i = i + 1) begin
+										r[i] <= temp[i];
+									end
 									if(decrypt == 4'd15)
 										state <= DECRYPT;
 									else state <= CREATE_LE_XOR_K;

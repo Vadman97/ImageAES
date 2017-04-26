@@ -63,7 +63,7 @@ module decrypt_tb;
 	initial
 	  begin  : RESET_GENERATOR
 		 reset = 1;
-		 #(2 * CLK_PERIOD) reset = 0;
+		 #(10 * CLK_PERIOD) reset = 0;
 	  end
 
 	initial
@@ -83,7 +83,7 @@ module decrypt_tb;
 		ack = 0;
 
 		// Wait 100 ns for global reset to finish
-		#100;
+		#10;
         
 		// Add stimulus here
 		

@@ -1,8 +1,10 @@
 # Output products list for <constants_mem>
+_xmsgs\pn_parser.xmsgs
 constants_mem.asy
 constants_mem.gise
 constants_mem.mif
 constants_mem.ngc
+constants_mem.sym
 constants_mem.v
 constants_mem.veo
 constants_mem.xco
