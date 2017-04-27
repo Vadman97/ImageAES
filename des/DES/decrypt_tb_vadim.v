@@ -40,7 +40,7 @@ module decrypt_tb;
 	wire done;
 
 	// Instantiate the Unit Under Test (UUT)
-	decrypt uut (
+	decrypt_dumb uut (
 		.message(message), 
 		.DESkey(DESkey), 
 		.decrypted(decrypted), 
@@ -90,10 +90,18 @@ module decrypt_tb;
 		message = 64'b1110000010100110111110111111100010010010011001011010011101100101;
 		DESkey = 64'h133457799BBCDFF1;
 		enable = 1;
+		 
+		wait(done);
+		ack = 1;
+		# 100;
+		DESkey = 64'h133457799BBCDFF0;
 		
 		wait(done);
-		
 		ack = 1;
+		# 100;
+		DESkey = 64'hab01986231bc8d01;
+		
+		//ack = 1;
 		# 10;
 
 	end

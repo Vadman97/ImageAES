@@ -126,7 +126,7 @@ always @ (posedge clk, posedge reset)
 							end
 							if (const_addr != 10'd775)
 								const_addr <= const_addr + 1;
-							
+							 
 							l_e_xor_k <= 48'b0;
 						end
 					FIRSTPERMUTATION_MESSAGE_KEY:

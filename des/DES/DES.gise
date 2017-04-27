@@ -31,7 +31,6 @@
     <file xil_pn:fileType="FILE_LOG" xil_pn:name="ipcore_dir/coregen.log"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_CMD" xil_pn:name="isim.cmd"/>
-    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_LOG" xil_pn:name="isim.log"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_INI" xil_pn:name="xilinxsim.ini"/>
   </files>
 
@@ -40,10 +39,11 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1493238409" xil_pn:in_ck="-6170144962743248541" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1493238409">
+    <transform xil_pn:end_ts="1493252025" xil_pn:in_ck="7755143557967290473" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1493252024">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="decrypt.v"/>
+      <outfile xil_pn:name="decrypt_dumb.v"/>
       <outfile xil_pn:name="decrypt_tb_vadim.v"/>
     </transform>
     <transform xil_pn:end_ts="1493177964" xil_pn:name="TRAN_xawsToSimhdl" xil_pn:prop_ck="2448936951425492231" xil_pn:start_ts="1493177964">
@@ -60,14 +60,14 @@
       <outfile xil_pn:name="ipcore_dir/constants_mem.ngc"/>
       <outfile xil_pn:name="ipcore_dir/constants_mem.v"/>
     </transform>
-    <transform xil_pn:end_ts="1493238409" xil_pn:in_ck="179808768746921617" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1493238409">
+    <transform xil_pn:end_ts="1493252025" xil_pn:in_ck="7755143557967290473" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1493252025">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="decrypt.v"/>
+      <outfile xil_pn:name="decrypt_dumb.v"/>
       <outfile xil_pn:name="decrypt_tb_vadim.v"/>
-      <outfile xil_pn:name="ipcore_dir/constants_mem.v"/>
     </transform>
-    <transform xil_pn:end_ts="1493238413" xil_pn:in_ck="179808768746921617" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="7931613869183401357" xil_pn:start_ts="1493238409">
+    <transform xil_pn:end_ts="1493252027" xil_pn:in_ck="-4063076080241004265" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="7931613869183401357" xil_pn:start_ts="1493252025">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="decrypt_tb_beh.prj"/>
@@ -76,12 +76,11 @@
       <outfile xil_pn:name="isim"/>
       <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
-    <transform xil_pn:end_ts="1493238547" xil_pn:in_ck="1170159068019923263" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-3311396621004115155" xil_pn:start_ts="1493238547">
+    <transform xil_pn:end_ts="1493252027" xil_pn:in_ck="1170159068019923263" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-3311396621004115155" xil_pn:start_ts="1493252027">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="decrypt_tb_isim_beh.wdb"/>
       <outfile xil_pn:name="isim.cmd"/>
-      <outfile xil_pn:name="isim.log"/>
     </transform>
     <transform xil_pn:name="TRAN_SubProjectAbstractToPreProxy">
       <status xil_pn:value="SuccessfullyRun"/>

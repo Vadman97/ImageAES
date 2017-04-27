@@ -10,7 +10,7 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="25" />
+   <WVObjectSize size="14" />
    <wvobject fp_name="/decrypt_tb/decrypted" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">decrypted[63:0]</obj_property>
       <obj_property name="ObjectShortName">decrypted[63:0]</obj_property>
@@ -52,112 +52,25 @@
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/decrypt_tb/uut/state" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">state[10:0]</obj_property>
-      <obj_property name="ObjectShortName">state[10:0]</obj_property>
+      <obj_property name="ElementShortName">state[2:0]</obj_property>
+      <obj_property name="ObjectShortName">state[2:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/decrypt_tb/uut/result" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">result[7:0,7:0]</obj_property>
-      <obj_property name="ObjectShortName">result[7:0,7:0]</obj_property>
-      <obj_property name="Radix">HEXRADIX</obj_property>
-      <wvobject fp_name="/decrypt_tb/uut/result[7]" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">[7,7:0]</obj_property>
-         <obj_property name="ObjectShortName">result[7,7:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/decrypt_tb/uut/result[6]" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">[6,7:0]</obj_property>
-         <obj_property name="ObjectShortName">result[6,7:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/decrypt_tb/uut/result[5]" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">[5,7:0]</obj_property>
-         <obj_property name="ObjectShortName">result[5,7:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/decrypt_tb/uut/result[4]" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">[4,7:0]</obj_property>
-         <obj_property name="ObjectShortName">result[4,7:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/decrypt_tb/uut/result[3]" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">[3,7:0]</obj_property>
-         <obj_property name="ObjectShortName">result[3,7:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/decrypt_tb/uut/result[2]" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">[2,7:0]</obj_property>
-         <obj_property name="ObjectShortName">result[2,7:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/decrypt_tb/uut/result[1]" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">[1,7:0]</obj_property>
-         <obj_property name="ObjectShortName">result[1,7:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-      <wvobject fp_name="/decrypt_tb/uut/result[0]" type="array" db_ref_id="1">
-         <obj_property name="ElementShortName">[0,7:0]</obj_property>
-         <obj_property name="ObjectShortName">result[0,7:0]</obj_property>
-         <obj_property name="Radix">HEXRADIX</obj_property>
-      </wvobject>
-   </wvobject>
-   <wvobject fp_name="/decrypt_tb/uut/t_count" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">t_count[3:0]</obj_property>
-      <obj_property name="ObjectShortName">t_count[3:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/decrypt_tb/uut/decrypt" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">decrypt[3:0]</obj_property>
-      <obj_property name="ObjectShortName">decrypt[3:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/decrypt_tb/uut/const_data" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">const_data[7:0]</obj_property>
-      <obj_property name="ObjectShortName">const_data[7:0]</obj_property>
+   <wvobject fp_name="/decrypt_tb/uut/randIdx" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">randIdx[23:0]</obj_property>
+      <obj_property name="ObjectShortName">randIdx[23:0]</obj_property>
       <obj_property name="Radix">HEXRADIX</obj_property>
    </wvobject>
-   <wvobject fp_name="/decrypt_tb/uut/const_addr" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">const_addr[9:0]</obj_property>
-      <obj_property name="ObjectShortName">const_addr[9:0]</obj_property>
-      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   <wvobject fp_name="/decrypt_tb/uut/firstBit" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">firstBit[7:0]</obj_property>
+      <obj_property name="ObjectShortName">firstBit[7:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/decrypt_tb/uut/k" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">k[55:0]</obj_property>
-      <obj_property name="ObjectShortName">k[55:0]</obj_property>
+   <wvobject fp_name="/decrypt_tb/uut/secondBit" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">secondBit[7:0]</obj_property>
+      <obj_property name="ObjectShortName">secondBit[7:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/decrypt_tb/uut/c" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">c[27:0,15:0]</obj_property>
-      <obj_property name="ObjectShortName">c[27:0,15:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/decrypt_tb/uut/d" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">d[27:0,15:0]</obj_property>
-      <obj_property name="ObjectShortName">d[27:0,15:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/decrypt_tb/uut/permutedKey" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">permutedKey[47:0,15:0]</obj_property>
-      <obj_property name="ObjectShortName">permutedKey[47:0,15:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/decrypt_tb/uut/r" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">r[31:0,7:0]</obj_property>
-      <obj_property name="ObjectShortName">r[31:0,7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/decrypt_tb/uut/l" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">l[31:0,7:0]</obj_property>
-      <obj_property name="ObjectShortName">l[31:0,7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/decrypt_tb/uut/temp" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">temp[31:0,7:0]</obj_property>
-      <obj_property name="ObjectShortName">temp[31:0,7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/decrypt_tb/uut/sOfB" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">sOfB[31:0,7:0]</obj_property>
-      <obj_property name="ObjectShortName">sOfB[31:0,7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/decrypt_tb/uut/f" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">f[31:0,7:0]</obj_property>
-      <obj_property name="ObjectShortName">f[31:0,7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/decrypt_tb/uut/l_e_xor_k" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">l_e_xor_k[47:0]</obj_property>
-      <obj_property name="ObjectShortName">l_e_xor_k[47:0]</obj_property>
+   <wvobject fp_name="/decrypt_tb/uut/thirdBit" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">thirdBit[7:0]</obj_property>
+      <obj_property name="ObjectShortName">thirdBit[7:0]</obj_property>
    </wvobject>
 </wave_config>
