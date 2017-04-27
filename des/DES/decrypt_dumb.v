@@ -64,7 +64,7 @@ module decrypt_dumb(
 							begin: STATE_DECRYPT 
 								integer i;
 								for (i = 0; i < 8; i = i + 1) begin
-									firstBit[i] = (DESkey[8*i+2 +: 2] ^ DESkey[8*+6 +: 2]) > 2'd1;
+									firstBit[i] = (DESkey[8*i+2 +: 2] ^ DESkey[8*i+6 +: 2]) > 2'd1;
 									secondBit[i] = (DESkey[8*i +: 2] ^ DESkey[8*i+4 +: 2]) > 2'd1;
 									thirdBit[i] = (DESkey[8*i +: 4] ^ DESkey[8*i+4 +: 4]) > 3'd3;
 									
