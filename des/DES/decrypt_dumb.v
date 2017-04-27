@@ -30,7 +30,10 @@ module decrypt_dumb(
     );
 	 
 	// 8 of 8 bits
-	reg [63:0] rand = {8'd238, 8'd107, 8'd12, 8'd79, 8'd36, 8'd116, 8'd4, 8'd112};
+	reg [63:0] rand;
+	initial begin
+		rand = {8'd238, 8'd107, 8'd12, 8'd79, 8'd36, 8'd116, 8'd4, 8'd112};
+	end
 	 
 	reg [7:0] firstBit, secondBit, thirdBit;
 	// 8 of 3 bits

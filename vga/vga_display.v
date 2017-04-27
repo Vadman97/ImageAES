@@ -20,9 +20,11 @@
 //////////////////////////////////////////////////////////////////////////////////
 module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 						HS, VS, R, G, B,  An0, An1, An2, An3, Ca, Cb, Cc, Cd, Ce, Cf, Cg, Dp,
+						Sw0, Sw1, Sw2, Sw3, Sw4, Sw5, Sw6, Sw7,
 						rst, ClkPort, btnU, btnD);
 	input rst;	// global reset
 	input ClkPort, btnU, btnD;
+	input Sw0, Sw1, Sw2, Sw3, Sw4, Sw5, Sw6, Sw7;
 		
 	// color outputs to show on display (current pixel)
 	output [2:0] R, G;
@@ -40,6 +42,9 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 	
 	assign {An0, An1, An2, An3} = {4'b0000};
 	assign {Ca, Cb, Cc, Cd, Ce, Cf, Cg, Dp} = {8'hFF};
+	
+	wire [7:0] switches;
+	assign switches = {Sw0, Sw1, Sw2, Sw3, Sw4, Sw5, Sw6, Sw7};
 	
 	// Synchronization signals
 	output HS;
@@ -168,14 +173,27 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 	// we want to read some part of the image (some address) and show that
 	// switch between ^ and reading some other part of the image that the decryptor is now decrypting and write correspondingly
 	
+	reg [63:0] button_key;
+	always @(posedge ClkPort) begin: KEY_GEN
+		integer i;
+		for (i = 0; i < 8; i = i + 1) begin
+			if (switches[i])
+				button_key[8 * i +: 8] = 8'hFF;
+			else
+				button_key[8 * i +: 8] = 8'h00;
+		end
+	end
+	
 	decrypter dec(
 		.clk(clk_decrypter),
+		.reset(rst),
 		.encrypted_data(ben_dout),
 		.read_addr(decr_read_addr),
 		.write_addr(write_addr_dec),
 		.decrypted_data(dec_din),
 		.decrypter_active(decrypter_active),
-		.done(dec_done)
+		.done(dec_done),
+		.key(button_key)
 	);
 	
 	decryption_mem dec_mem (
