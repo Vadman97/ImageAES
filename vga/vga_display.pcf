@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Wed Apr 26 19:27:41 2017
+// Written by: Map P.20131013 on Thu Apr 27 15:37:32 2017
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -42,13 +42,10 @@ COMP "Mt_St_we_bar" LOCATE = SITE "M16" LEVEL 1;
 COMP "Mt_ce_bar" LOCATE = SITE "L15" LEVEL 1;
 COMP "St_ce_bar" LOCATE = SITE "L17" LEVEL 1;
 COMP "St_rp_bar" LOCATE = SITE "V3" LEVEL 1;
-TIMEGRP sys_clk_pin = BEL "button_key_0" BEL "button_key_8" BEL
-        "button_key_16" BEL "button_key_24" BEL "button_key_32" BEL
-        "button_key_40" BEL "button_key_48" BEL "button_key_56" BEL
-        "clk_25Mhz" BEL "clk_decrypter" BEL "count_0" BEL "count_1" BEL
-        "count_2" BEL "count_3" BEL "count_4" BEL "count_5" BEL "count_6" BEL
-        "count_7" BEL "count_8" BEL "count_9" BEL "count_10" BEL "count_11"
-        BEL "ClkPort_BUFGP/BUFG";
+TIMEGRP sys_clk_pin = BEL "clk_25Mhz" BEL "clk_decrypter" BEL "count_0" BEL
+        "count_1" BEL "count_2" BEL "count_3" BEL "count_4" BEL "count_5" BEL
+        "count_6" BEL "count_7" BEL "count_8" BEL "count_9" BEL "count_10" BEL
+        "count_11" BEL "count_12" BEL "count_13" BEL "ClkPort_BUFGP/BUFG";
 TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_pin" 100 MHz HIGH 50%;
 SCHEMATIC END;
 

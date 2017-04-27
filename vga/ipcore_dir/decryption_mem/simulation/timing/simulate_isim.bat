@@ -45,7 +45,6 @@
 :: PART OF THIS FILE AT ALL TIMES.
 ::--------------------------------------------------------------------------------
 
-cp ..\..\..\decryption_mem.mif .
 
 
 vlogcomp -work work ..\..\implement\results\routed.v

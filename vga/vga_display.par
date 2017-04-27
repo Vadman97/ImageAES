@@ -1,7 +1,7 @@
 Release 14.7 par P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-DESKTOP-KEVUIH5::  Wed Apr 26 19:27:44 2017
+DESKTOP-KEVUIH5::  Thu Apr 27 15:37:35 2017
 
 par -w -intstyle ise -ol high -mt off vga_display_map.ncd vga_display.ncd
 vga_display.pcf 
@@ -35,16 +35,16 @@ Device speed data version:  "PRODUCTION 1.23 2013-10-13".
 Device Utilization Summary:
 
 Slice Logic Utilization:
-  Number of Slice Registers:                   375 out of  18,224    2%
-    Number used as Flip Flops:                 375
+  Number of Slice Registers:                   166 out of  18,224    1%
+    Number used as Flip Flops:                 166
     Number used as Latches:                      0
     Number used as Latch-thrus:                  0
     Number used as AND/OR logics:                0
-  Number of Slice LUTs:                        274 out of   9,112    3%
-    Number used as logic:                      233 out of   9,112    2%
-      Number using O6 output only:             146
-      Number using O5 output only:              36
-      Number using O5 and O6:                   51
+  Number of Slice LUTs:                        148 out of   9,112    1%
+    Number used as logic:                      135 out of   9,112    1%
+      Number using O6 output only:              66
+      Number using O5 output only:              26
+      Number using O5 and O6:                   43
       Number used as ROM:                        0
     Number used as Memory:                       2 out of   2,176    1%
       Number used as Dual Port RAM:              0
@@ -53,18 +53,18 @@ Slice Logic Utilization:
         Number using O6 output only:             2
         Number using O5 output only:             0
         Number using O5 and O6:                  0
-    Number used exclusively as route-thrus:     39
-      Number with same-slice register load:     36
-      Number with same-slice carry load:         3
+    Number used exclusively as route-thrus:     11
+      Number with same-slice register load:      9
+      Number with same-slice carry load:         2
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                   109 out of   2,278    4%
-  Number of MUXCYs used:                        68 out of   4,556    1%
-  Number of LUT Flip Flop pairs used:          362
-    Number with an unused Flip Flop:            47 out of     362   12%
-    Number with an unused LUT:                  88 out of     362   24%
-    Number of fully used LUT-FF pairs:         227 out of     362   62%
+  Number of occupied Slices:                    59 out of   2,278    2%
+  Number of MUXCYs used:                        72 out of   4,556    1%
+  Number of LUT Flip Flop pairs used:          191
+    Number with an unused Flip Flop:            38 out of     191   19%
+    Number with an unused LUT:                  43 out of     191   22%
+    Number of fully used LUT-FF pairs:         110 out of     191   57%
     Number of slice register sites lost
       to control set restrictions:               0 out of  18,224    0%
 
@@ -77,7 +77,6 @@ Slice Logic Distribution:
 IO Utilization:
   Number of bonded IOBs:                        39 out of     232   16%
     Number of LOCed IOBs:                       39 out of      39  100%
-    IOB Flip Flops:                              8
 
 Specific Feature Utilization:
   Number of RAMB16BWERs:                        32 out of      32  100%
@@ -88,9 +87,7 @@ Specific Feature Utilization:
     Number used as BUFGs:                        3
     Number used as BUFGMUX:                      0
   Number of DCM/DCM_CLKGENs:                     0 out of       4    0%
-  Number of ILOGIC2/ISERDES2s:                   8 out of     248    3%
-    Number used as ILOGIC2s:                     8
-    Number used as ISERDES2s:                    0
+  Number of ILOGIC2/ISERDES2s:                   0 out of     248    0%
   Number of IODELAY2/IODRP2/IODRP2_MCBs:         0 out of     248    0%
   Number of OLOGIC2/OSERDES2s:                   0 out of     248    0%
   Number of BSCANs:                              0 out of       4    0%
@@ -118,29 +115,29 @@ WARNING:Par:288 - The signal btnU_IBUF has no load.  PAR will not attempt to rou
 Starting Router
 
 
-Phase  1  : 5199 unrouted;      REAL time: 4 secs 
+Phase  1  : 4524 unrouted;      REAL time: 4 secs 
 
-Phase  2  : 1926 unrouted;      REAL time: 4 secs 
+Phase  2  : 1325 unrouted;      REAL time: 4 secs 
 
-Phase  3  : 599 unrouted;      REAL time: 5 secs 
+Phase  3  : 322 unrouted;      REAL time: 6 secs 
 
-Phase  4  : 599 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 6 secs 
+Phase  4  : 322 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 6 secs 
 
 Updating file: vga_display.ncd with current fully routed design.
 
-Phase  5  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 6 secs 
+Phase  5  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 7 secs 
 
-Phase  6  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 6 secs 
+Phase  6  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 7 secs 
 
-Phase  7  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 6 secs 
+Phase  7  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 7 secs 
 
-Phase  8  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 6 secs 
+Phase  8  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 7 secs 
 
-Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 6 secs 
+Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 7 secs 
 
-Phase 10  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 6 secs 
-Total REAL time to Router completion: 6 secs 
-Total CPU time to Router completion: 6 secs 
+Phase 10  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 7 secs 
+Total REAL time to Router completion: 7 secs 
+Total CPU time to Router completion: 7 secs 
 
 Partition Implementation Status
 -------------------------------
@@ -158,11 +155,11 @@ Generating Clock Report
 +---------------------+--------------+------+------+------------+-------------+
 |        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
 +---------------------+--------------+------+------+------------+-------------+
-|      clk_25Mhz_BUFG |  BUFGMUX_X2Y2| No   |   74 |  0.051     |  0.905      |
+|      clk_25Mhz_BUFG |  BUFGMUX_X2Y2| No   |   76 |  0.049     |  0.904      |
 +---------------------+--------------+------+------+------------+-------------+
-|  clk_decrypter_BUFG |  BUFGMUX_X2Y3| No   |   66 |  0.057     |  0.903      |
+|  clk_decrypter_BUFG |  BUFGMUX_X2Y3| No   |   14 |  0.013     |  0.866      |
 +---------------------+--------------+------+------+------------+-------------+
-|       ClkPort_BUFGP | BUFGMUX_X3Y13| No   |   13 |  0.519     |  1.375      |
+|       ClkPort_BUFGP | BUFGMUX_X3Y13| No   |    5 |  0.002     |  0.859      |
 +---------------------+--------------+------+------+------------+-------------+
 
 * Net Skew is the difference between the minimum and maximum routing
@@ -182,9 +179,8 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
                                             |             |    Slack   | Achievable | Errors |    Score   
 ----------------------------------------------------------------------------------------------------------
-  TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_ | SETUP       |     8.341ns|     1.659ns|       0|           0
-  pin" 100 MHz HIGH 50%                     | HOLD        |     0.491ns|            |       0|           0
-                                            | MINPERIOD   |     8.270ns|     1.730ns|       0|           0
+  TS_sys_clk_pin = PERIOD TIMEGRP "sys_clk_ | SETUP       |     8.154ns|     1.846ns|       0|           0
+  pin" 100 MHz HIGH 50%                     | HOLD        |     0.529ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
 
 

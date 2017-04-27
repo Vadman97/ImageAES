@@ -44,7 +44,7 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 	assign {Ca, Cb, Cc, Cd, Ce, Cf, Cg, Dp} = {8'hFF};
 	
 	wire [7:0] switches;
-	assign switches = {Sw0, Sw1, Sw2, Sw3, Sw4, Sw5, Sw6, Sw7};
+	assign switches = {Sw7, Sw6, Sw5, Sw4, Sw3, Sw2, Sw1, Sw0};
 	
 	// Synchronization signals
 	output HS;
@@ -71,7 +71,7 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 	/////////////////////////////////////////////////////
 	// Begin clock division
 	parameter N = 2;	// VGA clock divider
-	parameter dec_N = 12; //16;	// decryptor clock divider
+	parameter dec_N = 14; //16;	// decryptor clock divider
 	
 	reg clk_25Mhz;
 	reg clk_decrypter;
@@ -100,7 +100,7 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 	always @ (posedge MEM_WRITE_CLOCK) begin
 		icount <= icount + 1;
 		
-		if (!dec_done) begin
+		if (!dec_done & !rst) begin
 			write_addr <= write_addr_dec;
 			dec_mem_din <= dec_din;
 			reset_addr <= 0;
@@ -118,7 +118,7 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 			B <= sprite_B;
 		end else begin
 			// why the f is this - 4 who knows :'(
-			write_addr <= reset_addr - 4;
+			/*write_addr <= reset_addr - 4;
 			ben_read_addr <= reset_addr;
 			dec_mem_din <= ben_dout;
 			
@@ -126,7 +126,7 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 			
 			R <= 3'd0;
 			G <= 3'd0;
-			B <= 2'd0;
+			B <= 2'd0;*/
 		end
 	end
 
@@ -193,7 +193,7 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 		.decrypted_data(dec_din),
 		.decrypter_active(decrypter_active),
 		.done(dec_done),
-		.key(button_key)
+		.key(switches)
 	);
 	
 	decryption_mem dec_mem (
