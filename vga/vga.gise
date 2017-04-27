@@ -37,7 +37,6 @@
     <file xil_pn:fileType="FILE_LOG" xil_pn:name="ipcore_dir/coregen.log"/>
     <file xil_pn:fileType="FILE_DIRECTORY" xil_pn:name="isim"/>
     <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_CMD" xil_pn:name="isim.cmd"/>
-    <file xil_pn:branch="BehavioralSim" xil_pn:fileType="FILE_LOG" xil_pn:name="isim.log"/>
     <file xil_pn:fileType="FILE_HTML" xil_pn:name="usage_statistics_webtalk.html"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BITGEN_REPORT" xil_pn:name="vga_display.bgn" xil_pn:subbranch="FPGAConfiguration"/>
     <file xil_pn:branch="Implementation" xil_pn:fileType="FILE_BIT" xil_pn:name="vga_display.bit" xil_pn:subbranch="FPGAConfiguration"/>
@@ -93,7 +92,7 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1493261248" xil_pn:in_ck="4463956078874276603" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1493261248">
+    <transform xil_pn:end_ts="1493261801" xil_pn:in_ck="4463956078874276603" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1493261801">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="../des/DES/decrypt_dumb.v"/>
@@ -123,7 +122,7 @@
       <outfile xil_pn:name="ipcore_dir/pezhman_mem.ngc"/>
       <outfile xil_pn:name="ipcore_dir/pezhman_mem.v"/>
     </transform>
-    <transform xil_pn:end_ts="1493261248" xil_pn:in_ck="6176197321446537553" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1493261248">
+    <transform xil_pn:end_ts="1493261801" xil_pn:in_ck="6176197321446537553" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1493261801">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="../des/DES/decrypt_dumb.v"/>
@@ -137,22 +136,20 @@
       <outfile xil_pn:name="vga_display.v"/>
       <outfile xil_pn:name="vga_tb.v"/>
     </transform>
-    <transform xil_pn:end_ts="1493261250" xil_pn:in_ck="6176197321446537553" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-1778395006701187647" xil_pn:start_ts="1493261248">
+    <transform xil_pn:end_ts="1493261804" xil_pn:in_ck="6176197321446537553" xil_pn:name="TRAN_ISimulateBehavioralModelRunFuse" xil_pn:prop_ck="-1778395006701187647" xil_pn:start_ts="1493261801">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="decrypt_manager_tb_beh.prj"/>
       <outfile xil_pn:name="decrypt_manager_tb_isim_beh.exe"/>
       <outfile xil_pn:name="fuse.log"/>
       <outfile xil_pn:name="isim"/>
-      <outfile xil_pn:name="isim.log"/>
       <outfile xil_pn:name="xilinxsim.ini"/>
     </transform>
-    <transform xil_pn:end_ts="1493261251" xil_pn:in_ck="-7382160580687713445" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-4942272419289584521" xil_pn:start_ts="1493261250">
+    <transform xil_pn:end_ts="1493261804" xil_pn:in_ck="-7382160580687713445" xil_pn:name="TRAN_ISimulateBehavioralModel" xil_pn:prop_ck="-4942272419289584521" xil_pn:start_ts="1493261804">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <outfile xil_pn:name="decrypt_manager_tb_isim_beh.wdb"/>
       <outfile xil_pn:name="isim.cmd"/>
-      <outfile xil_pn:name="isim.log"/>
     </transform>
     <transform xil_pn:end_ts="1492114956" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1492114956">
       <status xil_pn:value="SuccessfullyRun"/>

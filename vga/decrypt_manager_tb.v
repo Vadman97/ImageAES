@@ -91,11 +91,12 @@ module decrypt_manager_tb;
 		#100;
         
 		// Add stimulus here
-		key = 64'h133457799BBCDFF1;
+		key = 64'h133457799BBCDFF1; 
 		
+		#100;
 		for (i = 0; i < 8; i = i + 1) begin
 			encrypted_data = data[8 * i +: 8];
-			# 100;
+			#(CLK_PERIOD);
 		end
 		 
 		//ack = 1;

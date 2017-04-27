@@ -57,7 +57,7 @@ module decrypter(
 	 reg [14:0] counter;
 	 reg [14:0] last_write_count;
 	 
-	 assign message = {pixels[0], pixels[1], pixels[2], pixels[3], pixels[4], pixels[5], pixels[6], pixels[7]};
+	 assign message = {pixels[7], pixels[6], pixels[5], pixels[4], pixels[3], pixels[2], pixels[1], pixels[0]};
 	 
 	 /*always @(posedge done) begin
 		//copy decrypted into mem
@@ -91,15 +91,6 @@ module decrypter(
 				end
 				// end deryption algo
 					
-				if (ready_to_write) begin
-					write_addr <= last_write_count;
-					write_count <= write_count + 1;
-					last_write_count <= last_write_count + 1;
-					
-					if (write_count == 3'd7)
-						ready_to_write <= 0;
-				end
-				
 				if (algo_done) begin: ALGO_DONE
 					//copy decrypted into mem
 					integer i;
@@ -110,7 +101,16 @@ module decrypter(
 					ready_to_write <= 1;
 				end
 				
-				decrypted_data <= dec_pixels[write_count];
+				if (ready_to_write) begin
+					write_addr <= last_write_count;
+					write_count <= write_count + 1;
+					last_write_count <= last_write_count + 1;
+					
+					if (write_count == 3'd7)
+						ready_to_write <= 0;
+				end
+					
+				decrypted_data <= dec_pixels[3'd7 - write_count];
 				
 				read_addr <= counter;
 				
