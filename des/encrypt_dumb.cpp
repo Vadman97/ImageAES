@@ -96,8 +96,8 @@ int main(int argc, char ** argv) {
 			//split up binary into bytes
       for (int k = 0; k < 8; k++) {
   			for (int j = 7; j >= 0; j--) {
-  				unsigned char row = (result[k] & (0xFFL << (8 * j))) >> (8 * j);
-  				//printf("%X\n", row);
+  				unsigned char row = result[k];//(result[k] & (0xFFL << (8 * j))) >> (8 * j);
+  				// printf("%X\n", row);
   				output_buf.push_back(row);
   			}
       }
@@ -140,7 +140,7 @@ void encrypt(unsigned char* message, unsigned char* key, unsigned char* result) 
   end
   */
   for (int i = 0; i < 8; i++) {
-    unsigned char key_piece = key[8 * i];
+    unsigned char key_piece = key[i];
     bool firstBit = ((key_piece & 0b00110000) ^ (key_piece & 0b00000011)) > 1;
     bool secondBit = ((key_piece & 0b11000000) ^ (key_piece & 0b00001100)) > 1;
     bool thirdBit = ((key_piece & 0b11110000) ^ (key_piece & 0b00001111)) > 1;
@@ -148,6 +148,8 @@ void encrypt(unsigned char* message, unsigned char* key, unsigned char* result) 
     if (firstBit) idx += 1;
     if (secondBit) idx += 2;
     if (thirdBit) idx += 4;
-    result[i] = (message[i] & (unsigned char)(0xFF << (8 - i))) ^ (unsigned char)rand_arr[idx];
+    result[i] = message[i] ^ (unsigned char)rand_arr[idx];
+    printf("%d - %X ", idx, result[i]);
   }
+  printf("\n");
 }
