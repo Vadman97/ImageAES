@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.16 secs
+Total CPU time to Xst completion: 0.15 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.16 secs
+Total CPU time to Xst completion: 0.15 secs
  
 --> Reading design: vga_display.prj
 
@@ -127,7 +127,6 @@ Parsing module <vga_display>.
 
 Elaborating module <vga_display>.
 WARNING:HDLCompiler:413 - "C:\Users\vkoro\Final_Project\project\vga\vga_display.v" Line 101: Result of 32-bit expression is truncated to fit in 31-bit target.
-WARNING:HDLCompiler:1127 - "C:\Users\vkoro\Final_Project\project\vga\vga_display.v" Line 100: Assignment to reset_addr ignored, since the identifier is never used
 
 Elaborating module <vga_controller_640_60>.
 
@@ -156,6 +155,7 @@ Synthesizing Unit <vga_display>.
 WARNING:Xst:647 - Input <btnU> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <btnD> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 INFO:Xst:3210 - "C:\Users\vkoro\Final_Project\project\vga\vga_display.v" line 148: Output port <inside_image> of the instance <sprites_mem> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Users\vkoro\Final_Project\project\vga\vga_display.v" line 187: Output port <done> of the instance <dec> is unconnected or connected to loadless signal.
     Found 1-bit register for signal <clk_25Mhz>.
     Found 1-bit register for signal <clk_decrypter>.
     Found 15-bit register for signal <write_addr>.
@@ -238,9 +238,9 @@ Synthesizing Unit <decrypter>.
     Found 15-bit register for signal <read_addr>.
     Found 1-bit register for signal <done>.
     Found 15-bit register for signal <counter>.
-    Found 15-bit adder for signal <counter[14]_GND_6_o_add_4_OUT> created at line 48.
-    Found 15-bit subtractor for signal <GND_6_o_GND_6_o_sub_4_OUT<14:0>> created at line 46.
-    Found 15-bit comparator greater for signal <PWR_6_o_counter[14]_LessThan_10_o> created at line 52
+    Found 15-bit adder for signal <counter[14]_GND_6_o_add_5_OUT> created at line 48.
+    Found 15-bit subtractor for signal <GND_6_o_GND_6_o_sub_5_OUT<14:0>> created at line 46.
+    Found 15-bit comparator greater for signal <PWR_6_o_counter[14]_LessThan_11_o> created at line 52
     Summary:
 	inferred   2 Adder/Subtractor(s).
 	inferred  54 D-type flip-flop(s).
@@ -289,6 +289,8 @@ Reading core <ipcore_dir/pezhman_mem.ngc>.
 Reading core <ipcore_dir/decryption_mem.ngc>.
 Loading core <pezhman_mem> for timing and area information for instance <ben>.
 Loading core <decryption_mem> for timing and area information for instance <dec_mem>.
+WARNING:Xst:1426 - The value init of the FF/Latch decrypter_active hinder the constant cleaning in the block vga_display.
+   You should achieve better results by setting this init to 1.
 
 Synthesizing (advanced) Unit <decrypter>.
 The following registers are absorbed into counter <counter>: 1 register on signal <counter>.
@@ -338,6 +340,8 @@ Macro Statistics
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
+WARNING:Xst:1426 - The value init of the FF/Latch decrypter_active hinder the constant cleaning in the block vga_display.
+   You should achieve better results by setting this init to 1.
 
 Optimizing unit <vga_display> ...
 
@@ -347,6 +351,7 @@ Optimizing unit <decrypter> ...
 
 Optimizing unit <vga_bsprite> ...
 WARNING:Xst:2677 - Node <vc/blank> of sequential type is unconnected in block <vga_display>.
+WARNING:Xst:2677 - Node <dec/done> of sequential type is unconnected in block <vga_display>.
 WARNING:Xst:1293 - FF/Latch <vc/vcounter_10> has a constant value of 0 in block <vga_display>. This FF/Latch will be trimmed during the optimization process.
 
 Mapping all equations...
@@ -359,8 +364,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 148
- Flip-Flops                                            : 148
+# Registers                                            : 147
+ Flip-Flops                                            : 147
 
 =========================================================================
 
@@ -383,23 +388,23 @@ Top Level Output File Name         : vga_display.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 280
+# BELS                             : 277
 #      GND                         : 3
 #      INV                         : 19
 #      LUT1                        : 28
-#      LUT2                        : 15
-#      LUT3                        : 44
+#      LUT2                        : 14
+#      LUT3                        : 52
 #      LUT4                        : 6
-#      LUT5                        : 7
-#      LUT6                        : 30
+#      LUT5                        : 3
+#      LUT6                        : 24
 #      MUXCY                       : 60
 #      VCC                         : 3
 #      XORCY                       : 65
-# FlipFlops/Latches                : 166
-#      FD                          : 20
+# FlipFlops/Latches                : 165
+#      FD                          : 73
 #      FDC                         : 19
 #      FDCE                        : 10
-#      FDE                         : 94
+#      FDE                         : 40
 #      FDRE                        : 23
 # RAMS                             : 32
 #      RAMB16BWER                  : 32
@@ -421,18 +426,18 @@ Selected Device : 6slx16csg324-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:             166  out of  18224     0%  
- Number of Slice LUTs:                  151  out of   9112     1%  
-    Number used as Logic:               149  out of   9112     1%  
+ Number of Slice Registers:             165  out of  18224     0%  
+ Number of Slice LUTs:                  148  out of   9112     1%  
+    Number used as Logic:               146  out of   9112     1%  
     Number used as Memory:                2  out of   2176     0%  
        Number used as SRL:                2
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    230
-   Number with an unused Flip Flop:      64  out of    230    27%  
-   Number with an unused LUT:            79  out of    230    34%  
-   Number of fully used LUT-FF pairs:    87  out of    230    37%  
-   Number of unique control sets:        12
+ Number of LUT Flip Flop pairs used:    228
+   Number with an unused Flip Flop:      63  out of    228    27%  
+   Number with an unused LUT:            80  out of    228    35%  
+   Number of fully used LUT-FF pairs:    85  out of    228    37%  
+   Number of unique control sets:        10
 
 IO Utilization: 
  Number of IOs:                          39
@@ -467,7 +472,7 @@ Clock Signal                       | Clock buffer(FF name)                      
 -----------------------------------+-------------------------------------------------------------------------------------------------------------------------------+-------+
 ClkPort                            | BUFGP                                                                                                                         | 16    |
 clk_25Mhz                          | BUFG                                                                                                                          | 130   |
-clk_decrypter                      | BUFG                                                                                                                          | 54    |
+clk_decrypter                      | BUFG                                                                                                                          | 53    |
 ben/N1                             | NONE(ben/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram)| 16    |
 -----------------------------------+-------------------------------------------------------------------------------------------------------------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
@@ -481,7 +486,7 @@ Timing Summary:
 Speed Grade: -3
 
    Minimum period: 9.815ns (Maximum Frequency: 101.881MHz)
-   Minimum input arrival time before clock: 4.728ns
+   Minimum input arrival time before clock: 4.591ns
    Maximum output required time after clock: 3.597ns
    Maximum combinational path delay: No path found
 
@@ -527,7 +532,7 @@ Delay:               1.932ns (Levels of Logic = 14)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_25Mhz'
   Clock period: 9.815ns (frequency: 101.881MHz)
-  Total number of paths / destination ports: 33654 / 806
+  Total number of paths / destination ports: 33653 / 805
 -------------------------------------------------------------------------
 Delay:               9.815ns (Levels of Logic = 5)
   Source:            vc/vcounter_8 (FF)
@@ -552,53 +557,65 @@ Delay:               9.815ns (Levels of Logic = 5)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_decrypter'
-  Clock period: 3.833ns (frequency: 260.875MHz)
-  Total number of paths / destination ports: 270 / 46
+  Clock period: 2.004ns (frequency: 498.940MHz)
+  Total number of paths / destination ports: 255 / 45
 -------------------------------------------------------------------------
-Delay:               3.833ns (Levels of Logic = 3)
-  Source:            dec/counter_5 (FF)
-  Destination:       dec/done (FF)
+Delay:               2.004ns (Levels of Logic = 16)
+  Source:            dec/counter_0 (FF)
+  Destination:       dec/counter_14 (FF)
   Source Clock:      clk_decrypter rising
   Destination Clock: clk_decrypter rising
 
-  Data Path: dec/counter_5 to dec/done
+  Data Path: dec/counter_0 to dec/counter_14
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE:C->Q             4   0.447   1.048  dec/counter_5 (dec/counter_5)
-     LUT6:I0->O            1   0.203   0.944  dec/PWR_6_o_counter[14]_LessThan_10_o21 (dec/PWR_6_o_counter[14]_LessThan_10_o2)
-     LUT6:I0->O            1   0.203   0.684  dec/done_rstpot_SW1 (N23)
-     LUT6:I4->O            1   0.203   0.000  dec/done_rstpot (dec/done_rstpot)
-     FD:D                      0.102          dec/done
+     FDRE:C->Q             3   0.447   0.651  dec/counter_0 (dec/counter_0)
+     LUT1:I0->O            1   0.205   0.000  dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<0>_rt (dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<0>_rt)
+     MUXCY:S->O            1   0.172   0.000  dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<0> (dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<0>)
+     MUXCY:CI->O           1   0.019   0.000  dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<1> (dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<1>)
+     MUXCY:CI->O           1   0.019   0.000  dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<2> (dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<2>)
+     MUXCY:CI->O           1   0.019   0.000  dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<3> (dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<3>)
+     MUXCY:CI->O           1   0.019   0.000  dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<4> (dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<4>)
+     MUXCY:CI->O           1   0.019   0.000  dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<5> (dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<5>)
+     MUXCY:CI->O           1   0.019   0.000  dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<6> (dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<6>)
+     MUXCY:CI->O           1   0.019   0.000  dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<7> (dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<7>)
+     MUXCY:CI->O           1   0.019   0.000  dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<8> (dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<8>)
+     MUXCY:CI->O           1   0.019   0.000  dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<9> (dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<9>)
+     MUXCY:CI->O           1   0.019   0.000  dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<10> (dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<10>)
+     MUXCY:CI->O           1   0.019   0.000  dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<11> (dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<11>)
+     MUXCY:CI->O           1   0.019   0.000  dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<12> (dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<12>)
+     MUXCY:CI->O           0   0.019   0.000  dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<13> (dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_cy<13>)
+     XORCY:CI->O           1   0.180   0.000  dec/Msub_GND_6_o_GND_6_o_sub_5_OUT<14:0>_xor<14> (dec/GND_6_o_GND_6_o_sub_5_OUT<14>)
+     FDE:D                     0.102          dec/write_addr_14
     ----------------------------------------
-    Total                      3.833ns (1.158ns logic, 2.675ns route)
-                                       (30.2% logic, 69.8% route)
+    Total                      2.004ns (1.353ns logic, 0.651ns route)
+                                       (67.5% logic, 32.5% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_25Mhz'
-  Total number of paths / destination ports: 76 / 76
+  Total number of paths / destination ports: 21 / 21
 -------------------------------------------------------------------------
-Offset:              4.728ns (Levels of Logic = 2)
+Offset:              3.014ns (Levels of Logic = 1)
   Source:            rst (PAD)
-  Destination:       ben_read_addr_0 (FF)
+  Destination:       vc/vcounter_9 (FF)
   Destination Clock: clk_25Mhz rising
 
-  Data Path: rst to ben_read_addr_0
+  Data Path: rst to vc/vcounter_9
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            40   1.222   1.406  rst_IBUF (rst_IBUF)
-     LUT2:I1->O           54   0.205   1.573  dec_done_rst_AND_1_o1 (dec_done_rst_AND_1_o)
-     FDE:CE                    0.322          ben_read_addr_0
+     IBUF:I->O            37   1.222   1.362  rst_IBUF (rst_IBUF)
+     FDC:CLR                   0.430          vc/hcounter_0
     ----------------------------------------
-    Total                      4.728ns (1.749ns logic, 2.979ns route)
-                                       (37.0% logic, 63.0% route)
+    Total                      3.014ns (1.652ns logic, 1.362ns route)
+                                       (54.8% logic, 45.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_decrypter'
-  Total number of paths / destination ports: 62 / 62
+  Total number of paths / destination ports: 61 / 61
 -------------------------------------------------------------------------
-Offset:              4.633ns (Levels of Logic = 2)
+Offset:              4.591ns (Levels of Logic = 2)
   Source:            rst (PAD)
   Destination:       dec/write_addr_14 (FF)
   Destination Clock: clk_decrypter rising
@@ -607,12 +624,12 @@ Offset:              4.633ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            40   1.222   1.510  rst_IBUF (rst_IBUF)
-     LUT2:I0->O           38   0.203   1.376  dec/_n0044_inv1 (dec/_n0044_inv)
+     IBUF:I->O            37   1.222   1.467  rst_IBUF (rst_IBUF)
+     LUT2:I0->O           38   0.203   1.376  dec/_n0046_inv1 (dec/_n0046_inv)
      FDE:CE                    0.322          dec/decrypted_data_0
     ----------------------------------------
-    Total                      4.633ns (1.747ns logic, 2.886ns route)
-                                       (37.7% logic, 62.3% route)
+    Total                      4.591ns (1.747ns logic, 2.844ns route)
+                                       (38.1% logic, 61.9% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_25Mhz'
@@ -627,7 +644,7 @@ Offset:              3.597ns (Levels of Logic = 1)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDE:C->Q              1   0.447   0.579  R_2 (R_2)
+     FD:C->Q               1   0.447   0.579  R_2 (R_2)
      OBUF:I->O                 2.571          R_2_OBUF (R<2>)
     ----------------------------------------
     Total                      3.597ns (3.018ns logic, 0.579ns route)
@@ -652,7 +669,7 @@ Clock to Setup on destination clock clk_25Mhz
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
 clk_25Mhz      |    9.815|         |         |         |
-clk_decrypter  |    3.301|         |         |         |
+clk_decrypter  |    1.128|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock clk_decrypter
@@ -660,21 +677,21 @@ Clock to Setup on destination clock clk_decrypter
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk_25Mhz      |    3.378|         |         |         |
-clk_decrypter  |    3.833|         |         |         |
+clk_25Mhz      |    3.620|         |         |         |
+clk_decrypter  |    2.004|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
 Total REAL time to Xst completion: 10.00 secs
-Total CPU time to Xst completion: 10.18 secs
+Total CPU time to Xst completion: 9.73 secs
  
 --> 
 
-Total memory usage is 317552 kilobytes
+Total memory usage is 317532 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   13 (   0 filtered)
-Number of infos    :    2 (   0 filtered)
+Number of warnings :   15 (   0 filtered)
+Number of infos    :    3 (   0 filtered)
 

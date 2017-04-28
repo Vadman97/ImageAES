@@ -100,7 +100,7 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 	always @ (posedge MEM_WRITE_CLOCK) begin
 		icount <= icount + 1;
 		
-		if (!dec_done & !rst) begin
+		if (1'b1 | (!dec_done & !rst)) begin
 			write_addr <= write_addr_dec;
 			dec_mem_din <= dec_din;
 			reset_addr <= 0;
@@ -118,7 +118,7 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 			B <= sprite_B;
 		end else begin
 			// why the f is this - 4 who knows :'(
-			/*write_addr <= reset_addr - 4;
+			write_addr <= reset_addr - 4;
 			ben_read_addr <= reset_addr;
 			dec_mem_din <= ben_dout;
 			
@@ -126,7 +126,7 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 			
 			R <= 3'd0;
 			G <= 3'd0;
-			B <= 2'd0;*/
+			B <= 2'd0;
 		end
 	end
 

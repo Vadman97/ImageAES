@@ -38,7 +38,7 @@ module decrypter(
 		end else begin
 			if (decrypter_active) begin
 				// decryption algo
-				if (encrypted_data[6:3] == 3'b111 | encrypted_data == 3'h1C)
+				if ((encrypted_data[6:3] == 3'b111) || (encrypted_data == 8'h1C))
 					decrypted_data <= key;
 				else
 					decrypted_data <= encrypted_data;
