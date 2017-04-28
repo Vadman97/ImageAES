@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.16 secs
+Total CPU time to Xst completion: 0.14 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.16 secs
+Total CPU time to Xst completion: 0.15 secs
  
 --> Reading design: vga_display.prj
 
@@ -108,19 +108,19 @@ Cores Search Directories           : {"ipcore_dir"  }
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
-Analyzing Verilog file "C:\Users\vkoro\Final_Project\project\des\DES\decrypt_dumb.v" into library work
+Analyzing Verilog file "D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\des\DES\decrypt_dumb.v" into library work
 Parsing module <decrypt_dumb>.
-Analyzing Verilog file "C:\Users\vkoro\Final_Project\project\vga\vga_controller_640_60.v" into library work
+Analyzing Verilog file "D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\vga\vga_controller_640_60.v" into library work
 Parsing module <vga_controller_640_60>.
-Analyzing Verilog file "C:\Users\vkoro\Final_Project\project\vga\vga_bsprite.v" into library work
+Analyzing Verilog file "D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\vga\vga_bsprite.v" into library work
 Parsing module <vga_bsprite>.
-Analyzing Verilog file "C:\Users\vkoro\Final_Project\project\vga\ipcore_dir\pezhman_mem.v" into library work
+Analyzing Verilog file "D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\vga\ipcore_dir\pezhman_mem.v" into library work
 Parsing module <pezhman_mem>.
-Analyzing Verilog file "C:\Users\vkoro\Final_Project\project\vga\ipcore_dir\decryption_mem.v" into library work
+Analyzing Verilog file "D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\vga\ipcore_dir\decryption_mem.v" into library work
 Parsing module <decryption_mem>.
-Analyzing Verilog file "C:\Users\vkoro\Final_Project\project\vga\decrypter.v" into library work
+Analyzing Verilog file "D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\vga\decrypter.v" into library work
 Parsing module <decrypter>.
-Analyzing Verilog file "C:\Users\vkoro\Final_Project\project\vga\vga_display.v" into library work
+Analyzing Verilog file "D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\vga\vga_display.v" into library work
 Parsing module <vga_display>.
 
 =========================================================================
@@ -128,43 +128,44 @@ Parsing module <vga_display>.
 =========================================================================
 
 Elaborating module <vga_display>.
-WARNING:HDLCompiler:413 - "C:\Users\vkoro\Final_Project\project\vga\vga_display.v" Line 101: Result of 32-bit expression is truncated to fit in 31-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\vkoro\Final_Project\project\vga\vga_display.v" Line 121: Result of 32-bit expression is truncated to fit in 15-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\vkoro\Final_Project\project\vga\vga_display.v" Line 125: Result of 16-bit expression is truncated to fit in 15-bit target.
+WARNING:HDLCompiler:413 - "D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\vga\vga_display.v" Line 101: Result of 32-bit expression is truncated to fit in 31-bit target.
+WARNING:HDLCompiler:413 - "D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\vga\vga_display.v" Line 121: Result of 32-bit expression is truncated to fit in 15-bit target.
+WARNING:HDLCompiler:413 - "D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\vga\vga_display.v" Line 125: Result of 16-bit expression is truncated to fit in 15-bit target.
 
 Elaborating module <vga_controller_640_60>.
 
 Elaborating module <vga_bsprite>.
-WARNING:HDLCompiler:1127 - "C:\Users\vkoro\Final_Project\project\vga\vga_display.v" Line 157: Assignment to inside_image ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\vga\vga_display.v" Line 157: Assignment to inside_image ignored, since the identifier is never used
 
 Elaborating module <pezhman_mem>.
-WARNING:HDLCompiler:1499 - "C:\Users\vkoro\Final_Project\project\vga\ipcore_dir\pezhman_mem.v" Line 39: Empty module <pezhman_mem> remains a black box.
+WARNING:HDLCompiler:1499 - "D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\vga\ipcore_dir\pezhman_mem.v" Line 39: Empty module <pezhman_mem> remains a black box.
 
 Elaborating module <decrypter>.
 
 Elaborating module <decrypt_dumb>.
-WARNING:HDLCompiler:872 - "C:\Users\vkoro\Final_Project\project\des\DES\decrypt_dumb.v" Line 34: Using initial value of rand since it is never assigned
-WARNING:HDLCompiler:413 - "C:\Users\vkoro\Final_Project\project\vga\decrypter.v" Line 94: Result of 4-bit expression is truncated to fit in 3-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\vkoro\Final_Project\project\vga\decrypter.v" Line 95: Result of 16-bit expression is truncated to fit in 15-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\vkoro\Final_Project\project\vga\decrypter.v" Line 115: Result of 4-bit expression is truncated to fit in 3-bit target.
-WARNING:HDLCompiler:413 - "C:\Users\vkoro\Final_Project\project\vga\decrypter.v" Line 116: Result of 16-bit expression is truncated to fit in 15-bit target.
+WARNING:HDLCompiler:872 - "D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\des\DES\decrypt_dumb.v" Line 34: Using initial value of rand since it is never assigned
+WARNING:HDLCompiler:413 - "D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\vga\decrypter.v" Line 106: Result of 4-bit expression is truncated to fit in 3-bit target.
+WARNING:HDLCompiler:413 - "D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\vga\decrypter.v" Line 107: Result of 16-bit expression is truncated to fit in 15-bit target.
+WARNING:HDLCompiler:413 - "D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\vga\decrypter.v" Line 117: Result of 4-bit expression is truncated to fit in 3-bit target.
+WARNING:HDLCompiler:413 - "D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\vga\decrypter.v" Line 118: Result of 16-bit expression is truncated to fit in 15-bit target.
 
 Elaborating module <decryption_mem>.
-WARNING:HDLCompiler:1499 - "C:\Users\vkoro\Final_Project\project\vga\ipcore_dir\decryption_mem.v" Line 39: Empty module <decryption_mem> remains a black box.
+WARNING:HDLCompiler:1499 - "D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\vga\ipcore_dir\decryption_mem.v" Line 39: Empty module <decryption_mem> remains a black box.
 
 =========================================================================
 *                           HDL Synthesis                               *
 =========================================================================
 
 Synthesizing Unit <vga_display>.
-    Related source file is "C:\Users\vkoro\Final_Project\project\vga\vga_display.v".
+    Related source file is "D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\vga\vga_display.v".
         N = 2
         dec_N = 12
 WARNING:Xst:647 - Input <btnU> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <btnD> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-INFO:Xst:3210 - "C:\Users\vkoro\Final_Project\project\vga\vga_display.v" line 148: Output port <inside_image> of the instance <sprites_mem> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\vga\vga_display.v" line 148: Output port <inside_image> of the instance <sprites_mem> is unconnected or connected to loadless signal.
     Found 1-bit register for signal <clk_25Mhz>.
     Found 1-bit register for signal <clk_decrypter>.
+    Found 31-bit register for signal <icount>.
     Found 15-bit register for signal <write_addr>.
     Found 8-bit register for signal <dec_mem_din>.
     Found 15-bit register for signal <reset_addr>.
@@ -177,16 +178,17 @@ INFO:Xst:3210 - "C:\Users\vkoro\Final_Project\project\vga\vga_display.v" line 14
     Found 64-bit register for signal <button_key>.
     Found 12-bit register for signal <count>.
     Found 12-bit adder for signal <count[11]_GND_1_o_add_5_OUT> created at line 81.
-    Found 15-bit adder for signal <reset_addr[14]_GND_1_o_add_10_OUT> created at line 125.
-    Found 15-bit subtractor for signal <GND_1_o_GND_1_o_sub_10_OUT<14:0>> created at line 121.
+    Found 31-bit adder for signal <icount[30]_GND_1_o_add_8_OUT> created at line 101.
+    Found 15-bit adder for signal <reset_addr[14]_GND_1_o_add_12_OUT> created at line 125.
+    Found 15-bit subtractor for signal <GND_1_o_GND_1_o_sub_12_OUT<14:0>> created at line 121.
     Summary:
-	inferred   3 Adder/Subtractor(s).
-	inferred 148 D-type flip-flop(s).
-	inferred   3 Multiplexer(s).
+	inferred   4 Adder/Subtractor(s).
+	inferred 179 D-type flip-flop(s).
+	inferred   5 Multiplexer(s).
 Unit <vga_display> synthesized.
 
 Synthesizing Unit <vga_controller_640_60>.
-    Related source file is "C:\Users\vkoro\Final_Project\project\vga\vga_controller_640_60.v".
+    Related source file is "D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\vga\vga_controller_640_60.v".
         HMAX = 800
         HLINES = 640
         HFP = 648
@@ -217,7 +219,7 @@ Synthesizing Unit <vga_controller_640_60>.
 Unit <vga_controller_640_60> synthesized.
 
 Synthesizing Unit <vga_bsprite>.
-    Related source file is "C:\Users\vkoro\Final_Project\project\vga\vga_bsprite.v".
+    Related source file is "D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\vga\vga_bsprite.v".
         VGA_WIDTH = 11'b01010000000
         VGA_HEIGHT = 11'b00111100000
         IMG_WIDTH = 8'b10101111
@@ -244,35 +246,36 @@ WARNING:Xst:647 - Input <blank> is never used. This port will be preserved and l
 Unit <vga_bsprite> synthesized.
 
 Synthesizing Unit <decrypter>.
-    Related source file is "C:\Users\vkoro\Final_Project\project\vga\decrypter.v".
-    Found 1-bit register for signal <en>.
-    Found 1-bit register for signal <ack>.
-    Found 15-bit register for signal <write_addr>.
+    Related source file is "D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\vga\decrypter.v".
     Found 3-bit register for signal <write_count>.
+    Found 15-bit register for signal <counter>.
     Found 15-bit register for signal <last_write_count>.
+    Found 1-bit register for signal <algo_en>.
     Found 1-bit register for signal <ready_to_write>.
-    Found 64-bit register for signal <n0060[63:0]>.
+    Found 64-bit register for signal <message>.
+    Found 1-bit register for signal <ack>.
+    Found 64-bit register for signal <n0074[63:0]>.
+    Found 15-bit register for signal <write_addr>.
     Found 8-bit register for signal <decrypted_data>.
     Found 15-bit register for signal <read_addr>.
-    Found 3-bit register for signal <read_count>.
-    Found 15-bit register for signal <counter>.
     Found 1-bit register for signal <done>.
-    Found 64-bit register for signal <n0059[63:0]>.
-    Found 3-bit adder for signal <write_count[2]_GND_6_o_add_12_OUT> created at line 94.
-    Found 15-bit adder for signal <last_write_count[14]_GND_6_o_add_13_OUT> created at line 95.
-    Found 3-bit adder for signal <read_count[2]_GND_6_o_add_20_OUT> created at line 115.
-    Found 15-bit adder for signal <counter[14]_GND_6_o_add_21_OUT> created at line 116.
-    Found 8-bit 8-to-1 multiplexer for signal <write_count[2]_dec_pixels[7][7]_wide_mux_19_OUT> created at line 111.
-    Found 15-bit comparator greater for signal <PWR_7_o_counter[14]_LessThan_23_o> created at line 118
+    Found 3-bit register for signal <read_count>.
+    Found 3-bit subtractor for signal <PWR_7_o_write_count[2]_sub_20_OUT> created at line 113.
+    Found 3-bit adder for signal <write_count[2]_GND_6_o_add_13_OUT> created at line 106.
+    Found 15-bit adder for signal <last_write_count[14]_GND_6_o_add_14_OUT> created at line 107.
+    Found 3-bit adder for signal <read_count[2]_GND_6_o_add_21_OUT> created at line 117.
+    Found 15-bit adder for signal <counter[14]_GND_6_o_add_22_OUT> created at line 118.
+    Found 8-bit 8-to-1 multiplexer for signal <PWR_7_o_dec_pixels[7][7]_wide_mux_20_OUT> created at line 113.
+    Found 15-bit comparator greater for signal <PWR_7_o_counter[14]_LessThan_24_o> created at line 120
     Summary:
-	inferred   4 Adder/Subtractor(s).
+	inferred   5 Adder/Subtractor(s).
 	inferred 206 D-type flip-flop(s).
 	inferred   1 Comparator(s).
 	inferred   9 Multiplexer(s).
 Unit <decrypter> synthesized.
 
 Synthesizing Unit <decrypt_dumb>.
-    Related source file is "C:\Users\vkoro\Final_Project\project\des\DES\decrypt_dumb.v".
+    Related source file is "D:\Dropbox\2nd Year USC\EE 354\Final_Project\project\des\DES\decrypt_dumb.v".
     Found 3-bit register for signal <state>.
     Found 64-bit register for signal <decrypted>.
     Found finite state machine <FSM_0> for signal <state>.
@@ -333,20 +336,23 @@ HDL Synthesis Report
 Macro Statistics
 # Multipliers                                          : 1
  11x8-bit multiplier                                   : 1
-# Adders/Subtractors                                   : 12
+# Adders/Subtractors                                   : 14
  11-bit adder                                          : 2
  11-bit subtractor                                     : 2
  12-bit adder                                          : 1
  15-bit adder                                          : 4
  15-bit subtractor                                     : 1
  3-bit adder                                           : 2
-# Registers                                            : 32
+ 3-bit subtractor                                      : 1
+ 31-bit adder                                          : 1
+# Registers                                            : 33
  1-bit register                                        : 10
  11-bit register                                       : 2
  12-bit register                                       : 1
  15-bit register                                       : 7
  2-bit register                                        : 1
  3-bit register                                        : 4
+ 31-bit register                                       : 1
  64-bit register                                       : 4
  8-bit register                                        : 3
 # Comparators                                          : 35
@@ -356,12 +362,12 @@ Macro Statistics
  15-bit comparator greater                             : 1
  2-bit comparator greater                              : 16
  4-bit comparator greater                              : 8
-# Multiplexers                                         : 19
+# Multiplexers                                         : 21
  11-bit 2-to-1 multiplexer                             : 4
- 15-bit 2-to-1 multiplexer                             : 2
+ 15-bit 2-to-1 multiplexer                             : 3
  2-bit 2-to-1 multiplexer                              : 1
  3-bit 2-to-1 multiplexer                              : 2
- 8-bit 2-to-1 multiplexer                              : 9
+ 8-bit 2-to-1 multiplexer                              : 10
  8-bit 8-to-1 multiplexer                              : 1
 # Logic shifters                                       : 8
  120-bit shifter logical right                         : 8
@@ -385,9 +391,9 @@ WARNING:Xst:1710 - FF/Latch <done> (without init value) has a constant value of 
 
 Synthesizing (advanced) Unit <decrypter>.
 The following registers are absorbed into counter <write_count>: 1 register on signal <write_count>.
-The following registers are absorbed into counter <last_write_count>: 1 register on signal <last_write_count>.
-The following registers are absorbed into counter <read_count>: 1 register on signal <read_count>.
 The following registers are absorbed into counter <counter>: 1 register on signal <counter>.
+The following registers are absorbed into counter <read_count>: 1 register on signal <read_count>.
+The following registers are absorbed into counter <last_write_count>: 1 register on signal <last_write_count>.
 Unit <decrypter> synthesized (advanced).
 
 Synthesizing (advanced) Unit <vga_bsprite>.
@@ -400,8 +406,9 @@ The following registers are absorbed into counter <vcounter>: 1 register on sign
 Unit <vga_controller_640_60> synthesized (advanced).
 
 Synthesizing (advanced) Unit <vga_display>.
-The following registers are absorbed into counter <reset_addr>: 1 register on signal <reset_addr>.
 The following registers are absorbed into counter <count>: 1 register on signal <count>.
+The following registers are absorbed into counter <reset_addr>: 1 register on signal <reset_addr>.
+The following registers are absorbed into counter <icount>: 1 register on signal <icount>.
 Unit <vga_display> synthesized (advanced).
 
 =========================================================================
@@ -410,14 +417,16 @@ Advanced HDL Synthesis Report
 Macro Statistics
 # MACs                                                 : 1
  11x8-to-15-bit MAC                                    : 1
-# Adders/Subtractors                                   : 3
+# Adders/Subtractors                                   : 4
  11-bit subtractor                                     : 2
  15-bit subtractor                                     : 1
-# Counters                                             : 8
+ 3-bit subtractor                                      : 1
+# Counters                                             : 9
  11-bit up counter                                     : 2
  12-bit up counter                                     : 1
  15-bit up counter                                     : 3
  3-bit up counter                                      : 2
+ 31-bit up counter                                     : 1
 # Registers                                            : 358
  Flip-Flops                                            : 358
 # Comparators                                          : 35
@@ -427,13 +436,13 @@ Macro Statistics
  15-bit comparator greater                             : 1
  2-bit comparator greater                              : 16
  4-bit comparator greater                              : 8
-# Multiplexers                                         : 73
+# Multiplexers                                         : 75
  1-bit 2-to-1 multiplexer                              : 64
  11-bit 2-to-1 multiplexer                             : 2
- 15-bit 2-to-1 multiplexer                             : 2
+ 15-bit 2-to-1 multiplexer                             : 3
  2-bit 2-to-1 multiplexer                              : 1
  3-bit 2-to-1 multiplexer                              : 2
- 8-bit 2-to-1 multiplexer                              : 1
+ 8-bit 2-to-1 multiplexer                              : 2
  8-bit 8-to-1 multiplexer                              : 1
 # Logic shifters                                       : 8
  120-bit shifter logical right                         : 8
@@ -457,6 +466,8 @@ INFO:Xst:2261 - The FF/Latch <button_key_24> in Unit <vga_display> is equivalent
 INFO:Xst:2261 - The FF/Latch <button_key_16> in Unit <vga_display> is equivalent to the following 7 FFs/Latches, which will be removed : <button_key_17> <button_key_18> <button_key_19> <button_key_20> <button_key_21> <button_key_22> <button_key_23> 
 INFO:Xst:2261 - The FF/Latch <button_key_8> in Unit <vga_display> is equivalent to the following 7 FFs/Latches, which will be removed : <button_key_9> <button_key_10> <button_key_11> <button_key_12> <button_key_13> <button_key_14> <button_key_15> 
 INFO:Xst:2261 - The FF/Latch <button_key_0> in Unit <vga_display> is equivalent to the following 7 FFs/Latches, which will be removed : <button_key_1> <button_key_2> <button_key_3> <button_key_4> <button_key_5> <button_key_6> <button_key_7> 
+INFO:Xst:2146 - In block <decrypter>, Counter <last_write_count> <write_count> are equivalent, XST will keep only <last_write_count>.
+INFO:Xst:2146 - In block <decrypter>, Counter <counter> <read_count> are equivalent, XST will keep only <counter>.
 Analyzing FSM <MFsm> for best encoding.
 Optimizing FSM <dec/uut/FSM_0> on signal <state[1:2]> with sequential encoding.
 -------------------
@@ -466,6 +477,10 @@ Optimizing FSM <dec/uut/FSM_0> on signal <state[1:2]> with sequential encoding.
  010   | 01
  100   | 10
 -------------------
+WARNING:Xst:2677 - Node <icount_27> of sequential type is unconnected in block <vga_display>.
+WARNING:Xst:2677 - Node <icount_28> of sequential type is unconnected in block <vga_display>.
+WARNING:Xst:2677 - Node <icount_29> of sequential type is unconnected in block <vga_display>.
+WARNING:Xst:2677 - Node <icount_30> of sequential type is unconnected in block <vga_display>.
 
 Optimizing unit <vga_display> ...
 
@@ -476,6 +491,14 @@ Optimizing unit <decrypter> ...
 Optimizing unit <decrypt_dumb> ...
 
 Optimizing unit <vga_bsprite> ...
+WARNING:Xst:2677 - Node <button_key_0> of sequential type is unconnected in block <vga_display>.
+WARNING:Xst:2677 - Node <button_key_8> of sequential type is unconnected in block <vga_display>.
+WARNING:Xst:2677 - Node <button_key_16> of sequential type is unconnected in block <vga_display>.
+WARNING:Xst:2677 - Node <button_key_24> of sequential type is unconnected in block <vga_display>.
+WARNING:Xst:2677 - Node <button_key_32> of sequential type is unconnected in block <vga_display>.
+WARNING:Xst:2677 - Node <button_key_40> of sequential type is unconnected in block <vga_display>.
+WARNING:Xst:2677 - Node <button_key_48> of sequential type is unconnected in block <vga_display>.
+WARNING:Xst:2677 - Node <button_key_56> of sequential type is unconnected in block <vga_display>.
 WARNING:Xst:2677 - Node <vc/blank> of sequential type is unconnected in block <vga_display>.
 WARNING:Xst:2677 - Node <reset_addr_0> of sequential type is unconnected in block <vga_display>.
 WARNING:Xst:2677 - Node <reset_addr_1> of sequential type is unconnected in block <vga_display>.
@@ -493,17 +516,9 @@ WARNING:Xst:2677 - Node <reset_addr_12> of sequential type is unconnected in blo
 WARNING:Xst:2677 - Node <reset_addr_13> of sequential type is unconnected in block <vga_display>.
 WARNING:Xst:2677 - Node <reset_addr_14> of sequential type is unconnected in block <vga_display>.
 WARNING:Xst:1293 - FF/Latch <vc/vcounter_10> has a constant value of 0 in block <vga_display>. This FF/Latch will be trimmed during the optimization process.
-INFO:Xst:2261 - The FF/Latch <dec/write_count_1> in Unit <vga_display> is equivalent to the following FF/Latch, which will be removed : <dec/last_write_count_1> 
-INFO:Xst:2261 - The FF/Latch <dec/write_count_2> in Unit <vga_display> is equivalent to the following FF/Latch, which will be removed : <dec/last_write_count_2> 
-INFO:Xst:2261 - The FF/Latch <dec/counter_0> in Unit <vga_display> is equivalent to the following FF/Latch, which will be removed : <dec/read_count_0> 
-INFO:Xst:2261 - The FF/Latch <dec/counter_1> in Unit <vga_display> is equivalent to the following FF/Latch, which will be removed : <dec/read_count_1> 
-INFO:Xst:2261 - The FF/Latch <dec/counter_2> in Unit <vga_display> is equivalent to the following FF/Latch, which will be removed : <dec/read_count_2> 
-INFO:Xst:2261 - The FF/Latch <dec/write_count_0> in Unit <vga_display> is equivalent to the following FF/Latch, which will be removed : <dec/last_write_count_0> 
 
 Mapping all equations...
 Building and optimizing final netlist ...
-WARNING:Xst:1426 - The value init of the FF/Latch decrypter_active hinder the constant cleaning in the block vga_display.
-   You should achieve better results by setting this init to 1.
 Found area constraint ratio of 100 (+ 5) on block vga_display, actual ratio is 6.
 
 Final Macro Processing ...
@@ -512,8 +527,8 @@ Final Macro Processing ...
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 365
- Flip-Flops                                            : 365
+# Registers                                            : 384
+ Flip-Flops                                            : 384
 
 =========================================================================
 
@@ -536,26 +551,26 @@ Top Level Output File Name         : vga_display.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 400
+# BELS                             : 486
 #      GND                         : 3
-#      INV                         : 16
-#      LUT1                        : 39
-#      LUT2                        : 18
-#      LUT3                        : 82
+#      INV                         : 32
+#      LUT1                        : 65
+#      LUT2                        : 17
+#      LUT3                        : 71
 #      LUT4                        : 6
 #      LUT5                        : 67
 #      LUT6                        : 40
-#      MUXCY                       : 58
+#      MUXCY                       : 84
 #      MUXF7                       : 8
 #      VCC                         : 3
-#      XORCY                       : 60
-# FlipFlops/Latches                : 383
-#      FD                          : 63
+#      XORCY                       : 90
+# FlipFlops/Latches                : 402
+#      FD                          : 82
 #      FDC                         : 21
 #      FDCE                        : 10
-#      FDE                         : 272
+#      FDE                         : 242
 #      FDR                         : 8
-#      FDRE                        : 9
+#      FDRE                        : 39
 # RAMS                             : 32
 #      RAMB16BWER                  : 32
 # Shift Registers                  : 2
@@ -563,8 +578,8 @@ Primitive and Black Box Usage:
 # Clock Buffers                    : 3
 #      BUFG                        : 2
 #      BUFGP                       : 1
-# IO Buffers                       : 36
-#      IBUF                        : 9
+# IO Buffers                       : 28
+#      IBUF                        : 1
 #      OBUF                        : 27
 # DSPs                             : 1
 #      DSP48A1                     : 1
@@ -576,23 +591,22 @@ Selected Device : 6slx16csg324-3
 
 
 Slice Logic Utilization: 
- Number of Slice Registers:             375  out of  18224     2%  
- Number of Slice LUTs:                  270  out of   9112     2%  
-    Number used as Logic:               268  out of   9112     2%  
+ Number of Slice Registers:             402  out of  18224     2%  
+ Number of Slice LUTs:                  300  out of   9112     3%  
+    Number used as Logic:               298  out of   9112     3%  
     Number used as Memory:                2  out of   2176     0%  
        Number used as SRL:                2
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    440
-   Number with an unused Flip Flop:      65  out of    440    14%  
-   Number with an unused LUT:           170  out of    440    38%  
-   Number of fully used LUT-FF pairs:   205  out of    440    46%  
-   Number of unique control sets:        16
+ Number of LUT Flip Flop pairs used:    467
+   Number with an unused Flip Flop:      65  out of    467    13%  
+   Number with an unused LUT:           167  out of    467    35%  
+   Number of fully used LUT-FF pairs:   235  out of    467    50%  
+   Number of unique control sets:        18
 
 IO Utilization: 
  Number of IOs:                          39
- Number of bonded IOBs:                  37  out of    232    15%  
-    IOB Flip Flops/Latches:               8
+ Number of bonded IOBs:                  29  out of    232    12%  
 
 Specific Feature Utilization:
  Number of Block RAM/FIFO:               32  out of     32   100%  
@@ -621,8 +635,8 @@ Clock Information:
 -----------------------------------+-------------------------------------------------------------------------------------------------------------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)                                                                                                         | Load  |
 -----------------------------------+-------------------------------------------------------------------------------------------------------------------------------+-------+
-ClkPort                            | BUFGP                                                                                                                         | 22    |
-clk_25Mhz                          | BUFG                                                                                                                          | 130   |
+ClkPort                            | BUFGP                                                                                                                         | 14    |
+clk_25Mhz                          | BUFG                                                                                                                          | 157   |
 clk_decrypter                      | BUFG                                                                                                                          | 265   |
 ben/N1                             | NONE(ben/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[15].ram.r/s6_init.ram/SP.SIMPLE_PRIM18.ram)| 16    |
 -----------------------------------+-------------------------------------------------------------------------------------------------------------------------------+-------+
@@ -636,8 +650,8 @@ Timing Summary:
 ---------------
 Speed Grade: -3
 
-   Minimum period: 9.815ns (Maximum Frequency: 101.881MHz)
-   Minimum input arrival time before clock: 4.663ns
+   Minimum period: 9.842ns (Maximum Frequency: 101.608MHz)
+   Minimum input arrival time before clock: 5.256ns
    Maximum output required time after clock: 3.597ns
    Maximum combinational path delay: No path found
 
@@ -672,7 +686,7 @@ Delay:               1.894ns (Levels of Logic = 12)
      MUXCY:CI->O           1   0.019   0.000  Mcount_count_cy<8> (Mcount_count_cy<8>)
      MUXCY:CI->O           1   0.019   0.000  Mcount_count_cy<9> (Mcount_count_cy<9>)
      MUXCY:CI->O           0   0.019   0.000  Mcount_count_cy<10> (Mcount_count_cy<10>)
-     XORCY:CI->O           1   0.180   0.000  Mcount_count_xor<11> (Result<11>)
+     XORCY:CI->O           1   0.180   0.000  Mcount_count_xor<11> (Result<11>1)
      FD:D                      0.102          count_11
     ----------------------------------------
     Total                      1.894ns (1.277ns logic, 0.617ns route)
@@ -680,10 +694,10 @@ Delay:               1.894ns (Levels of Logic = 12)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_25Mhz'
-  Clock period: 9.815ns (frequency: 101.881MHz)
-  Total number of paths / destination ports: 33653 / 805
+  Clock period: 9.842ns (frequency: 101.608MHz)
+  Total number of paths / destination ports: 35998 / 848
 -------------------------------------------------------------------------
-Delay:               9.815ns (Levels of Logic = 5)
+Delay:               9.842ns (Levels of Logic = 5)
   Source:            vc/vcounter_8 (FF)
   Destination:       dec_mem/U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SDP.SIMPLE_PRIM18.ram (RAM)
   Source Clock:      clk_25Mhz rising
@@ -696,20 +710,20 @@ Delay:               9.815ns (Levels of Logic = 5)
      FDCE:C->Q            12   0.447   1.253  vc/vcounter_8 (vc/vcounter_8)
      LUT6:I1->O            3   0.203   0.651  sprites_mem/Mmux_y131 (sprites_mem/Mmux_y131)
      LUT3:I2->O            1   0.205   0.579  sprites_mem/Mmux_y11 (sprites_mem/y<0>)
-     DSP48A1:B0->P14      10   4.394   0.856  sprites_mem/Maddsub_n0042 (sprite_read_addr<14>)
+     DSP48A1:B0->P14      11   4.394   0.882  sprites_mem/Maddsub_n0042 (sprite_read_addr<14>)
      begin scope: 'dec_mem:addrb<14>'
      INV:I->O              8   0.206   0.802  U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/out21_INV_0 (U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.ram_enb)
      RAMB16BWER:ENB            0.220          U0/xst_blk_mem_generator/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_init.ram/SDP.SIMPLE_PRIM18.ram
     ----------------------------------------
-    Total                      9.815ns (5.675ns logic, 4.140ns route)
-                                       (57.8% logic, 42.2% route)
+    Total                      9.842ns (5.675ns logic, 4.167ns route)
+                                       (57.7% logic, 42.3% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'clk_decrypter'
-  Clock period: 3.358ns (frequency: 297.788MHz)
-  Total number of paths / destination ports: 933 / 424
+  Clock period: 3.328ns (frequency: 300.450MHz)
+  Total number of paths / destination ports: 931 / 423
 -------------------------------------------------------------------------
-Delay:               3.358ns (Levels of Logic = 1)
+Delay:               3.328ns (Levels of Logic = 1)
   Source:            dec/uut/state_FSM_FFd1 (FF)
   Destination:       dec/dec_pixels_0_63 (FF)
   Source Clock:      clk_decrypter rising
@@ -719,37 +733,18 @@ Delay:               3.358ns (Levels of Logic = 1)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDC:C->Q              6   0.447   0.745  dec/uut/state_FSM_FFd1 (dec/uut/state_FSM_FFd1)
-     LUT2:I1->O           64   0.205   1.639  dec/_n01341 (dec/_n0134)
+     FDC:C->Q              5   0.447   0.715  dec/uut/state_FSM_FFd1 (dec/uut/state_FSM_FFd1)
+     LUT3:I2->O           64   0.205   1.639  dec/_n0143_inv1 (dec/_n0143_inv)
      FDE:CE                    0.322          dec/dec_pixels_0_0
     ----------------------------------------
-    Total                      3.358ns (0.974ns logic, 2.384ns route)
-                                       (29.0% logic, 71.0% route)
-
-=========================================================================
-Timing constraint: Default OFFSET IN BEFORE for Clock 'ClkPort'
-  Total number of paths / destination ports: 8 / 8
--------------------------------------------------------------------------
-Offset:              1.903ns (Levels of Logic = 1)
-  Source:            Sw7 (PAD)
-  Destination:       button_key_0 (FF)
-  Destination Clock: ClkPort rising
-
-  Data Path: Sw7 to button_key_0
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     IBUF:I->O             1   1.222   0.579  Sw7_IBUF (Sw7_IBUF)
-     FD:D                      0.102          button_key_0
-    ----------------------------------------
-    Total                      1.903ns (1.324ns logic, 0.579ns route)
-                                       (69.6% logic, 30.4% route)
+    Total                      3.328ns (0.974ns logic, 2.354ns route)
+                                       (29.3% logic, 70.7% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_25Mhz'
   Total number of paths / destination ports: 21 / 21
 -------------------------------------------------------------------------
-Offset:              2.824ns (Levels of Logic = 1)
+Offset:              3.258ns (Levels of Logic = 1)
   Source:            rst (PAD)
   Destination:       vc/vcounter_9 (FF)
   Destination Clock: clk_25Mhz rising
@@ -758,31 +753,31 @@ Offset:              2.824ns (Levels of Logic = 1)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            24   1.222   1.172  rst_IBUF (rst_IBUF)
+     IBUF:I->O            59   1.222   1.606  rst_IBUF (rst_IBUF)
      FDC:CLR                   0.430          vc/hcounter_0
     ----------------------------------------
-    Total                      2.824ns (1.652ns logic, 1.172ns route)
-                                       (58.5% logic, 41.5% route)
+    Total                      3.258ns (1.652ns logic, 1.606ns route)
+                                       (50.7% logic, 49.3% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_decrypter'
-  Total number of paths / destination ports: 66 / 66
+  Total number of paths / destination ports: 265 / 265
 -------------------------------------------------------------------------
-Offset:              4.663ns (Levels of Logic = 2)
+Offset:              5.256ns (Levels of Logic = 2)
   Source:            rst (PAD)
-  Destination:       dec/uut/decrypted_63 (FF)
+  Destination:       dec/decrypted_data_7 (FF)
   Destination Clock: clk_decrypter rising
 
-  Data Path: rst to dec/uut/decrypted_63
+  Data Path: rst to dec/decrypted_data_7
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O            24   1.222   1.277  rst_IBUF (rst_IBUF)
-     LUT2:I0->O           64   0.203   1.639  dec/uut/_n0141_inv1 (dec/uut/_n0141_inv)
-     FDE:CE                    0.322          dec/uut/decrypted_0
+     IBUF:I->O            59   1.222   1.711  rst_IBUF (rst_IBUF)
+     LUT2:I0->O           88   0.203   1.798  dec/_n0132_inv1 (dec/_n0132_inv)
+     FDE:CE                    0.322          dec/ack
     ----------------------------------------
-    Total                      4.663ns (1.747ns logic, 2.916ns route)
-                                       (37.5% logic, 62.5% route)
+    Total                      5.256ns (1.747ns logic, 3.509ns route)
+                                       (33.2% logic, 66.8% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_25Mhz'
@@ -821,8 +816,8 @@ Clock to Setup on destination clock clk_25Mhz
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-clk_25Mhz      |    9.815|         |         |         |
-clk_decrypter  |    1.128|         |         |         |
+clk_25Mhz      |    9.842|         |         |         |
+clk_decrypter  |    1.562|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock clk_decrypter
@@ -830,22 +825,21 @@ Clock to Setup on destination clock clk_decrypter
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-ClkPort        |    2.317|         |         |         |
-clk_25Mhz      |    4.614|         |         |         |
-clk_decrypter  |    3.358|         |         |         |
+clk_25Mhz      |    3.885|         |         |         |
+clk_decrypter  |    3.328|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 11.00 secs
-Total CPU time to Xst completion: 11.14 secs
+Total REAL time to Xst completion: 18.00 secs
+Total CPU time to Xst completion: 17.99 secs
  
 --> 
 
-Total memory usage is 317548 kilobytes
+Total memory usage is 298096 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :   34 (   0 filtered)
-Number of infos    :   16 (   0 filtered)
+Number of warnings :   45 (   0 filtered)
+Number of infos    :   12 (   0 filtered)
 

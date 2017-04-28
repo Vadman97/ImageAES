@@ -1,7 +1,7 @@
 ##############################################################
 #
 # Xilinx Core Generator version 14.7
-# Date: Fri Apr 21 02:56:11 2017
+# Date: Fri Apr 28 01:43:36 2017
 #
 ##############################################################
 #
@@ -46,7 +46,7 @@ CSET axi_id_width=4
 CSET axi_slave_type=Memory_Slave
 CSET axi_type=AXI4_Full
 CSET byte_size=9
-CSET coe_file=C:\Users\vkoro\Final_Project\project\des\pezhman_enc.coe
+CSET coe_file=C:\Users\Vadim\Desktop\pezhman_enc.coe
 CSET collision_warnings=ALL
 CSET component_name=pezhman_mem
 CSET disable_collision_warnings=false
@@ -105,4 +105,4 @@ CSET write_width_b=8
 MISC pkg_timestamp=2012-11-19T16:22:25Z
 # END Extra information
 GENERATE
-# CRC:    bf752
+# CRC: 196f3411

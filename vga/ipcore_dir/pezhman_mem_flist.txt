@@ -1,5 +1,4 @@
 # Output products list for <pezhman_mem>
-_xmsgs\pn_parser.xmsgs
 pezhman_mem.asy
 pezhman_mem.gise
 pezhman_mem.mif

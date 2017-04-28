@@ -94,13 +94,11 @@ int main(int argc, char ** argv) {
 			//printf("%llX\n", result);
 
 			//split up binary into bytes
-      for (int k = 0; k < 8; k++) {
   			for (int j = 7; j >= 0; j--) {
-  				unsigned char row = result[k];//(result[k] & (0xFFL << (8 * j))) >> (8 * j);
-  				// printf("%X\n", row);
+  				unsigned char row = result[j];//(result[k] & (0xFFL << (8 * j))) >> (8 * j);
+  				// printf("%X\n", row;
   				output_buf.push_back(row);
   			}
-      }
 		}
 	}
 

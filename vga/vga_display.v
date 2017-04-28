@@ -104,7 +104,7 @@ module vga_display(St_ce_bar, St_rp_bar, Mt_ce_bar, Mt_St_oe_bar, Mt_St_we_bar,
 			write_addr <= write_addr_dec;
 			dec_mem_din <= dec_din;
 			reset_addr <= 0;
-			if (1'b1 | icount[26]) begin
+			if (icount[26]) begin
 				dout <= dec_dout;
 				ben_read_addr <= decr_read_addr;
 				decrypter_active <= 1'b1;
